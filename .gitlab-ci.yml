@@ -1,0 +1,22 @@
+default:
+  image: node:16
+  cache:
+    key:
+      files:
+        - yarn.lock
+      prefix: ${CI_COMMIT_BRANCH}
+  before_script:
+    - echo 'yarn-offline-mirror ".yarn-cache/"' > .yarnrc
+    - echo 'yarn-offline-mirror-pruning true' >> .yarnrc
+    - echo "@hokkyss:registry=https://${CI_SERVER_HOST}/api/v4/projects/45017576/packages/npm/" > .npmrc
+    - echo "//${CI_SERVER_HOST}/api/v4/projects/45017576/packages/npm/:_authToken=${PERSONAL_ACCESS_TOKEN}" >> .npmrc
+    - yarn install --frozen-lockfile --no-progress --non-interactive
+
+stages:
+  - lint
+
+lint:
+  stage: lint
+  variables: PERSONAL_ACCESS_TOKEN
+  script:
+    - "${secrets}"
