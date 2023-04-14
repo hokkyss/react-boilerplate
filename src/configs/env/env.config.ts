@@ -6,6 +6,8 @@ type EnvConfig = {
     : never]: ImportMetaEnv[Key];
 };
 
-const env: EnvConfig = {};
+const envConfig: EnvConfig = {
+  hello: import.meta.env.VITE_HELLO,
+};
 
-export default env;
+export default envConfig;

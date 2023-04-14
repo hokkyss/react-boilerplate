@@ -17,6 +17,7 @@
     "react-router-dom": "^6.10.0"
   },
   "devDependencies": {
+    "@types/node": "^18.15.11",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.58.0",
@@ -71,7 +72,8 @@
           "argsIgnorePattern": "^_"
         }
       ],
-      "import/extensions": "off"
+      "import/extensions": "off",
+      "import/no-extraneous-dependencies": "off"
     }
   },
   "lint-staged": {

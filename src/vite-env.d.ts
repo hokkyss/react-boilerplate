@@ -1,8 +1,8 @@
 /// <reference types="vite/client" />
 
-// TODO: Remove the eslint-disable
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface ImportMetaEnv {}
+interface ImportMetaEnv {
+  readonly VITE_HELLO: string;
+}
 
 interface ImportMeta {
   readonly env: ImportMetaEnv;
