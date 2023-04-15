@@ -1,10 +1,15 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { RouteObject } from "react-router-dom";
-import App from "./Home.view";
+
+const HomeView = lazy(() => import('./Home.view'));
 
 const HomeRoute: RouteObject = {
   path: "/",
-  element: <App />,
+  element: (
+    <Suspense>
+      <HomeView />
+    </Suspense>
+  ),
 };
 
 export default HomeRoute;

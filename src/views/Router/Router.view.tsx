@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import routerConfig from "~/configs/router/router.config";
 
-const AppRouter: React.FC = function AppRouter() {
+const AppRouter: FunctionComponent = function AppRouter() {
   return (
     <BrowserRouter>
       <Routes>
