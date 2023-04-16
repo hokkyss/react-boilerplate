@@ -26,12 +26,10 @@ const HomeView: FunctionComponent = function HomeView() {
         <button onClick={decrease} type="button">
           Decrease Count
         </button>
-        <code>
-          Count = {counter}
-        </code>
+        <code>Count = {counter}</code>
       </div>
     </div>
   );
-}
+};
 
 export default HomeView;
