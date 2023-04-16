@@ -5,7 +5,7 @@ ENV PORT=3000
 
 WORKDIR /code
 COPY package.json /code/package.json
-COPY package-lock.json /code/package-lock.json
+COPY yarn.lock /code/yarn.lock
 RUN yarn install
 COPY . /code
 
