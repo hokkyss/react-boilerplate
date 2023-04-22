@@ -20,15 +20,15 @@ const HomeView: FunctionComponent = function HomeView() {
       </div>
       <h1>Vite + React</h1>
       <div className={styles.card}>
-        <button onClick={increase} type="button">
-          Increase Count
-        </button>
         <button onClick={decrease} type="button">
           Decrease Count
         </button>
         <code>Count = {counter}</code>
-        <code>Random = {random}</code>
+        <button onClick={increase} type="button">
+          Increase Count
+        </button>
       </div>
+      <code>Random = {random}</code>
     </div>
   );
 };
