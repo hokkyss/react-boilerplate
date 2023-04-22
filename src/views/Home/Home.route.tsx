@@ -6,7 +6,7 @@ const HomeView = lazy(() => import("./Home.view"));
 const HomeRoute: RouteObject = {
   path: "/",
   element: (
-    <Suspense>
+    <Suspense fallback="Loading HomeView">
       <HomeView />
     </Suspense>
   ),
