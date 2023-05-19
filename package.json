@@ -17,7 +17,7 @@
     "react-router-dom": "^6.10.0"
   },
   "devDependencies": {
-    "@hokkyss/composite-types": "^1.0.6",
+    "@hokkyss/composite-types": "^1.0.8",
     "@types/lodash": "^4.14.194",
     "@types/node": "^18.15.11",
     "@types/react": "^18.0.28",

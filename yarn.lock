@@ -151,10 +151,10 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.38.0.tgz#73a8a0d8aa8a8e6fe270431c5e72ae91b5337892"
   integrity sha512-IoD2MfUnOV58ghIHCiil01PcohxjbYR/qCxsoC+xNgUwh1EY8jOOrYmu3d3a71+tJJ23uscEV4X2HJWMsPJu4g==
 
-"@hokkyss/composite-types@^1.0.6":
-  version "1.0.6"
-  resolved "https://gitlab.com/api/v4/projects/45017576/packages/npm/@hokkyss/composite-types/-/@hokkyss/composite-types-1.0.6.tgz#57c9925a22770ba6e3cbf6de2bdd5998a4776804"
-  integrity sha1-V8mSWiJ3C6bjy/beK91ZmKR3aAQ=
+"@hokkyss/composite-types@^1.0.8":
+  version "1.0.8"
+  resolved "https://gitlab.com/api/v4/projects/45017576/packages/npm/@hokkyss/composite-types/-/@hokkyss/composite-types-1.0.8.tgz#9b71424bca508de52a8146e7bda761c3fd53d4e1"
+  integrity sha1-m3FCS8pQjeUqgUbnvadhw/1T1OE=
 
 "@humanwhocodes/config-array@^0.11.8":
   version "0.11.8"
