@@ -6,7 +6,7 @@ import styles from "./Home.module.css";
 import useHomeViewModel from "./Home.viewModel";
 
 const HomeView: FunctionComponent = function HomeView() {
-  const { counter, increase, decrease, random } = useHomeViewModel();
+  const { counter, increase, decrease } = useHomeViewModel();
 
   return (
     <div className={styles.app}>
@@ -28,7 +28,6 @@ const HomeView: FunctionComponent = function HomeView() {
           Increase Count
         </button>
       </div>
-      <code>Random = {random}</code>
     </div>
   );
 };

@@ -1,6 +1,4 @@
 import { useCallback, useState } from "react";
-import usePromise from "~/hooks/use.hook";
-import { randomNumber } from "~/utils/helper.util";
 
 function useCounter() {
   const [counter, setCounter] = useState(0);
@@ -13,8 +11,7 @@ function useCounter() {
 
 export default function useHomeViewModel() {
   const { counter, increase, decrease } = useCounter();
-  const random = usePromise(randomNumber, []);
   // use more hooks, and only use hooks
 
-  return { counter, increase, decrease, random };
+  return { counter, increase, decrease };
 }
