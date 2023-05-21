@@ -1,3 +1,4 @@
+/// <reference types="./globals" />
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
