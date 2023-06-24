@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
-  useLocation,
+  NavigateFunction,
   useNavigate as useDefaultNavigate,
+  useLocation,
 } from "react-router-dom";
 
-export default function useNavigate() {
+export type Navigate = [NavigateFunction, boolean];
+
+export default function useNavigate(): Navigate {
   const navigate = useDefaultNavigate();
   const location = useLocation();
   const [loaded, setLoaded] = useState(false);
@@ -17,5 +20,10 @@ export default function useNavigate() {
     };
   }, [location]);
 
-  return [navigate, loaded] as const;
+  const returnValue = useMemo<Navigate>(
+    () => [navigate, loaded],
+    [navigate, loaded]
+  );
+
+  return returnValue;
 }

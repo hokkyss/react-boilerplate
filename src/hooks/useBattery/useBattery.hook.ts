@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Callback } from "../useCallback/useCallback.hook";
 
 type BatteryState = {
   /**
@@ -21,26 +22,26 @@ type BatteryState = {
 
 type BatteryManager = EventTarget &
   Readonly<BatteryState> & {
-    onchargingchange: (e: Event) => void;
-    onchargingtimechange: (e: Event) => void;
-    ondischargingtimechange: (e: Event) => void;
-    onlevelchange: (e: Event) => void;
+    onchargingchange: Callback<(e: Event) => void>;
+    onchargingtimechange: Callback<(e: Event) => void>;
+    ondischargingtimechange: Callback<(e: Event) => void>;
+    onlevelchange: Callback<(e: Event) => void>;
   };
 
 type NavigatorWithGetBattery = Navigator & {
-  getBattery?: () => Promise<BatteryManager>;
+  getBattery?: Callback<() => Promise<BatteryManager>>;
 };
-
-type UseBattery =
-  | { isSupported: false }
-  | { isSupported: true; isFetched: false }
-  | (BatteryState & { isSupported: true; isFetched: true });
 
 const nav: NavigatorWithGetBattery | undefined =
   typeof navigator !== "undefined" ? navigator : undefined;
 
-function useBattery() {
-  const [battery, setBattery] = useState<UseBattery>({
+export type Battery =
+  | { isSupported: false }
+  | { isSupported: true; isFetched: false }
+  | (BatteryState & { isSupported: true; isFetched: true });
+
+function useBattery(): Battery {
+  const [battery, setBattery] = useState<Battery>({
     isSupported: true,
     isFetched: false,
   });

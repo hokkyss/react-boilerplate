@@ -1,5 +1,5 @@
 import noop from "lodash/noop";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import useCallback from "../useCallback/useCallback.hook";
 import usePermission from "../usePermission/usePermission.hook";
 
@@ -46,7 +46,9 @@ type GeolocationState =
       speed: number | null;
     };
 
-export default function useGeolocation() {
+export type Geolocation = [GeolocationState, Date];
+
+export default function useGeolocation(): Geolocation {
   const permission = usePermission("geolocation");
   const [lastRecorded, setLastRecorded] = useState(new Date());
   const [coordinates, setCoordinates] = useState<GeolocationState>({
@@ -98,5 +100,10 @@ export default function useGeolocation() {
     };
   }, [permission, positionCallback, positionErrorCallback]);
 
-  return [coordinates, lastRecorded] as const;
+  const returnValue = useMemo<Geolocation>(
+    () => [coordinates, lastRecorded],
+    [coordinates, lastRecorded]
+  );
+
+  return returnValue;
 }

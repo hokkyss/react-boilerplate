@@ -1,5 +1,17 @@
 import { useMemo, useState } from "react";
-import useCallback from "../useCallback/useCallback.hook";
+import useCallback, { Callback } from "../useCallback/useCallback.hook";
+
+type Mutator<T> = {
+  add: Callback<(item: T) => void>;
+  remove: Callback<(item: T) => void>;
+  clear: Callback<() => void>;
+  reset: Callback<() => void>;
+};
+
+type Accessor<T> = {
+  has: Callback<(item: T) => boolean>;
+  asArray: Callback<() => T[]>;
+};
 
 export default function useSet<T extends ComparablePrimitiveType>(
   initialState = new Set<T>()
@@ -37,7 +49,7 @@ export default function useSet<T extends ComparablePrimitiveType>(
     [initialState]
   );
 
-  const mutator = useMemo(
+  const mutator = useMemo<Mutator<T>>(
     () => ({
       add,
       remove,
@@ -47,7 +59,7 @@ export default function useSet<T extends ComparablePrimitiveType>(
     [add, clear, remove, reset]
   );
 
-  const accessor = useMemo(
+  const accessor = useMemo<Accessor<T>>(
     () => ({
       has,
       asArray,
@@ -55,5 +67,10 @@ export default function useSet<T extends ComparablePrimitiveType>(
     [asArray, has]
   );
 
-  return [state, mutator, accessor] as const;
+  const returnValue = useMemo<[Set<T>, Mutator<T>, Accessor<T>]>(
+    () => [state, mutator, accessor],
+    [state, mutator, accessor]
+  );
+
+  return returnValue;
 }

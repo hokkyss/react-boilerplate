@@ -6,13 +6,22 @@ import calendar, {
   getPreviousMonth,
   isSameMonth,
 } from "~/utils/date.util";
-import useCallback from "../useCallback/useCallback.hook";
+import useCallback, { Callback } from "../useCallback/useCallback.hook";
 
-type UseDatePickerParams = {
-  onChange: (date: DateValue) => void;
+type UseDatePickerProps = {
+  onChange: Callback<(date: DateValue) => void>;
 };
 
-export default function useDatePicker({ onChange }: UseDatePickerParams) {
+export type DatePicker = {
+  previousMonth: Callback<() => void>;
+  nextMonth: Callback<() => void>;
+  handleChange: Callback<(date: DateValue) => void>;
+  dates: DateValue[][];
+};
+
+export default function useDatePicker({
+  onChange,
+}: UseDatePickerProps): DatePicker {
   const [currentMonth, setCurrentMonth] = useState(TODAY());
 
   const previousMonth = useCallback(
@@ -52,10 +61,10 @@ export default function useDatePicker({ onChange }: UseDatePickerParams) {
 
   const dates = useMemo(() => calendar(currentMonth), [currentMonth]);
 
-  return {
-    previousMonth,
-    nextMonth,
-    handleChange,
-    dates,
-  };
+  const returnValue = useMemo<DatePicker>(
+    () => ({ previousMonth, nextMonth, handleChange, dates }),
+    [previousMonth, nextMonth, handleChange, dates]
+  );
+
+  return returnValue;
 }

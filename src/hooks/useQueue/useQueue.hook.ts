@@ -1,7 +1,14 @@
 import { useMemo, useState } from "react";
-import useCallback from "../useCallback/useCallback.hook";
+import useCallback, { Callback } from "../useCallback/useCallback.hook";
 
-export default function useQueue<T>() {
+export type Queue<T> = {
+  push: Callback<(item: T) => void>;
+  pop: Callback<() => void>;
+  front: T;
+  size: number;
+};
+
+export default function useQueue<T>(): Queue<T> {
   const [state, setState] = useState<T[]>([]);
 
   const push = useCallback(

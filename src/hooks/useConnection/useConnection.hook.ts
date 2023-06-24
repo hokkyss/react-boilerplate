@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Callback } from "../useCallback/useCallback.hook";
 
 /**
  * Provides information about the connection a device is using to communicate with the network.
@@ -52,7 +53,7 @@ type NetworkInformationAttributes = {
 };
 
 type NetworkInformationEvents = {
-  onchange: (e: Event) => void;
+  onchange: Callback<(e: Event) => void>;
 };
 
 type NetworkInformation = EventTarget &
@@ -66,13 +67,13 @@ type NavigatorWithConnection = Navigator & {
 const nav: NavigatorWithConnection | undefined =
   typeof navigator !== "undefined" ? navigator : undefined;
 
-type ConnectionState = { online: boolean } & (
+export type Connection = { online: boolean } & (
   | { isSupported: false }
   | ({ isSupported: true } & Partial<NetworkInformationAttributes>)
 );
 
-export default function useConnection(): ConnectionState {
-  const [connectionState, setConnectionState] = useState<ConnectionState>({
+export default function useConnection(): Connection {
+  const [connectionState, setConnectionState] = useState<Connection>({
     online: !!nav?.onLine,
     isSupported: true,
   });

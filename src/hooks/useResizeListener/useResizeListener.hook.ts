@@ -1,8 +1,9 @@
 import { useEffect } from "react";
+import { Callback } from "../useCallback/useCallback.hook";
 
 export default function useResizeListener(
   element: HTMLElement | null,
-  callback: (entry: ResizeObserverEntry) => void,
+  callback: Callback<(entry: ResizeObserverEntry) => void>,
   options: ResizeObserverOptions = { box: "border-box" }
 ) {
   useEffect(() => {

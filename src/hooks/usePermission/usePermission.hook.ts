@@ -1,12 +1,12 @@
 import noop from "lodash/noop";
 import { useEffect, useState } from "react";
 
-type PermissionState =
+type Permission =
   | { isFetched: false }
   | { isFetched: true; status: PermissionStatus["state"] };
 
-export default function usePermission(name: PermissionName) {
-  const [state, setState] = useState<PermissionState>({ isFetched: false });
+export default function usePermission(name: PermissionName): Permission {
+  const [state, setState] = useState<Permission>({ isFetched: false });
   const [permissionStatus, setPermissionStatus] = useState<PermissionStatus>();
 
   useEffect(() => {

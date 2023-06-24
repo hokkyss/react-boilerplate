@@ -1,7 +1,7 @@
-import { RouteObject } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 
-import HomeRoute from "~/views/Home/Home.route";
+import HomeRoute from "~/pages/Home/Home.route";
 
-const routerConfig: RouteObject[] = [HomeRoute];
+const routerConfig = createBrowserRouter([HomeRoute]);
 
 export default routerConfig;

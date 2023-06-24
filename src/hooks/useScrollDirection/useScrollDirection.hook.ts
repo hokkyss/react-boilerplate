@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import usePrevious from "../usePrevious/usePrevious.hook";
 
-type ScrollDirection = "up" | "down" | "none";
+export type ScrollDirection = "up" | "down" | "none";
 
 export default function useScrollDirection(minimumOffset = 1): ScrollDirection {
   const [scrollTop, setScrollTop] = useState(0);
