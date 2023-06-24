@@ -1,5 +1,5 @@
 import styled from "@mui/system/styled";
-import { between, padding } from "polished";
+import { between, padding, size } from "polished";
 import { FunctionComponent } from "react";
 import ReactLogo from "~/assets/react.svg";
 import ViteLogo from "~/assets/vite.svg";
@@ -8,11 +8,12 @@ import useHomeViewModel from "./Home.viewModel";
 const Container = styled("div")(() => ({
   fontSize: between("20px", "30px", "400px", "1000px"),
 }));
-const Card = styled("div")(() => ({
-  padding: "2em",
-}));
+const Card = styled("div")`
+  padding: 2em;
+`;
 const StyledViteLogo = styled(ViteLogo)`
-  ${padding(50)}
+  ${padding(20)}
+  ${size(100, 100)}
 `;
 const StyledReactLogo = StyledViteLogo.withComponent(ReactLogo);
 
