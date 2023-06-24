@@ -1,11 +1,12 @@
 import styled from "@mui/system/styled";
+import { motion } from "framer-motion";
 import { between, padding, size } from "polished";
 import { FunctionComponent } from "react";
 import ReactLogo from "~/assets/react.svg";
 import ViteLogo from "~/assets/vite.svg";
 import useHomeViewModel from "./Home.viewModel";
 
-const Container = styled("div")(() => ({
+const Container = styled(motion.div)(() => ({
   fontSize: between("20px", "30px", "400px", "1000px"),
 }));
 const Card = styled("div")`
@@ -15,6 +16,7 @@ const StyledViteLogo = styled(ViteLogo)`
   ${padding(20)}
   ${size(100, 100)}
 `;
+
 const StyledReactLogo = StyledViteLogo.withComponent(ReactLogo);
 
 const HomeView: FunctionComponent = function HomeView() {
