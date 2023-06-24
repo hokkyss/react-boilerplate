@@ -1,4 +1,5 @@
-import { useCallback, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
+import useCallback from "../useCallback/useCallback.hook";
 
 export default function useSet<T extends ComparablePrimitiveType>(
   initialState = new Set<T>()

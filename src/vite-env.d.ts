@@ -1,3 +1,4 @@
+/// <reference types="./types/svg" />
 /// <reference types="./globals" />
 /// <reference types="vite/client" />
 

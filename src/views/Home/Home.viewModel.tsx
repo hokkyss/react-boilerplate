@@ -1,4 +1,5 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
+import useCallback from "~/hooks/useCallback/useCallback.hook";
 
 function useCounter() {
   const [counter, setCounter] = useState(0);

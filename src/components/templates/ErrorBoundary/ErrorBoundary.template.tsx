@@ -1,7 +1,6 @@
-import { EmptyObject } from "@hokkyss/composite-types";
 import React from "react";
 
-type ErrorBoundaryProps = React.PropsWithChildren<EmptyObject>;
+type ErrorBoundaryProps = React.PropsWithChildren<{ className?: string }>;
 type ErrorBoundaryState = { hasError: boolean };
 
 export default class ErrorBoundary extends React.Component<
@@ -22,12 +21,16 @@ export default class ErrorBoundary extends React.Component<
   }
 
   render(): React.ReactNode {
-    const { children } = this.props;
+    const { children, className } = this.props;
     const { hasError } = this.state;
 
     if (hasError) {
       return (
-        <button onClick={window.location.reload} type="button">
+        <button
+          className={className}
+          onClick={window.location.reload}
+          type="button"
+        >
           Reload Page
         </button>
       );

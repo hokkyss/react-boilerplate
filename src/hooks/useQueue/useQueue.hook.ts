@@ -1,4 +1,5 @@
-import { useCallback, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
+import useCallback from "../useCallback/useCallback.hook";
 
 export default function useQueue<T>() {
   const [state, setState] = useState<T[]>([]);

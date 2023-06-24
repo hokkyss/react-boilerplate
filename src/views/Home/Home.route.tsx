@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import { Suspense, lazy } from "react";
 import { RouteObject } from "react-router-dom";
 
 const HomeView = lazy(() => import("./Home.view"));

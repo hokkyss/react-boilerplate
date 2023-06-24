@@ -1,25 +1,36 @@
-import React, { FunctionComponent } from "react";
-
-import reactLogo from "~/assets/react.svg";
-import viteLogo from "~/assets/vite.svg";
-import styles from "./Home.module.css";
+import styled from "@mui/system/styled";
+import { between, padding } from "polished";
+import { FunctionComponent } from "react";
+import ReactLogo from "~/assets/react.svg";
+import ViteLogo from "~/assets/vite.svg";
 import useHomeViewModel from "./Home.viewModel";
+
+const Container = styled("div")(() => ({
+  fontSize: between("20px", "30px", "400px", "1000px"),
+}));
+const Card = styled("div")(() => ({
+  padding: "2em",
+}));
+const StyledViteLogo = styled(ViteLogo)`
+  ${padding(50)}
+`;
+const StyledReactLogo = StyledViteLogo.withComponent(ReactLogo);
 
 const HomeView: FunctionComponent = function HomeView() {
   const { counter, increase, decrease } = useHomeViewModel();
 
   return (
-    <div className={styles.app}>
+    <Container>
       <div>
         <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className={styles.logo} alt="Vite logo" />
+          <StyledViteLogo />
         </a>
         <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className={styles.logo} alt="React logo" />
+          <StyledReactLogo />
         </a>
       </div>
       <h1>Vite + React</h1>
-      <div className={styles.card}>
+      <Card>
         <button onClick={decrease} type="button">
           Decrease Count
         </button>
@@ -27,8 +38,8 @@ const HomeView: FunctionComponent = function HomeView() {
         <button onClick={increase} type="button">
           Increase Count
         </button>
-      </div>
-    </div>
+      </Card>
+    </Container>
   );
 };
 

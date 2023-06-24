@@ -1,5 +1,6 @@
 import noop from "lodash/noop";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import useCallback from "../useCallback/useCallback.hook";
 import usePermission from "../usePermission/usePermission.hook";
 
 type GeolocationState =

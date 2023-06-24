@@ -1,7 +1,7 @@
-import React, { FC, PropsWithChildren } from "react";
 import type { EmptyObject } from "@hokkyss/composite-types";
-import ErrorBoundary from "../ErrorBoundary/ErrorBoundary.template";
+import { FC, PropsWithChildren } from "react";
 import AppRouter from "~/views/Router/Router.view";
+import ErrorBoundary from "../ErrorBoundary/ErrorBoundary.template";
 
 type ContainerTemplateProps = PropsWithChildren<EmptyObject>;
 
