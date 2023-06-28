@@ -22,7 +22,12 @@ const HomeView: FunctionComponent = function HomeView() {
         <button onClick={decrease} type="button">
           Decrease Count
         </button>
-        <code>Count = {counter}</code>
+        <p>
+          <span>Count = </span>
+          <span>{counter}</span>
+        </p>
+        <p>{`Count = ${counter}`}</p>
+        <p>Count = {counter}</p>
         <button onClick={increase} type="button">
           Increase Count
         </button>
