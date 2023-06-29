@@ -1,5 +1,5 @@
 import { CacheProvider } from "@emotion/react";
-import React from "react";
+import React, { Profiler } from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 import CssVarsProvider from "./components/contexts/Theme/Theme.context";
@@ -9,10 +9,17 @@ import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <CacheProvider value={emotionCache}>
-      <CssVarsProvider>
-        <RouterProvider router={routerConfig} />
-      </CssVarsProvider>
-    </CacheProvider>
+    <Profiler
+      id="app-profiler"
+      // React Profiler is active only in development.
+      // eslint-disable-next-line no-console
+      onRender={(id, ...args) => console.debug(`[${id}]`, ...args)}
+    >
+      <CacheProvider value={emotionCache}>
+        <CssVarsProvider>
+          <RouterProvider router={routerConfig} />
+        </CssVarsProvider>
+      </CacheProvider>
+    </Profiler>
   </React.StrictMode>
 );

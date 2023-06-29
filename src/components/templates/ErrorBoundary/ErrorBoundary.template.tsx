@@ -1,4 +1,6 @@
 import React from "react";
+import Button from "~/components/atoms/Button/Button.atom";
+import Text from "~/components/atoms/Text/Text.atom";
 
 type ErrorBoundaryProps = React.PropsWithChildren<{ className?: string }>;
 type ErrorBoundaryState = { hasError: boolean };
@@ -26,13 +28,13 @@ export default class ErrorBoundary extends React.Component<
 
     if (hasError) {
       return (
-        <button
+        <Button
           className={className}
           onClick={window.location.reload}
           type="button"
         >
-          Reload Page
-        </button>
+          <Text>Reload Page</Text>
+        </Button>
       );
     }
 

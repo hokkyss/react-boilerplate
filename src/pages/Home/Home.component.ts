@@ -3,14 +3,17 @@ import styled from "@mui/system/styled";
 import { isValidMotionProp, motion } from "framer-motion";
 import { between, padding, size } from "polished";
 
-export const Container = styled(motion.div)`
+export const Container = styled(motion.div, {
+  name: "Container",
+  label: "Container",
+})`
   font-size: ${between("14px", "20px", "400px", "1000px")};
 `;
 
-export const Card = styled("div")`
+export const Card = styled("div", { name: "Card", label: "Card" })`
   padding: 2em;
 `;
-export const Link = styled("a")``;
+export const Link = styled("a", { name: "Link", label: "Link" })``;
 
 const spinningLogoKeyframes = keyframes`
   0% {
@@ -35,10 +38,10 @@ type LogoProps = {
 };
 export const Logo = styled(motion.svg, {
   shouldForwardProp: isValidMotionProp,
-})<LogoProps>((props) => ({
-  ...padding(20),
+  name: "Logo",
+  label: "Logo",
+})<LogoProps>(({ theme, spin }) => ({
+  ...padding(theme.spacing(5)),
   ...size(100, 100),
-  animation: props.spin
-    ? `${spinningLogoKeyframes} 2s linear infinite`
-    : undefined,
+  animation: spin ? `${spinningLogoKeyframes} 2s linear infinite` : undefined,
 }));
