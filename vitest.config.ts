@@ -11,9 +11,10 @@ const vitestConfig = mergeConfig(
       silent: true,
       setupFiles: "./src/setupTests.ts",
       coverage: {
-        reporter: ["text", "json", "html"],
+        provider: "v8",
+        reporter: ["html"],
       },
-      reporters: ["default", "json", "html"],
+      reporters: ["default", "html"],
     },
   })
 );

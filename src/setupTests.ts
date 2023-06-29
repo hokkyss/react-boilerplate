@@ -24,4 +24,6 @@ beforeAll(() => {
 afterAll(() => {
   // clean up once the tests are done
   server.close();
+
+  vi.clearAllMocks();
 });

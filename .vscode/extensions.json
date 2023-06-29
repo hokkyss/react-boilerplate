@@ -6,6 +6,7 @@
     "ms-vscode.vscode-typescript-next",
     "esbenp.prettier-vscode",
     "styled-components.vscode-styled-components",
-    "wayou.vscode-todo-highlight"
+    "wayou.vscode-todo-highlight",
+    "ZixuanChen.vitest-explorer"
   ]
 }

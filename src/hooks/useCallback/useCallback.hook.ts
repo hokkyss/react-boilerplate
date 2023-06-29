@@ -5,7 +5,7 @@ import {
   useCallback as useReactCallback,
 } from "react";
 
-export type Callback<T extends Function> = T & { memo: true };
+export type Callback<T extends Function> = T & { memoized: true };
 
 export default function useCallback<T extends Function>(
   callback: T,
@@ -14,7 +14,7 @@ export default function useCallback<T extends Function>(
   const cachedCallback = useReactCallback(callback, deps);
 
   const memoedCallback = useMemo(
-    () => Object.assign(cachedCallback, { memo: true } as const),
+    () => Object.assign(cachedCallback, { memoized: true } as const),
     [cachedCallback]
   );
 
