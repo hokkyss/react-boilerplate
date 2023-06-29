@@ -1,5 +1,5 @@
 import createTheme from "@mui/system/createTheme";
-import { opacify } from "polished";
+import { em, opacify, rem } from "polished";
 import colors from "~/constants/color.constant";
 
 const commonTheme = createTheme({
@@ -34,7 +34,116 @@ const commonTheme = createTheme({
     "0px 11px 14px -7px rgba(0,0,0,0.2),0px 23px 36px 3px rgba(0,0,0,0.14),0px 9px 44px 8px rgba(0,0,0,0.12)",
     "0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12)",
   ],
-});
+  typography: {
+    htmlFontSize: 16,
+    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    fontSize: 14,
+    fontWeightLight: 300,
+    fontWeightRegular: 400,
+    fontWeightMedium: 500,
+    fontWeightBold: 700,
+    h1: {
+      fontFamily: "inherit",
+      fontWeight: 300,
+      fontSize: rem(6),
+      lineHeight: 1.167,
+      letterSpacing: em(-0.01562),
+    },
+    h2: {
+      fontFamily: "inherit",
+      fontWeight: 300,
+      fontSize: rem(3.75),
+      lineHeight: 1.2,
+      letterSpacing: em(-0.00833),
+    },
+    h3: {
+      fontFamily: "inherit",
+      fontWeight: 400,
+      fontSize: rem(3),
+      lineHeight: 1.167,
+      letterSpacing: em(0),
+    },
+    h4: {
+      fontFamily: "inherit",
+      fontWeight: 400,
+      fontSize: rem(2.125),
+      lineHeight: 1.235,
+      letterSpacing: em(0.00735),
+    },
+    h5: {
+      fontFamily: "inherit",
+      fontWeight: 400,
+      fontSize: rem(1.5),
+      lineHeight: 1.334,
+      letterSpacing: em(0),
+    },
+    h6: {
+      fontFamily: "inherit",
+      fontWeight: 500,
+      fontSize: rem(1.25),
+      lineHeight: 1.6,
+      letterSpacing: em(0.0075),
+    },
+    subtitle1: {
+      fontFamily: "inherit",
+      fontWeight: 400,
+      fontSize: rem(1),
+      lineHeight: 1.75,
+      letterSpacing: em(0.00938),
+    },
+    subtitle2: {
+      fontFamily: "inherit",
+      fontWeight: 500,
+      fontSize: rem(0.875),
+      lineHeight: 1.57,
+      letterSpacing: em(0.00714),
+    },
+    body1: {
+      fontFamily: "inherit",
+      fontWeight: 400,
+      fontSize: rem(1),
+      lineHeight: 1.5,
+      letterSpacing: em(0.00938),
+    },
+    body2: {
+      fontFamily: "inherit",
+      fontWeight: 400,
+      fontSize: rem(0.875),
+      lineHeight: 1.43,
+      letterSpacing: em(0.01071),
+    },
+    button: {
+      fontFamily: "inherit",
+      fontWeight: 500,
+      fontSize: rem(0.875),
+      lineHeight: 1.75,
+      letterSpacing: em(0.02857),
+      textTransform: "uppercase",
+    },
+    caption: {
+      fontFamily: "inherit",
+      fontWeight: 400,
+      fontSize: rem(0.75),
+      lineHeight: 1.66,
+      letterSpacing: em(0.03333),
+    },
+    overline: {
+      fontFamily: "inherit",
+      fontWeight: 400,
+      fontSize: rem(0.75),
+      lineHeight: 2.66,
+      letterSpacing: em(0.08333),
+      textTransform: "uppercase",
+    },
+    inherit: {
+      fontFamily: "inherit",
+      fontWeight: "inherit",
+      fontSize: "inherit",
+      lineHeight: "inherit",
+      letterSpacing: "inherit",
+    },
+  },
+} as IThemeOptions);
 
 // https://mui.com/material-ui/customization/default-theme/?expand-path=$.palette
 const darkTheme = createTheme({

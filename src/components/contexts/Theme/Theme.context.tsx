@@ -31,7 +31,7 @@ const Theme: FunctionComponent<PropsWithChildren> = function Theme({
   );
 
   // Update the theme only if the mode changes
-  const theme = React.useMemo(() => themeConfig[mode], [mode]);
+  const theme = useMemo(() => themeConfig[mode], [mode]);
 
   return (
     <ColorModeContext.Provider value={colorMode}>
