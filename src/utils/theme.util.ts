@@ -2,11 +2,13 @@ import prepareCssVars from "@mui/system/cssVars/prepareCssVars";
 import envConfig from "~/configs/env/env.config";
 import themeConfig, { commonTheme } from "~/configs/theme/theme.config";
 
-// eslint-disable-next-line import/prefer-default-export
-export const getTheme = (theme: Theme) => theme as unknown as ITheme;
-
 function extendTheme() {
-  const { vars: themeVars, generateCssVars } = prepareCssVars(
+  const { vars: themeVars, generateCssVars } = prepareCssVars<
+    {
+      colorSchemes: ColorSchemes;
+    },
+    ITheme
+  >(
     {
       colorSchemes: {
         light: themeConfig.light,

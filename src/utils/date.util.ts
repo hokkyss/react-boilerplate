@@ -1,4 +1,4 @@
-import { chunk } from "lodash";
+import chunk from "lodash/chunk";
 import { DAYS, DateValue, MONTHS, Month } from "~/constants/date.constant";
 
 /**

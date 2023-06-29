@@ -1,5 +1,5 @@
 declare module "lodash/noop" {
-  function noop(...args: any[]): void;
+  function noop(...args: unknown[]): void;
 
   export default noop;
 }
