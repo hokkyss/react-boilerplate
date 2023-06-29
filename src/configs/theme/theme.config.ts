@@ -1,5 +1,5 @@
 import createTheme from "@mui/system/createTheme";
-import { em, opacify, remToPx } from "polished";
+import { opacify, remToPx } from "polished";
 import colors from "~/constants/color.constant";
 
 export const commonTheme = createTheme({
@@ -47,77 +47,77 @@ export const commonTheme = createTheme({
       fontWeight: 300,
       fontSize: remToPx(6),
       lineHeight: 1.167,
-      letterSpacing: em(-0.01562),
+      letterSpacing: "-0.01562em",
     },
     h2: {
       fontFamily: "inherit",
       fontWeight: 300,
       fontSize: remToPx(3.75),
       lineHeight: 1.2,
-      letterSpacing: em(-0.00833),
+      letterSpacing: "-0.00833em",
     },
     h3: {
       fontFamily: "inherit",
       fontWeight: 400,
       fontSize: remToPx(3),
       lineHeight: 1.167,
-      letterSpacing: em(0),
+      letterSpacing: "0em",
     },
     h4: {
       fontFamily: "inherit",
       fontWeight: 400,
       fontSize: remToPx(2.125),
       lineHeight: 1.235,
-      letterSpacing: em(0.00735),
+      letterSpacing: "0.00735em",
     },
     h5: {
       fontFamily: "inherit",
       fontWeight: 400,
       fontSize: remToPx(1.5),
       lineHeight: 1.334,
-      letterSpacing: em(0),
+      letterSpacing: "0em",
     },
     h6: {
       fontFamily: "inherit",
       fontWeight: 500,
       fontSize: remToPx(1.25),
       lineHeight: 1.6,
-      letterSpacing: em(0.0075),
+      letterSpacing: "0.0075em",
     },
     subtitle1: {
       fontFamily: "inherit",
       fontWeight: 400,
       fontSize: remToPx(1),
       lineHeight: 1.75,
-      letterSpacing: em(0.00938),
+      letterSpacing: "0.00938em",
     },
     subtitle2: {
       fontFamily: "inherit",
       fontWeight: 500,
       fontSize: remToPx(0.875),
       lineHeight: 1.57,
-      letterSpacing: em(0.00714),
+      letterSpacing: "0.00714em",
     },
     body1: {
       fontFamily: "inherit",
       fontWeight: 400,
       fontSize: remToPx(1),
       lineHeight: 1.5,
-      letterSpacing: em(0.00938),
+      letterSpacing: "0.00938em",
     },
     body2: {
       fontFamily: "inherit",
       fontWeight: 400,
       fontSize: remToPx(0.875),
       lineHeight: 1.43,
-      letterSpacing: em(0.01071),
+      letterSpacing: "0.01071em",
     },
     button: {
       fontFamily: "inherit",
       fontWeight: 500,
       fontSize: remToPx(0.875),
       lineHeight: 1.75,
-      letterSpacing: em(0.02857),
+      letterSpacing: "0.02857em",
       textTransform: "uppercase",
     },
     caption: {
@@ -125,14 +125,14 @@ export const commonTheme = createTheme({
       fontWeight: 400,
       fontSize: remToPx(0.75),
       lineHeight: 1.66,
-      letterSpacing: em(0.03333),
+      letterSpacing: "0.03333em",
     },
     overline: {
       fontFamily: "inherit",
       fontWeight: 400,
       fontSize: remToPx(0.75),
       lineHeight: 2.66,
-      letterSpacing: em(0.08333),
+      letterSpacing: "0.08333em",
       textTransform: "uppercase",
     },
     inherit: {
