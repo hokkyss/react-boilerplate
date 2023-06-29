@@ -1,10 +1,11 @@
+/// <reference types="vitest" />
 import react from "@vitejs/plugin-react-swc";
 import { defineConfig } from "vite";
 import svgr from "vite-plugin-svgr";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 // https://vitejs.dev/config/
-export default defineConfig(async (_configEnv) => ({
+const viteConfig = defineConfig({
   plugins: [
     tsconfigPaths(),
     /**
@@ -15,4 +16,6 @@ export default defineConfig(async (_configEnv) => ({
     }),
     react(),
   ],
-}));
+});
+
+export default viteConfig;
