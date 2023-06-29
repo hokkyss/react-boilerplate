@@ -1,11 +1,12 @@
 import { FunctionComponent } from "react";
 import ReactLogo from "~/assets/react.svg";
 import ViteLogo from "~/assets/vite.svg";
+import Button from "~/components/atoms/Button/Button.atom";
 import { Card, Container, Link, Logo } from "./Home.component";
 import useHomeViewModel from "./Home.viewModel";
 
 const HomeView: FunctionComponent = function HomeView() {
-  const { counter, increase, decrease } = useHomeViewModel();
+  const { counter, colorScheme } = useHomeViewModel();
 
   return (
     <Container>
@@ -19,19 +20,22 @@ const HomeView: FunctionComponent = function HomeView() {
       </div>
       <h1>Vite + React</h1>
       <Card>
-        <button onClick={decrease} type="button">
+        <Button onClick={counter.decrease} type="button">
           Decrease Count
-        </button>
-        <p>
-          <span>Count = </span>
-          <span>{counter}</span>
-        </p>
-        <p>{`Count = ${counter}`}</p>
-        <p>Count = {counter}</p>
-        <button onClick={increase} type="button">
+        </Button>
+        <p>Count = {counter.value}</p>
+        <Button onClick={counter.increase} type="button">
           Increase Count
-        </button>
+        </Button>
       </Card>
+      <Button
+        onClick={() =>
+          colorScheme.setMode(colorScheme.mode === "light" ? "dark" : "light")
+        }
+        type="button"
+      >
+        Toggle mode
+      </Button>
     </Container>
   );
 };

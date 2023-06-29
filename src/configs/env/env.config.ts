@@ -7,7 +7,12 @@ type EnvConfig = {
 };
 
 const envConfig: EnvConfig = {
-  hello: import.meta.env.VITE_HELLO,
+  get hello() {
+    return import.meta.env.VITE_HELLO;
+  },
+  get cssPrefix() {
+    return import.meta.env.VITE_CSS_PREFIX;
+  },
 };
 
 export default envConfig;

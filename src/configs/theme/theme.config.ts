@@ -1,8 +1,8 @@
 import createTheme from "@mui/system/createTheme";
-import { em, opacify, rem } from "polished";
+import { em, opacify, remToPx } from "polished";
 import colors from "~/constants/color.constant";
 
-const commonTheme = createTheme({
+export const commonTheme = createTheme({
   breakpoints: {
     keys: ["xs", "sm", "md", "lg", "xl"],
     values: { xs: 0, sm: 600, md: 900, lg: 1200, xl: 1536 },
@@ -45,77 +45,77 @@ const commonTheme = createTheme({
     h1: {
       fontFamily: "inherit",
       fontWeight: 300,
-      fontSize: rem(6),
+      fontSize: remToPx(6),
       lineHeight: 1.167,
       letterSpacing: em(-0.01562),
     },
     h2: {
       fontFamily: "inherit",
       fontWeight: 300,
-      fontSize: rem(3.75),
+      fontSize: remToPx(3.75),
       lineHeight: 1.2,
       letterSpacing: em(-0.00833),
     },
     h3: {
       fontFamily: "inherit",
       fontWeight: 400,
-      fontSize: rem(3),
+      fontSize: remToPx(3),
       lineHeight: 1.167,
       letterSpacing: em(0),
     },
     h4: {
       fontFamily: "inherit",
       fontWeight: 400,
-      fontSize: rem(2.125),
+      fontSize: remToPx(2.125),
       lineHeight: 1.235,
       letterSpacing: em(0.00735),
     },
     h5: {
       fontFamily: "inherit",
       fontWeight: 400,
-      fontSize: rem(1.5),
+      fontSize: remToPx(1.5),
       lineHeight: 1.334,
       letterSpacing: em(0),
     },
     h6: {
       fontFamily: "inherit",
       fontWeight: 500,
-      fontSize: rem(1.25),
+      fontSize: remToPx(1.25),
       lineHeight: 1.6,
       letterSpacing: em(0.0075),
     },
     subtitle1: {
       fontFamily: "inherit",
       fontWeight: 400,
-      fontSize: rem(1),
+      fontSize: remToPx(1),
       lineHeight: 1.75,
       letterSpacing: em(0.00938),
     },
     subtitle2: {
       fontFamily: "inherit",
       fontWeight: 500,
-      fontSize: rem(0.875),
+      fontSize: remToPx(0.875),
       lineHeight: 1.57,
       letterSpacing: em(0.00714),
     },
     body1: {
       fontFamily: "inherit",
       fontWeight: 400,
-      fontSize: rem(1),
+      fontSize: remToPx(1),
       lineHeight: 1.5,
       letterSpacing: em(0.00938),
     },
     body2: {
       fontFamily: "inherit",
       fontWeight: 400,
-      fontSize: rem(0.875),
+      fontSize: remToPx(0.875),
       lineHeight: 1.43,
       letterSpacing: em(0.01071),
     },
     button: {
       fontFamily: "inherit",
       fontWeight: 500,
-      fontSize: rem(0.875),
+      fontSize: remToPx(0.875),
       lineHeight: 1.75,
       letterSpacing: em(0.02857),
       textTransform: "uppercase",
@@ -123,14 +123,14 @@ const commonTheme = createTheme({
     caption: {
       fontFamily: "inherit",
       fontWeight: 400,
-      fontSize: rem(0.75),
+      fontSize: remToPx(0.75),
       lineHeight: 1.66,
       letterSpacing: em(0.03333),
     },
     overline: {
       fontFamily: "inherit",
       fontWeight: 400,
-      fontSize: rem(0.75),
+      fontSize: remToPx(0.75),
       lineHeight: 2.66,
       letterSpacing: em(0.08333),
       textTransform: "uppercase",
@@ -143,10 +143,14 @@ const commonTheme = createTheme({
       letterSpacing: "inherit",
     },
   },
-} as IThemeOptions);
+  shape: {
+    borderRadius: 8,
+  },
+} as CustomThemeOptions) as CustomTheme;
 
 // https://mui.com/material-ui/customization/default-theme/?expand-path=$.palette
 const darkTheme = createTheme({
+  ...commonTheme,
   palette: {
     mode: "dark",
     common: {
@@ -219,9 +223,10 @@ const darkTheme = createTheme({
       activatedOpacity: 0.24,
     },
   },
-} as IThemeOptions);
+} as CustomThemeOptions) as CustomTheme;
 
 const lightTheme = createTheme({
+  ...commonTheme,
   palette: {
     mode: "light",
     common: {
@@ -296,10 +301,9 @@ const lightTheme = createTheme({
       activatedOpacity: 0.12,
     },
   },
-} as IThemeOptions);
+} as CustomThemeOptions) as CustomTheme;
 
 const themeConfig = {
-  common: commonTheme,
   dark: darkTheme,
   light: lightTheme,
 };
