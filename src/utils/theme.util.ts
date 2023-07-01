@@ -17,6 +17,7 @@ function extendTheme() {
     },
     {
       prefix: envConfig.cssPrefix,
+      shouldSkipGeneratingVar: () => false,
     }
   );
 

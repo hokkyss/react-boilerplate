@@ -5,16 +5,6 @@ import {
 import { renderHook } from "~/utils/test.util";
 import useCallback from "../useCallback.hook";
 
-vi.mock("react", async () => {
-  const react = await vi.importActual<object>("react");
-
-  return {
-    ...react,
-    useMemo: vi.fn((val) => val),
-    useCallback: vi.fn((val) => val),
-  };
-});
-
 describe("useCallback", () => {
   it("should be defined", () => {
     expect(useCallback).toBeDefined();

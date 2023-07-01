@@ -6,7 +6,7 @@ describe("Home View", () => {
     expect(HomeView).toBeDefined();
   });
 
-  it.skip("should match snapshot", () => {
+  it("should match snapshot", () => {
     const snapshot = render(<HomeView />);
 
     expect(snapshot).toMatchSnapshot();
