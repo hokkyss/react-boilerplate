@@ -9,7 +9,6 @@ import {
   renderHook,
 } from "@testing-library/react";
 import { FC, PropsWithChildren, ReactElement } from "react";
-import {} from "react-dom/test-utils";
 import CssVarsProvider from "~/components/contexts/Theme/Theme.context";
 import emotionCache from "~/configs/emotion/emotion.config";
 
