@@ -41,7 +41,7 @@ export const Logo = styled(motion.svg, {
   name: "Logo",
   label: "Logo",
 })<LogoProps>(({ theme, spin }) => ({
-  ...padding(theme.spacing(5)),
+  ...padding(theme.spacing(1)),
   ...size(100, 100),
   animation: spin ? `${spinningLogoKeyframes} 2s linear infinite` : undefined,
 }));

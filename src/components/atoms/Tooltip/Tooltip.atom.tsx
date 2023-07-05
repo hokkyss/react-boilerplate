@@ -1,8 +1,9 @@
 import Popper, { PopperPlacementType, PopperProps } from "@mui/base/Popper";
 import styled from "@mui/system/styled";
-import { motion } from "framer-motion";
-import { padding } from "polished";
-import { ReactNode, memo, useId, useState } from "react";
+import useTheme from "@mui/system/useTheme";
+import { AnimationProps, motion } from "framer-motion";
+import { margin, padding, size, wordWrap } from "polished";
+import { ReactNode, memo, useId, useMemo, useState } from "react";
 import useToggle from "~/hooks/useToggle/useToggle.hook";
 
 type TooltipProps = {
@@ -12,21 +13,12 @@ type TooltipProps = {
   placement?: PopperPlacementType;
 };
 
-const TooltipContainer = styled("div", {
-  label: "TooltipContainer",
-  name: "TooltipContainer",
-})(() => ({
-  display: "inline",
-  position: "relative",
-  width: "fit-content",
-  height: "fit-content",
-}));
-
 const TooltipAnchor = styled("div", {
   label: "TooltipAnchor",
   name: "TooltipAnchor",
 })(() => ({
-  display: "inline",
+  display: "flex",
+  ...size("fit-content", "fit-content"),
 }));
 
 const TooltipContentContainer = styled(Popper, {
@@ -35,8 +27,8 @@ const TooltipContentContainer = styled(Popper, {
 })<PopperProps>(({ theme }) => ({
   display: "flex",
   pointerEvents: "none",
-  borderRadius: theme.vars.radius.lg,
   zIndex: theme.vars.zIndex.tooltip,
+  maxWidth: 360,
   '&[data-popper-placement*="left"], &[data-popper-placement*="right"]': {
     flexDirection: "row",
   },
@@ -74,10 +66,9 @@ const TooltipArrow = styled("span", {
   color: theme.vars.palette.background.default,
   "::before": {
     content: '""',
-    margin: "auto",
+    ...margin(theme.spacing("auto", "auto")),
     display: "block",
-    width: "100%",
-    height: "100%",
+    ...size("100%", "100%"),
     backgroundColor: "currentColor",
     transform: "rotate(45deg)",
   },
@@ -88,25 +79,46 @@ const TooltipContent = styled(motion.div)(({ theme }) => ({
   alignItems: "center",
   color: theme.vars.palette.text.primary,
   background: theme.vars.palette.background.default,
+  boxShadow: theme.vars.shadows[4],
+  borderRadius: theme.vars.radius.lg,
   flexDirection: "inherit",
+  whiteSpace: "normal",
+  ...wordWrap("break-word"),
+  wordBreak: "break-word",
+  msWordBreak: "break-word",
   ...padding(theme.spacing(1), theme.spacing(2)),
 }));
 
 const Tooltip = memo<TooltipProps>(
   ({ className, children, content, placement }) => {
+    const theme = useTheme();
     const [hovered, hoverAction] = useToggle(true);
     const id = useId();
 
     const [anchor, setAnchor] = useState<HTMLDivElement | null>(null);
 
+    const animate = useMemo<AnimationProps["animate"]>(
+      () => ({
+        opacity: 1,
+        transition: {
+          from: 0,
+          duration: theme.transitions.duration.enteringScreen / 1000,
+        },
+      }),
+      [theme.transitions.duration.enteringScreen]
+    );
+
     return (
-      <TooltipContainer
-        aria-describedby={id}
-        onMouseEnter={hoverAction.open}
-        onMouseLeave={hoverAction.close}
-        className={className}
-      >
-        <TooltipAnchor ref={setAnchor}>{children}</TooltipAnchor>
+      <>
+        <TooltipAnchor
+          ref={setAnchor}
+          aria-describedby={id}
+          onMouseEnter={hoverAction.open}
+          onMouseLeave={hoverAction.close}
+          className={className}
+        >
+          {children}
+        </TooltipAnchor>
         <TooltipContentContainer
           placement={placement}
           id={id}
@@ -114,14 +126,14 @@ const Tooltip = memo<TooltipProps>(
           anchorEl={anchor}
         >
           <TooltipContent
-            transition={{ from: 0, duration: 0.25 }}
-            animate={{ opacity: 1 }}
+            animate={animate}
+            // {...hoveredProps}
           >
             <TooltipArrow className="arrow" />
             {content}
           </TooltipContent>
         </TooltipContentContainer>
-      </TooltipContainer>
+      </>
     );
   }
 );

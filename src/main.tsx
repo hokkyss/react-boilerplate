@@ -4,10 +4,13 @@ import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 import CssVarsProvider from "./components/contexts/Theme/Theme.context";
 import emotionCache from "./configs/emotion/emotion.config";
+import envConfig from "./configs/env/env.config";
 import routerConfig from "./configs/router/router.config";
 import "./index.css";
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement, {
+  identifierPrefix: envConfig.identifierPrefix,
+}).render(
   <React.StrictMode>
     <Profiler
       id="app-profiler"

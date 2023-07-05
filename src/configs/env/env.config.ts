@@ -13,6 +13,9 @@ const envConfig: EnvConfig = {
   get cssPrefix() {
     return import.meta.env.VITE_CSS_PREFIX;
   },
+  get identifierPrefix() {
+    return import.meta.env.VITE_IDENTIFIER_PREFIX;
+  },
 };
 
 export default envConfig;

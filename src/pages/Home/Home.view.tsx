@@ -13,11 +13,13 @@ const HomeView: FunctionComponent = function HomeView() {
 
   return (
     <Container>
-      <Box>
-        <Link href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <Logo as={ViteLogo} />
-        </Link>
-        <Tooltip content="halo saya disini">
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <Tooltip placement="left" content="Vite Logo">
+          <Link href="https://vitejs.dev" target="_blank" rel="noreferrer">
+            <Logo as={ViteLogo} />
+          </Link>
+        </Tooltip>
+        <Tooltip placement="right" content="halo saya disini">
           <Link href="https://reactjs.org" target="_blank" rel="noreferrer">
             <Logo as={ReactLogo} spin />
           </Link>
@@ -25,13 +27,17 @@ const HomeView: FunctionComponent = function HomeView() {
       </Box>
       <Text.Heading1>Vite + React</Text.Heading1>
       <Card>
-        <Button onClick={counter.decrease} type="button">
-          Decrease Count
-        </Button>
+        <Tooltip placement="top" content="Decrease Count by 1">
+          <Button onClick={counter.decrease} type="button">
+            Decrease Count
+          </Button>
+        </Tooltip>
         <Text>Count = {counter.value}</Text>
-        <Button onClick={counter.increase} type="button">
-          Increase Count
-        </Button>
+        <Tooltip placement="bottom" content="Increase Count by 1">
+          <Button onClick={counter.increase} type="button">
+            Increase Count
+          </Button>
+        </Tooltip>
       </Card>
       <Button
         onClick={() =>

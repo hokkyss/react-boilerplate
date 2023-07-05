@@ -82,3 +82,7 @@ declare type ITheme = CustomTheme & {
     PrepareCSSVars<{ colorSchemes: ColorSchemes }, CustomTheme>
   >["generateCssVars"];
 };
+
+declare module "@mui/system/useTheme" {
+  export default function useTheme<T = ITheme>(defaultTheme?: T): T;
+}
