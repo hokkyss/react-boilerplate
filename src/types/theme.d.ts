@@ -26,6 +26,7 @@ declare interface CustomTheme extends Theme {
   shadows: string[];
   typography: Typography;
   zIndex: Record<ZIndexTypes, number>;
+  transitions: NonNullable<CustomThemeOptions["transitions"]>;
 }
 
 declare interface CustomThemeOptions extends ThemeOptions {
@@ -40,6 +41,23 @@ declare interface CustomThemeOptions extends ThemeOptions {
   shadows?: string[];
   typography?: Typography;
   zIndex?: Record<ZIndexTypes, number>;
+  transitions?: {
+    easing: {
+      easeInOut: string;
+      easeOut: string;
+      easeIn: string;
+      sharp: string;
+    };
+    duration: {
+      shortest: number;
+      shorter: number;
+      short: number;
+      standard: number;
+      complex: number;
+      enteringScreen: number;
+      leavingScreen: number;
+    };
+  };
 }
 
 type ColorSchemes = {

@@ -1,5 +1,6 @@
 import Popper, { PopperPlacementType, PopperProps } from "@mui/base/Popper";
 import styled from "@mui/system/styled";
+import { motion } from "framer-motion";
 import { padding } from "polished";
 import { ReactNode, memo, useId, useState } from "react";
 import useToggle from "~/hooks/useToggle/useToggle.hook";
@@ -24,20 +25,18 @@ const TooltipContainer = styled("div", {
 const TooltipAnchor = styled("div", {
   label: "TooltipAnchor",
   name: "TooltipAnchor",
-})``;
+})(() => ({
+  display: "inline",
+}));
 
-const TooltipContent = styled(Popper, {
-  label: "TooltipContent",
-  name: "TooltipContent",
+const TooltipContentContainer = styled(Popper, {
+  label: "TooltipContentContainer",
+  name: "TooltipContentContainer",
 })<PopperProps>(({ theme }) => ({
   display: "flex",
   pointerEvents: "none",
-  background: theme.vars.palette.background.default,
-  ...padding(theme.spacing(1), theme.spacing(2)),
   borderRadius: theme.vars.radius.lg,
-  color: theme.vars.palette.text.primary,
   zIndex: theme.vars.zIndex.tooltip,
-  alignItems: "center",
   '&[data-popper-placement*="left"], &[data-popper-placement*="right"]': {
     flexDirection: "row",
   },
@@ -84,9 +83,18 @@ const TooltipArrow = styled("span", {
   },
 }));
 
+const TooltipContent = styled(motion.div)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  color: theme.vars.palette.text.primary,
+  background: theme.vars.palette.background.default,
+  flexDirection: "inherit",
+  ...padding(theme.spacing(1), theme.spacing(2)),
+}));
+
 const Tooltip = memo<TooltipProps>(
   ({ className, children, content, placement }) => {
-    const [hovered, hoverAction] = useToggle(false);
+    const [hovered, hoverAction] = useToggle(true);
     const id = useId();
 
     const [anchor, setAnchor] = useState<HTMLDivElement | null>(null);
@@ -99,15 +107,20 @@ const Tooltip = memo<TooltipProps>(
         className={className}
       >
         <TooltipAnchor ref={setAnchor}>{children}</TooltipAnchor>
-        <TooltipContent
+        <TooltipContentContainer
           placement={placement}
           id={id}
           open={hovered}
           anchorEl={anchor}
         >
-          <TooltipArrow className="arrow" />
-          {content}
-        </TooltipContent>
+          <TooltipContent
+            transition={{ from: 0, duration: 0.25 }}
+            animate={{ opacity: 1 }}
+          >
+            <TooltipArrow className="arrow" />
+            {content}
+          </TooltipContent>
+        </TooltipContentContainer>
       </TooltipContainer>
     );
   }
