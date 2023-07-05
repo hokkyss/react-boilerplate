@@ -16,6 +16,10 @@ declare type Palette = {
     black: string;
     white: string;
   };
+  background: {
+    paper: string;
+    default: string;
+  };
   primary: { [key in PaletteType]: string };
   secondary: { [key in PaletteType]: string };
   error: { [key in PaletteType]: string };

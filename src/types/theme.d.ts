@@ -4,16 +4,42 @@ type Typography = import("./font").Typography;
 type Theme = import("@mui/system/createTheme").Theme;
 type ThemeOptions = import("@mui/system/createTheme").ThemeOptions;
 
+type ZIndexTypes =
+  | "mobileStepper"
+  | "fab"
+  | "speedDial"
+  | "appBar"
+  | "drawer"
+  | "modal"
+  | "snackbar"
+  | "tooltip";
+
 declare interface CustomTheme extends Theme {
+  radius: {
+    none: NonNullable<CSSProperties["borderRadius"]>;
+    sm: NonNullable<CSSProperties["borderRadius"]>;
+    md: NonNullable<CSSProperties["borderRadius"]>;
+    lg: NonNullable<CSSProperties["borderRadius"]>;
+    full: NonNullable<CSSProperties["borderRadius"]>;
+  };
   palette: Palette;
   shadows: string[];
   typography: Typography;
+  zIndex: Record<ZIndexTypes, number>;
 }
 
 declare interface CustomThemeOptions extends ThemeOptions {
-  palette: Palette;
+  radius: {
+    none: NonNullable<CSSProperties["borderRadius"]>;
+    sm: NonNullable<CSSProperties["borderRadius"]>;
+    md: NonNullable<CSSProperties["borderRadius"]>;
+    lg: NonNullable<CSSProperties["borderRadius"]>;
+    full: NonNullable<CSSProperties["borderRadius"]>;
+  };
+  palette?: Palette;
   shadows?: string[];
   typography?: Typography;
+  zIndex?: Record<ZIndexTypes, number>;
 }
 
 type ColorSchemes = {

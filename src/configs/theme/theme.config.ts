@@ -1,3 +1,4 @@
+import { hexToRgb } from "@mui/system";
 import createTheme from "@mui/system/createTheme";
 import { opacify, remToPx } from "polished";
 import colors from "~/constants/color.constant";
@@ -143,8 +144,23 @@ export const commonTheme = createTheme({
       letterSpacing: "inherit",
     },
   },
-  shape: {
-    borderRadius: 8,
+  radius: {
+    none: 0,
+    sm: remToPx(0.125),
+    md: remToPx(0.25),
+    lg: remToPx(0.5),
+    xl: remToPx(1),
+    full: "9999px",
+  },
+  zIndex: {
+    mobileStepper: 1000,
+    fab: 1050,
+    speedDial: 1050,
+    appBar: 1100,
+    drawer: 1200,
+    modal: 1300,
+    snackbar: 1400,
+    tooltip: 1500,
   },
 } as CustomThemeOptions) as CustomTheme;
 
@@ -156,6 +172,10 @@ const darkTheme = createTheme({
     common: {
       black: colors.black,
       white: colors.white,
+    },
+    background: {
+      default: hexToRgb("#121212"),
+      paper: hexToRgb("#121212"),
     },
     primary: {
       main: colors.blue[200],
@@ -229,6 +249,10 @@ const lightTheme = createTheme({
   ...commonTheme,
   palette: {
     mode: "light",
+    background: {
+      default: colors.white,
+      paper: colors.white,
+    },
     common: {
       black: colors.black,
       white: colors.white,
