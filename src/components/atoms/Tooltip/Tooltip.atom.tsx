@@ -92,7 +92,7 @@ const TooltipContent = styled(motion.div)(({ theme }) => ({
 const Tooltip = memo<TooltipProps>(
   ({ className, children, content, placement }) => {
     const theme = useTheme();
-    const [hovered, hoverAction] = useToggle(true);
+    const [hovered, hoverAction] = useToggle();
     const id = useId();
 
     const [anchor, setAnchor] = useState<HTMLDivElement | null>(null);
