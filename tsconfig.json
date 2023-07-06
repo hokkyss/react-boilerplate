@@ -21,7 +21,23 @@
     "paths": {
       "~/*": ["./src/*"]
     },
-    "types": ["vitest/globals"]
+    "types": ["vitest/globals"],
+    "plugins": [
+      {
+        "name": "@styled/typescript-styled-plugin",
+        "validate": true,
+        "tags": ["styled"],
+        "lint": {
+          "unknownProperties": "error",
+          "duplicateProperties": "error",
+          "zeroUnits": "error",
+          "universalSelector": "error",
+          "hexColorLength": "error",
+          "propertyIgnoredDueToDisplay": "error",
+          "important": "error"
+        }
+      }
+    ]
   },
   "include": [
     "src",

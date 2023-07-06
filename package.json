@@ -28,6 +28,8 @@
   },
   "devDependencies": {
     "@hokkyss/composite-types": "^1.0.8",
+    "@styled/typescript-styled-plugin": "^1.0.0",
+    "@testing-library/dom": "^9.3.1",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
     "@types/lodash": "^4.14.194",
@@ -53,7 +55,7 @@
     "lint-staged": "^13.2.1",
     "msw": "^1.2.2",
     "prettier": "^2.8.7",
-    "typescript": "^5.1.3",
+    "typescript": "^5.1.6",
     "vite": "^4.2.0",
     "vite-tsconfig-paths": "^4.2.0",
     "vitest": "^0.32.2"
