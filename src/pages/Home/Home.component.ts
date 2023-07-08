@@ -10,9 +10,6 @@ export const Container = styled(motion.div, {
   font-size: ${between("14px", "20px", "400px", "1000px")};
 `;
 
-export const Card = styled("div", { name: "Card", label: "Card" })`
-  padding: 2em;
-`;
 export const Link = styled("a", { name: "Link", label: "Link" })``;
 
 const spinningLogoKeyframes = keyframes`

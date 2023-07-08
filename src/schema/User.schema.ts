@@ -16,7 +16,7 @@ const userSchema = z.object({
     }),
   }),
   phone: z.string(),
-  website: z.string().url(),
+  website: z.string(),
   company: z.object({
     name: z.string(),
     catchPhrase: z.string(),
