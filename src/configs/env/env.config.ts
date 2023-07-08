@@ -7,8 +7,8 @@ type EnvConfig = {
 };
 
 const envConfig: EnvConfig = {
-  get hello() {
-    return import.meta.env.VITE_HELLO;
+  get apiUrl() {
+    return import.meta.env.VITE_API_URL;
   },
   get cssPrefix() {
     return import.meta.env.VITE_CSS_PREFIX;

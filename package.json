@@ -19,6 +19,10 @@
     "@hookform/resolvers": "^3.1.1",
     "@mui/base": "^5.0.0-beta.5",
     "@mui/system": "^5.13.6",
+    "@tanstack/react-query": "^4.29.19",
+    "@zodios/core": "^10.9.2",
+    "@zodios/react": "^10.4.5",
+    "axios": "^1.4.0",
     "framer-motion": "^10.12.17",
     "lodash": "^4.17.21",
     "polished": "^4.2.2",
@@ -32,6 +36,7 @@
   "devDependencies": {
     "@hokkyss/composite-types": "^1.0.8",
     "@styled/typescript-styled-plugin": "^1.0.0",
+    "@tanstack/eslint-plugin-query": "^4.29.9",
     "@testing-library/dom": "^9.3.1",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
@@ -74,10 +79,12 @@
       "airbnb-typescript",
       "eslint:recommended",
       "plugin:@typescript-eslint/recommended",
+      "plugin:@tanstack/eslint-plugin-query/recommended",
       "plugin:react/jsx-runtime",
       "prettier"
     ],
     "plugins": [
+      "@tanstack/query",
       "prettier"
     ],
     "rules": {

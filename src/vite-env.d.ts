@@ -3,7 +3,7 @@
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
-  readonly VITE_HELLO: string;
+  readonly VITE_API_URL: string;
   readonly VITE_CSS_PREFIX: string;
   readonly VITE_IDENTIFIER_PREFIX: string;
 }
