@@ -11,8 +11,8 @@ const userSchema = z.object({
     city: z.string(),
     zipcode: z.string(),
     geo: z.object({
-      lat: z.string().transform((value) => Number(value).valueOf()),
-      lng: z.string().transform((value) => Number(value).valueOf()),
+      lat: z.coerce.number(),
+      lng: z.coerce.number(),
     }),
   }),
   phone: z.string(),
