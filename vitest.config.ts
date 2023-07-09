@@ -16,7 +16,6 @@ const vitestConfig = mergeConfig(
       globals: true,
       environment: "happy-dom",
       clearMocks: true,
-      silent: true,
       setupFiles: setupFilesPath,
       coverage: {
         provider: "v8",

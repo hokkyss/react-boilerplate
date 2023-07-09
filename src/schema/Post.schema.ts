@@ -1,0 +1,12 @@
+import { z } from "zod";
+
+const postSchema = z.object({
+  userId: z.number(),
+  id: z.number(),
+  title: z.string(),
+  body: z.string(),
+});
+
+export type Post = z.infer<typeof postSchema>;
+
+export default postSchema;

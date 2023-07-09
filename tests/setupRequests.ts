@@ -1,6 +1,8 @@
 import { setupServer } from "msw/node";
+import mockPostsApi from "~/services/jsonplaceholder/endpoints/posts/__mocks__/posts.api.mock";
+import mockUsersApi from "~/services/jsonplaceholder/endpoints/users/__mocks__/users.api.mock";
 
-const server = setupServer();
+const server = setupServer(...mockUsersApi, ...mockPostsApi);
 
 afterEach(() => {
   // reset any request handlers that are declared as a part of our tests
