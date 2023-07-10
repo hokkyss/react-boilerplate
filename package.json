@@ -122,7 +122,8 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "eslint --fix"
+      "eslint --fix",
+      "vitest related --run --no-ui --coverage --passWithNoTests"
     ],
     "*.{ts,tsx,json,html,md,css}": [
       "prettier --write"

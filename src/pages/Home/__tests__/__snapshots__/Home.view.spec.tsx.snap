@@ -116,7 +116,7 @@ exports[`Home View > should match snapshot 1`] = `
           Vite + React
         </h1>
         <button
-          class="css-cn8e7o-Button"
+          class="css-17pz1ha-Button"
           type="button"
         >
           Toggle mode
@@ -236,7 +236,7 @@ exports[`Home View > should match snapshot 1`] = `
         Vite + React
       </h1>
       <button
-        class="css-cn8e7o-Button"
+        class="css-17pz1ha-Button"
         type="button"
       >
         Toggle mode
