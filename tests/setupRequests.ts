@@ -1,7 +1,7 @@
 import { setupServer } from "msw/node";
-import mockJsonplaceholderApi from "~/services/jsonplaceholder/__mocks__/jsonplaceholder.api.mock";
+import mockJsonPlaceholder from "~/services/jsonplaceholder/__mocks__/jsonplaceholder.api.mock";
 
-const server = setupServer(...mockJsonplaceholderApi);
+const server = setupServer(...mockJsonPlaceholder);
 
 afterEach(() => {
   // reset any request handlers that are declared as a part of our tests

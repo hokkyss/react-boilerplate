@@ -13,7 +13,7 @@ const Button = styled(m.button, { name: "Button", label: "Button" })(
     color: theme.vars.palette.text.primary,
     transitionProperty: "all",
     transitionTimingFunction: theme.transitions.easing.sharp,
-    transitionDuration: `${theme.transitions.duration.short}ms`,
+    transitionDuration: `${theme.transitions.duration.standard}ms`,
   })
 );
 

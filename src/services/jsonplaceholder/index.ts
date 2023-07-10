@@ -6,8 +6,8 @@ import usersApi from "./endpoints/users";
 
 export const zodios = new Zodios(envConfig.apiUrl, [...usersApi, ...postsApi]);
 
-const jsonplaceholderApi = new ZodiosHooks("jsonplaceholder", zodios, {
+const jsonPlaceholder = new ZodiosHooks("jsonplaceholder", zodios, {
   shouldAbortOnUnmount: true,
 });
 
-export default jsonplaceholderApi;
+export default jsonPlaceholder;
