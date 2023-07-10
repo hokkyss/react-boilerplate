@@ -1,6 +1,6 @@
 import styled from "@mui/system/styled";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
-const Box = styled(motion.div, { name: "Box", label: "Box" })``;
+const Box = styled(m.div, { name: "Box", label: "Box" })``;
 
 export default Box;

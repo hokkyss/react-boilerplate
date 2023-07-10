@@ -1,7 +1,8 @@
 import styled from "@mui/system/styled";
+import { m } from "framer-motion";
 import { padding } from "polished";
 
-const Button = styled("button", { name: "Button", label: "Button" })(
+const Button = styled(m.button, { name: "Button", label: "Button" })(
   ({ theme }) => ({
     cursor: "pointer",
     ...theme.vars.typography.button,
@@ -10,6 +11,9 @@ const Button = styled("button", { name: "Button", label: "Button" })(
     backgroundColor: theme.vars.palette.primary.dark,
     borderColor: theme.vars.palette.primary.dark,
     color: theme.vars.palette.text.primary,
+    transitionProperty: "all",
+    transitionTimingFunction: theme.transitions.easing.sharp,
+    transitionDuration: `${theme.transitions.duration.short}ms`,
   })
 );
 

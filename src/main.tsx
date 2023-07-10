@@ -1,5 +1,6 @@
 import { CacheProvider } from "@emotion/react";
 import { QueryClientProvider } from "@tanstack/react-query";
+import { LazyMotion } from "framer-motion";
 import React, { Profiler } from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
@@ -9,6 +10,11 @@ import envConfig from "./configs/env/env.config";
 import queryClient from "./configs/react-query/react-query.config";
 import routerConfig from "./configs/router/router.config";
 import "./index.css";
+
+const framerMotion = () =>
+  import("~/configs/framer-motion/framer-motion.config").then(
+    (mod) => mod.default
+  );
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement, {
   identifierPrefix: envConfig.identifierPrefix,
@@ -23,7 +29,9 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement, {
       <QueryClientProvider client={queryClient}>
         <CacheProvider value={emotionCache}>
           <CssVarsProvider>
-            <RouterProvider router={routerConfig} />
+            <LazyMotion strict features={framerMotion}>
+              <RouterProvider router={routerConfig} />
+            </LazyMotion>
           </CssVarsProvider>
         </CacheProvider>
       </QueryClientProvider>

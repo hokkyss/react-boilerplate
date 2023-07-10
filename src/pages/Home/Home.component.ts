@@ -1,9 +1,9 @@
 import { keyframes } from "@emotion/react";
 import styled from "@mui/system/styled";
-import { isValidMotionProp, motion } from "framer-motion";
+import { isValidMotionProp, m } from "framer-motion";
 import { between, padding, size } from "polished";
 
-export const Container = styled(motion.div, {
+export const Container = styled(m.div, {
   name: "Container",
   label: "Container",
 })`
@@ -33,7 +33,7 @@ const spinningLogoKeyframes = keyframes`
 type LogoProps = {
   spin?: boolean;
 };
-export const Logo = styled(motion.svg, {
+export const Logo = styled(m.svg, {
   shouldForwardProp: isValidMotionProp,
   name: "Logo",
   label: "Logo",

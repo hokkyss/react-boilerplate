@@ -1,7 +1,7 @@
 import Popper, { PopperPlacementType, PopperProps } from "@mui/base/Popper";
 import styled from "@mui/system/styled";
 import useTheme from "@mui/system/useTheme";
-import { AnimationProps, motion } from "framer-motion";
+import { AnimationProps, m } from "framer-motion";
 import { margin, padding, size, wordWrap } from "polished";
 import { ReactNode, memo, useId, useMemo, useState } from "react";
 import useToggle from "~/hooks/useToggle/useToggle.hook";
@@ -74,7 +74,7 @@ const TooltipArrow = styled("span", {
   },
 }));
 
-const TooltipContent = styled(motion.div)(({ theme }) => ({
+const TooltipContent = styled(m.div)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   color: theme.vars.palette.text.primary,
