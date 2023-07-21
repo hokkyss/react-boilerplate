@@ -1,6 +1,7 @@
 import { VirtualElement } from "@popperjs/core";
-import { ReactNode, forwardRef, useEffect, useMemo, useState } from "react";
+import { ReactNode, forwardRef, useMemo, useState } from "react";
 import { usePopper } from "react-popper";
+import useMergeRef from "~/hooks/useMergeRef/useMergeRef.hook";
 import Portal from "../Portal/Portal.atom";
 
 type UsePopper = typeof usePopper;
@@ -27,6 +28,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>(
     const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(
       null
     );
+    const popperElementRef = useMergeRef(forwardedRef, setPopperElement);
 
     const resolvedPopperOptions = useMemo<PopperOptions>(
       () => ({
@@ -50,16 +52,6 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>(
       [popperOptions]
     );
 
-    useEffect(() => {
-      if (!forwardedRef) return;
-
-      if (typeof forwardedRef === "function") {
-        forwardedRef(popperElement);
-      } else {
-        forwardedRef.current = popperElement;
-      }
-    }, [popperElement, forwardedRef]);
-
     const popper = usePopper(
       referenceElement,
       popperElement,
@@ -73,7 +65,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>(
     return (
       <Portal container={portalContainer}>
         <div
-          ref={setPopperElement}
+          ref={popperElementRef}
           className={className}
           {...popper.attributes.popper}
           style={popper.styles.popper}
@@ -86,4 +78,5 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>(
 );
 
 Popper.displayName = "Popper";
+
 export default Popper;
