@@ -1,15 +1,16 @@
-import Popper, { PopperPlacementType, PopperProps } from "@mui/base/Popper";
+import { PopperPlacementType } from "@mui/base";
 import styled from "@mui/system/styled";
 import useTheme from "@mui/system/useTheme";
 import { AnimationProps, m } from "framer-motion";
 import { margin, padding, size, wordWrap } from "polished";
-import { ReactNode, memo, useId, useMemo, useState } from "react";
+import { ReactElement, ReactNode, memo, useId, useMemo, useState } from "react";
 import useToggle from "~/hooks/useToggle/useToggle.hook";
+import Popper, { PopperProps } from "../Popper/Popper.atom";
 
 type TooltipProps = {
   content: ReactNode;
   className?: string;
-  children: ReactNode;
+  children: ReactElement;
   placement?: PopperPlacementType;
 };
 
@@ -17,7 +18,7 @@ const TooltipAnchor = styled("div", {
   label: "TooltipAnchor",
   name: "TooltipAnchor",
 })(() => ({
-  display: "flex",
+  display: "inline-flex",
   ...size("fit-content", "fit-content"),
 }));
 
@@ -110,6 +111,13 @@ const Tooltip = memo<TooltipProps>(
 
     return (
       <>
+        {/* {cloneElement(children, {
+          ref: setAnchor,
+          "aria-describedby": id,
+          onMouseEnter: hoverAction.open,
+          onMouseLeave: hoverAction.close,
+          className,
+        })} */}
         <TooltipAnchor
           ref={setAnchor}
           aria-describedby={id}
@@ -121,14 +129,18 @@ const Tooltip = memo<TooltipProps>(
         </TooltipAnchor>
         <TooltipContentContainer
           placement={placement}
-          id={id}
           open={hovered}
-          anchorEl={anchor}
+          referenceElement={anchor}
+          modifiers={[
+            {
+              name: "offset",
+              options: {
+                offset: [0, 8],
+              },
+            },
+          ]}
         >
-          <TooltipContent
-            animate={animate}
-            // {...hoveredProps}
-          >
+          <TooltipContent animate={animate}>
             <TooltipArrow className="arrow" />
             {content}
           </TooltipContent>
