@@ -1,6 +1,6 @@
-import { PopperPlacementType } from "@mui/base";
 import styled from "@mui/system/styled";
 import useTheme from "@mui/system/useTheme";
+import { Placement } from "@popperjs/core";
 import { AnimationProps, m } from "framer-motion";
 import { margin, padding, size, wordWrap } from "polished";
 import { ReactElement, ReactNode, memo, useId, useMemo, useState } from "react";
@@ -11,7 +11,7 @@ type TooltipProps = {
   content: ReactNode;
   className?: string;
   children: ReactElement;
-  placement?: PopperPlacementType;
+  placement?: Placement;
 };
 
 const TooltipAnchor = styled("div", {

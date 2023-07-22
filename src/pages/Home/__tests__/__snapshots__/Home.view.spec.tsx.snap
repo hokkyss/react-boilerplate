@@ -111,12 +111,12 @@ exports[`Home View > should match snapshot 1`] = `
           </div>
         </div>
         <h1
-          class="css-y9nn0t-Heading1"
+          class="css-1scri8r-Heading1"
         >
           Vite + React
         </h1>
         <button
-          class="css-17pz1ha-Button"
+          class="css-spi3dk-Button"
           type="button"
         >
           Toggle mode
@@ -231,12 +231,12 @@ exports[`Home View > should match snapshot 1`] = `
         </div>
       </div>
       <h1
-        class="css-y9nn0t-Heading1"
+        class="css-1scri8r-Heading1"
       >
         Vite + React
       </h1>
       <button
-        class="css-17pz1ha-Button"
+        class="css-spi3dk-Button"
         type="button"
       >
         Toggle mode

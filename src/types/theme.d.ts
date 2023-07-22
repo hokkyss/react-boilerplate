@@ -1,3 +1,4 @@
+type CSSProperties = import("react").CSSProperties;
 type DefaultCssVarsTheme =
   import("@mui/system/cssVars/prepareCssVars").DefaultCssVarsTheme;
 type Typography = import("./font").Typography;
