@@ -1,3 +1,4 @@
+import { SxProps } from "@mui/system/styleFunctionSx";
 import styled from "@mui/system/styled";
 import useTheme from "@mui/system/useTheme";
 import { Placement } from "@popperjs/core";
@@ -16,6 +17,7 @@ type TooltipProps = {
   className?: string;
   children: ReactElement;
   placement?: Placement;
+  sx?: SxProps<ITheme>;
 };
 
 const TooltipAnchor = styled("div", {
@@ -87,7 +89,7 @@ const TooltipContent = styled(m.div)(({ theme }) => ({
 }));
 
 const Tooltip = memo<TooltipProps>(
-  ({ className, children, content, placement }) => {
+  ({ className, children, content, placement, sx }) => {
     const theme = useTheme();
     const [hovered, hoverAction] = useToggle();
     const id = useId();
@@ -126,6 +128,7 @@ const Tooltip = memo<TooltipProps>(
         >
           <TooltipContent
             className={className}
+            sx={sx}
             animate={{
               opacity: 1,
               transition: {
