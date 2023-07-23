@@ -1,11 +1,15 @@
 import styled from "@mui/system/styled";
 import useTheme from "@mui/system/useTheme";
 import { Placement } from "@popperjs/core";
-import { AnimationProps, m } from "framer-motion";
-import { margin, padding, size, wordWrap } from "polished";
-import { ReactElement, ReactNode, memo, useId, useMemo, useState } from "react";
+import { m } from "framer-motion";
+import { padding, size, wordWrap } from "polished";
+import { ReactElement, ReactNode, memo, useId, useState } from "react";
 import useToggle from "~/hooks/useToggle/useToggle.hook";
 import Popper, { PopperProps } from "../Popper/Popper.atom";
+
+export const tooltipClasses = {
+  arrow: "arrow",
+};
 
 type TooltipProps = {
   content: ReactNode;
@@ -36,20 +40,20 @@ const TooltipContentContainer = styled(Popper, {
   '&[data-popper-placement*="bottom"], &[data-popper-placement*="top"]': {
     flexDirection: "column",
   },
-  [`&[data-popper-placement*="left"] .arrow`]: {
-    transformOrigin: "right center",
+  [`&[data-popper-placement*="left"] .${tooltipClasses.arrow}`]: {
+    // transformOrigin: "right center",
     right: -4,
   },
-  [`&[data-popper-placement*="right"] .arrow`]: {
-    transformOrigin: "left center",
+  [`&[data-popper-placement*="right"] .${tooltipClasses.arrow}`]: {
+    // transformOrigin: "left center",
     left: -4,
   },
-  [`&[data-popper-placement*="top"] .arrow`]: {
-    transformOrigin: "center bottom",
+  [`&[data-popper-placement*="top"] .${tooltipClasses.arrow}`]: {
+    // transformOrigin: "center bottom",
     bottom: -4,
   },
-  [`&[data-popper-placement*="bottom"] .arrow`]: {
-    transformOrigin: "center top",
+  [`&[data-popper-placement*="bottom"] .${tooltipClasses.arrow}`]: {
+    // transformOrigin: "center top",
     top: -4,
   },
 }));
@@ -57,29 +61,21 @@ const TooltipContentContainer = styled(Popper, {
 const TooltipArrow = styled("span", {
   label: "TooltipArrow",
   name: "TooltipArrow",
-})(({ theme }) => ({
+})(() => ({
   display: "flex",
   position: "absolute",
-  width: "1em",
-  height: "0.71em" /* = width / sqrt(2) = (length of the hypotenuse) */,
+  ...size("1em", "1em"),
   boxSizing: "border-box",
   alignSelf: "center",
-  color: theme.vars.palette.background.default,
-  "::before": {
-    content: '""',
-    ...margin(theme.spacing("auto", "auto")),
-    display: "block",
-    ...size("100%", "100%"),
-    backgroundColor: "currentColor",
-    transform: "rotate(45deg)",
-  },
+  transform: "rotate(45deg)",
+  backgroundColor: "inherit",
 }));
 
 const TooltipContent = styled(m.div)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  color: theme.vars.palette.text.primary,
-  background: theme.vars.palette.background.default,
+  color: theme.vars.colors.white,
+  backgroundColor: theme.vars.colors.gray[500],
   boxShadow: theme.vars.shadows[4],
   borderRadius: theme.vars.radius.lg,
   flexDirection: "inherit",
@@ -98,17 +94,6 @@ const Tooltip = memo<TooltipProps>(
 
     const [anchor, setAnchor] = useState<HTMLDivElement | null>(null);
 
-    const animate = useMemo<AnimationProps["animate"]>(
-      () => ({
-        opacity: 1,
-        transition: {
-          from: 0,
-          duration: theme.transitions.duration.enteringScreen / 1000,
-        },
-      }),
-      [theme.transitions.duration.enteringScreen]
-    );
-
     return (
       <>
         {/* {cloneElement(children, {
@@ -123,7 +108,6 @@ const Tooltip = memo<TooltipProps>(
           aria-describedby={id}
           onMouseEnter={hoverAction.open}
           onMouseLeave={hoverAction.close}
-          className={className}
         >
           {children}
         </TooltipAnchor>
@@ -140,8 +124,17 @@ const Tooltip = memo<TooltipProps>(
             },
           ]}
         >
-          <TooltipContent animate={animate}>
-            <TooltipArrow className="arrow" />
+          <TooltipContent
+            className={className}
+            animate={{
+              opacity: 1,
+              transition: {
+                from: 0,
+                duration: theme.transitions.duration.enteringScreen / 1000,
+              },
+            }}
+          >
+            <TooltipArrow className={tooltipClasses.arrow} />
             {content}
           </TooltipContent>
         </TooltipContentContainer>

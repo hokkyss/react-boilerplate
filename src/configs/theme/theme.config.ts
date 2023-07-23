@@ -144,6 +144,7 @@ export const commonTheme = createTheme({
       letterSpacing: "inherit",
     },
   },
+  colors,
   radius: {
     none: 0,
     sm: remToPx(0.125),
@@ -191,8 +192,8 @@ const darkTheme = createTheme({
       white: colors.white,
     },
     background: {
-      default: hexToRgb("#121212"),
-      paper: hexToRgb("#121212"),
+      default: hexToRgb("#212121"),
+      paper: hexToRgb("#212121"),
     },
     primary: {
       main: colors.blue[200],

@@ -1,27 +1,3 @@
-type Colors = {
-  black: string;
-  white: string;
-  red: ColorObject<PaletteLevel | PaletteAccent>;
-  pink: ColorObject<PaletteLevel | PaletteAccent>;
-  purple: ColorObject<PaletteLevel | PaletteAccent>;
-  "deep-purple": ColorObject<PaletteLevel | PaletteAccent>;
-  indigo: ColorObject<PaletteLevel | PaletteAccent>;
-  blue: ColorObject<PaletteLevel | PaletteAccent>;
-  "light-blue": ColorObject<PaletteLevel | PaletteAccent>;
-  cyan: ColorObject<PaletteLevel | PaletteAccent>;
-  teal: ColorObject<PaletteLevel | PaletteAccent>;
-  green: ColorObject<PaletteLevel | PaletteAccent>;
-  "light-green": ColorObject<PaletteLevel | PaletteAccent>;
-  lime: ColorObject<PaletteLevel | PaletteAccent>;
-  yellow: ColorObject<PaletteLevel | PaletteAccent>;
-  amber: ColorObject<PaletteLevel | PaletteAccent>;
-  orange: ColorObject<PaletteLevel | PaletteAccent>;
-  "deep-orange": ColorObject<PaletteLevel | PaletteAccent>;
-  brown: ColorObject<PaletteLevel>;
-  gray: ColorObject<PaletteLevel>;
-  "blue-gray": ColorObject<PaletteLevel>;
-};
-
 /**
  * @see {@link https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors Material Design Palette}
  */

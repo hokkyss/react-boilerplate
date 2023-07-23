@@ -24,6 +24,7 @@ declare interface CustomTheme extends Theme {
     full: NonNullable<CSSProperties["borderRadius"]>;
   };
   palette: Palette;
+  colors: Colors;
   shadows: string[];
   typography: Typography;
   zIndex: Record<ZIndexTypes, number>;
@@ -39,6 +40,7 @@ declare interface CustomThemeOptions extends ThemeOptions {
     full: NonNullable<CSSProperties["borderRadius"]>;
   };
   palette?: Palette;
+  colors: Colors;
   shadows?: string[];
   typography?: Typography;
   zIndex?: Record<ZIndexTypes, number>;
