@@ -21,6 +21,7 @@ declare interface CustomTheme extends Theme {
     sm: NonNullable<CSSProperties["borderRadius"]>;
     md: NonNullable<CSSProperties["borderRadius"]>;
     lg: NonNullable<CSSProperties["borderRadius"]>;
+    xl: NonNullable<CSSProperties["borderRadius"]>;
     full: NonNullable<CSSProperties["borderRadius"]>;
   };
   palette: Palette;

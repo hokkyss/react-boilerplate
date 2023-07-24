@@ -8,14 +8,13 @@ type UsePopper = typeof usePopper;
 type PopperOptions = Parameters<UsePopper>[2];
 
 export type PopperProps = PopperOptions & {
-  className?: string;
   referenceElement?: Element | VirtualElement | null;
   children: ReactNode;
   open: boolean;
   portalContainer?: HTMLElement;
 };
 
-const Popper = forwardRef<HTMLDivElement, PopperProps>(
+const Popper = forwardRef<HTMLDivElement, Props<PopperProps>>(
   (props, forwardedRef) => {
     const {
       className,

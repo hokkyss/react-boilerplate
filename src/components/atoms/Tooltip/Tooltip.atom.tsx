@@ -1,4 +1,3 @@
-import { SxProps } from "@mui/system/styleFunctionSx";
 import styled from "@mui/system/styled";
 import useTheme from "@mui/system/useTheme";
 import { Placement } from "@popperjs/core";
@@ -14,10 +13,8 @@ export const tooltipClasses = {
 
 type TooltipProps = {
   content: ReactNode;
-  className?: string;
   children: ReactElement;
   placement?: Placement;
-  sx?: SxProps<ITheme>;
 };
 
 const TooltipAnchor = styled("div", {
@@ -76,7 +73,7 @@ const TooltipArrow = styled("span", {
 const TooltipContent = styled(m.div)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  color: theme.vars.colors.white,
+  color: theme.vars.palette.common.white,
   backgroundColor: theme.vars.colors.gray[500],
   boxShadow: theme.vars.shadows[4],
   borderRadius: theme.vars.radius.lg,
