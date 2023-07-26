@@ -3,7 +3,7 @@ import path from "path";
 import { defineConfig, mergeConfig } from "vitest/config";
 import viteConfig from "./vite.config";
 
-const testsDirectoryPath = path.join(__dirname, "tests");
+const testsDirectoryPath = path.join(__dirname, "tests", "setup-mocks");
 
 const setupFilesPath = fs
   .readdirSync(testsDirectoryPath)

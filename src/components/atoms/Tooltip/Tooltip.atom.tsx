@@ -85,7 +85,7 @@ const TooltipContent = styled(m.div)(({ theme }) => ({
   ...padding(theme.spacing(1), theme.spacing(2)),
 }));
 
-const Tooltip = memo<TooltipProps>(
+const Tooltip = memo<Props<TooltipProps>>(
   ({ className, children, content, placement, sx }) => {
     const theme = useTheme();
     const [hovered, hoverAction] = useToggle();
@@ -133,6 +133,7 @@ const Tooltip = memo<TooltipProps>(
                 duration: theme.transitions.duration.enteringScreen / 1000,
               },
             }}
+            data-testid="tooltip-content"
           >
             <TooltipArrow className={tooltipClasses.arrow} />
             {content}

@@ -1,4 +1,4 @@
-import { render } from "~/utils/test.util";
+import { render } from "../../../../tests/test.util";
 import HomeView from "../Home.view";
 
 describe("Home View", () => {

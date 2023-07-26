@@ -8,6 +8,7 @@
   },
   "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
   "editor.fontLigatures": true,
+  "jest.enable": false,
   "vitest.include": [
     "**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}",
     "**/__tests__/**/*.[jt]s?(x)"

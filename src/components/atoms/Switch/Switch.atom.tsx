@@ -26,7 +26,7 @@ const switchPropsScheme = z.object({
     .default(() => false),
 });
 
-type SwitchPropsValue = (typeof switchPropsScheme)["_input"];
+type SwitchPropsValue = z.input<typeof switchPropsScheme>;
 
 type SwitchProps = SwitchPropsValue & {
   onBlur?: FocusEventHandler<HTMLInputElement>;
@@ -120,17 +120,12 @@ const Switch = forwardRef<HTMLInputElement, Props<SwitchProps>>(
       throw new Error(parsedProps.error.message);
     }
 
-    const { checked, disabled, readOnly, required } = parsedProps.data;
-
     const switchLogic = useSwitch({
       onBlur,
       onChange,
       onFocus,
       onFocusVisible,
-      checked,
-      disabled,
-      readOnly,
-      required,
+      ...parsedProps.data,
     });
     const mergedRef = useMergeRef(switchLogic.inputRef, ref);
 
@@ -140,6 +135,15 @@ const Switch = forwardRef<HTMLInputElement, Props<SwitchProps>>(
         className={className}
         checked={switchLogic.checked}
         disabled={switchLogic.disabled}
+        aria-atomic
+        aria-current={switchLogic.checked}
+        aria-checked={switchLogic.checked}
+        aria-pressed={switchLogic.checked}
+        aria-relevant="all"
+        aria-disabled={switchLogic.disabled}
+        aria-readonly={switchLogic.readOnly}
+        aria-required={parsedProps.data.required}
+        aria-orientation="horizontal"
       >
         <SwitchThumb
           focusVisible={switchLogic.focusVisible}

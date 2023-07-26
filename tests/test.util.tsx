@@ -9,6 +9,7 @@ import {
   render,
   renderHook,
 } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { FC, PropsWithChildren, ReactElement } from "react";
 import CssVarsProvider from "~/components/contexts/Theme/Theme.context";
 import emotionCache from "~/configs/emotion/emotion.config";
@@ -31,11 +32,13 @@ const customRender = <
 >(
   ui: ReactElement,
   options: Except<RenderOptions<Q, Container, BaseElement>, "wrapper"> = {}
-) =>
-  render<Q, Container, BaseElement>(ui, {
+) => ({
+  user: userEvent.setup(),
+  ...render<Q, Container, BaseElement>(ui, {
     wrapper: Wrapper,
     ...options,
-  });
+  }),
+});
 
 const customRenderHook = <
   Result,
@@ -56,6 +59,6 @@ const customRenderHook = <
   });
 
 export * from "@testing-library/react";
-export { default as userEvent } from "@testing-library/user-event";
+export { userEvent };
 // override render export
 export { customRender as render, customRenderHook as renderHook };

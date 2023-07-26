@@ -116,7 +116,7 @@ exports[`Home View > should match snapshot 1`] = `
           Vite + React
         </h1>
         <button
-          class="css-spi3dk-Button"
+          class="css-10tiegb-Button"
           type="button"
         >
           Toggle mode
@@ -236,7 +236,7 @@ exports[`Home View > should match snapshot 1`] = `
         Vite + React
       </h1>
       <button
-        class="css-spi3dk-Button"
+        class="css-10tiegb-Button"
         type="button"
       >
         Toggle mode
@@ -294,5 +294,24 @@ exports[`Home View > should match snapshot 1`] = `
   "queryByTitle": [Function],
   "rerender": [Function],
   "unmount": [Function],
+  "user": {
+    "clear": [Function],
+    "click": [Function],
+    "copy": [Function],
+    "cut": [Function],
+    "dblClick": [Function],
+    "deselectOptions": [Function],
+    "hover": [Function],
+    "keyboard": [Function],
+    "paste": [Function],
+    "pointer": [Function],
+    "selectOptions": [Function],
+    "setup": [Function],
+    "tab": [Function],
+    "tripleClick": [Function],
+    "type": [Function],
+    "unhover": [Function],
+    "upload": [Function],
+  },
 }
 `;
