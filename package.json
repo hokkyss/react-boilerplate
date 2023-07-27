@@ -17,6 +17,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@hookform/resolvers": "^3.1.1",
+    "@material-design-icons/svg": "^0.14.10",
     "@mui/base": "^5.0.0-beta.8",
     "@mui/system": "^5.14.1",
     "@popperjs/core": "^2.11.8",
@@ -32,6 +33,7 @@
     "react-hook-form": "^7.45.1",
     "react-popper": "^2.3.0",
     "react-router-dom": "^6.10.0",
+    "svgo": "^3.0.2",
     "vite-plugin-svgr": "^3.2.0",
     "zod": "^3.21.4"
   },

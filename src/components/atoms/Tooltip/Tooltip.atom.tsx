@@ -20,7 +20,7 @@ type TooltipProps = {
 const TooltipAnchor = styled("div", {
   label: "TooltipAnchor",
 })(() => ({
-  display: "inline-flex",
+  display: "inline-block",
   ...size("fit-content", "fit-content"),
 }));
 
@@ -122,6 +122,7 @@ const Tooltip = memo<Props<TooltipProps>>(
               },
             },
           ]}
+          role="tooltip"
         >
           <TooltipContent
             className={className}

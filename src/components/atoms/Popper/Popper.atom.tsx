@@ -1,5 +1,12 @@
+import { Except } from "@hokkyss/composite-types";
 import { VirtualElement } from "@popperjs/core";
-import { ReactNode, forwardRef, useMemo, useState } from "react";
+import {
+  HTMLAttributes,
+  ReactNode,
+  forwardRef,
+  useMemo,
+  useState,
+} from "react";
 import { usePopper } from "react-popper";
 import useMergeRef from "~/hooks/useMergeRef/useMergeRef.hook";
 import Portal from "../Portal/Portal.atom";
@@ -12,7 +19,7 @@ export type PopperProps = PopperOptions & {
   children: ReactNode;
   open: boolean;
   portalContainer?: HTMLElement;
-};
+} & Except<HTMLAttributes<HTMLDivElement>, "children">;
 
 const Popper = forwardRef<HTMLDivElement, Props<PopperProps>>(
   (props, forwardedRef) => {
@@ -22,8 +29,14 @@ const Popper = forwardRef<HTMLDivElement, Props<PopperProps>>(
       children,
       open,
       portalContainer = document.body,
-      ...popperOptions
+      placement,
+      strategy,
+      createPopper,
+      onFirstUpdate,
+      modifiers,
+      ...rest
     } = props;
+
     const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(
       null
     );
@@ -31,7 +44,10 @@ const Popper = forwardRef<HTMLDivElement, Props<PopperProps>>(
 
     const resolvedPopperOptions = useMemo<PopperOptions>(
       () => ({
-        ...popperOptions,
+        placement,
+        strategy,
+        createPopper,
+        onFirstUpdate,
         modifiers: [
           {
             name: "preventOverflow",
@@ -45,10 +61,10 @@ const Popper = forwardRef<HTMLDivElement, Props<PopperProps>>(
               altBoundary: true, // false by default
             },
           },
-          ...(popperOptions.modifiers ? popperOptions.modifiers : []),
+          ...(modifiers ?? []),
         ],
       }),
-      [popperOptions]
+      [createPopper, modifiers, onFirstUpdate, placement, strategy]
     );
 
     const popper = usePopper(
@@ -68,6 +84,7 @@ const Popper = forwardRef<HTMLDivElement, Props<PopperProps>>(
           className={className}
           {...popper.attributes.popper}
           style={popper.styles.popper}
+          {...rest}
         >
           {children}
         </div>

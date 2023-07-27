@@ -35,6 +35,7 @@ const vitestConfig = mergeConfig(
       reporters: ["default", "html"],
       include: ["**/*.{test,spec}.?(c|m)[jt]s?(x)"],
       exclude: excludedFiles,
+      passWithNoTests: true,
     },
   })
 );

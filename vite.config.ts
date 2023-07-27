@@ -12,6 +12,33 @@ const viteConfig = defineConfig({
      */
     svgr({
       exportAsDefault: true,
+      svgrOptions: {
+        ref: true,
+        exportType: "default",
+        expandProps: true,
+        dimensions: false,
+        svgProps: {
+          role: "img",
+          className: "{props.className ?? props.class ?? undefined}",
+          fill: "{props.fill ?? 'currentColor'}",
+          color: "{props.color ?? 'currentColor'}",
+        },
+        svgo: true,
+        svgoConfig: {
+          plugins: [
+            {
+              name: "preset-default",
+              params: {
+                overrides: {
+                  removeViewBox: false,
+                },
+              },
+            },
+            "prefixIds",
+            "removeDimensions",
+          ],
+        },
+      },
     }),
     react(),
   ],

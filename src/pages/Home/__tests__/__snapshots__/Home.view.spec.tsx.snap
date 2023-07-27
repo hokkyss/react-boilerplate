@@ -13,7 +13,7 @@ exports[`Home View > should match snapshot 1`] = `
         >
           <div
             aria-describedby=":r0:"
-            class="css-u4k7gh-TooltipAnchor"
+            class="css-muxk2w-TooltipAnchor"
           >
             <a
               class="css-1bnujwn-Link"
@@ -24,11 +24,11 @@ exports[`Home View > should match snapshot 1`] = `
               <svg
                 aria-hidden="true"
                 class="css-1y422je-Logo"
-                height="32"
+                color="currentColor"
+                fill="currentColor"
                 preserveAspectRatio="xMidYMid meet"
                 role="img"
                 viewBox="0 0 256 257"
-                width="31.88"
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
               >
@@ -83,7 +83,7 @@ exports[`Home View > should match snapshot 1`] = `
           </div>
           <div
             aria-describedby=":r1:"
-            class="css-u4k7gh-TooltipAnchor"
+            class="css-muxk2w-TooltipAnchor"
           >
             <a
               class="css-1bnujwn-Link"
@@ -94,11 +94,11 @@ exports[`Home View > should match snapshot 1`] = `
               <svg
                 aria-hidden="true"
                 class="css-m619yg-Logo"
-                height="32"
+                color="currentColor"
+                fill="currentColor"
                 preserveAspectRatio="xMidYMid meet"
                 role="img"
                 viewBox="0 0 256 228"
-                width="35.93"
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
               >
@@ -133,7 +133,7 @@ exports[`Home View > should match snapshot 1`] = `
       >
         <div
           aria-describedby=":r0:"
-          class="css-u4k7gh-TooltipAnchor"
+          class="css-muxk2w-TooltipAnchor"
         >
           <a
             class="css-1bnujwn-Link"
@@ -144,11 +144,11 @@ exports[`Home View > should match snapshot 1`] = `
             <svg
               aria-hidden="true"
               class="css-1y422je-Logo"
-              height="32"
+              color="currentColor"
+              fill="currentColor"
               preserveAspectRatio="xMidYMid meet"
               role="img"
               viewBox="0 0 256 257"
-              width="31.88"
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
             >
@@ -203,7 +203,7 @@ exports[`Home View > should match snapshot 1`] = `
         </div>
         <div
           aria-describedby=":r1:"
-          class="css-u4k7gh-TooltipAnchor"
+          class="css-muxk2w-TooltipAnchor"
         >
           <a
             class="css-1bnujwn-Link"
@@ -214,11 +214,11 @@ exports[`Home View > should match snapshot 1`] = `
             <svg
               aria-hidden="true"
               class="css-m619yg-Logo"
-              height="32"
+              color="currentColor"
+              fill="currentColor"
               preserveAspectRatio="xMidYMid meet"
               role="img"
               viewBox="0 0 256 228"
-              width="35.93"
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
             >
