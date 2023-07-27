@@ -39,21 +39,26 @@ const SwitchRoot = styled("span", {
   shouldForwardProp: () => true,
   label: "SwitchRoot",
 })<{ disabled?: boolean; checked?: boolean }>(
-  ({ theme, disabled, checked }) => ({
+  ({ theme }) => ({
+    ...padding(theme.spacing(0.5)),
+    ...size(remToPx(1), remToPx(2.5)),
     fontSize: 0,
     position: "relative",
     display: "inline-block",
-    ...padding(theme.spacing(0.5)),
-    ...size(remToPx(1), remToPx(2.5)),
     cursor: "pointer",
     borderRadius: theme.vars.radius.xl,
     backgroundColor:
       theme.palette.mode === "dark"
         ? theme.vars.colors.gray[600]
         : theme.vars.colors.gray[400],
-    ...(disabled ? { opacity: 0.4, cursor: "not-allowed" } : {}),
-    ...(checked ? { backgroundColor: theme.vars.palette.primary.main } : {}),
-  })
+  }),
+  ({ disabled, theme }) =>
+    disabled && {
+      opacity: theme.vars.palette.action.disabledOpacity,
+      cursor: "not-allowed",
+    },
+  ({ checked, theme }) =>
+    checked && { backgroundColor: theme.vars.palette.primary.main }
 );
 
 const SwitchInput = styled("input", { label: "Switch" })(() => ({
@@ -66,10 +71,10 @@ const SwitchInput = styled("input", { label: "Switch" })(() => ({
 }));
 
 const SwitchThumb = styled("span", {
-  shouldForwardProp: () => true,
-  label: "Thumb",
+  shouldForwardProp: (name) => name !== "focusVisible",
+  label: "SwitchThumb",
 })<{ focusVisible?: boolean; checked: boolean }>(
-  ({ theme, checked, focusVisible }) => ({
+  ({ theme }) => ({
     display: "block",
     aspectRatio: "1 / 1",
     height: "100%",
@@ -83,18 +88,18 @@ const SwitchThumb = styled("span", {
     borderRadius: theme.vars.radius.xl,
     backgroundColor: theme.vars.palette.common.white,
     boxShadow: theme.vars.shadows[5],
-    ...(checked
+  }),
+  ({ checked }) =>
+    checked
       ? {
           left: "100%",
           transform: "translateX(-100%)",
         }
-      : {
-          left: 0,
-        }),
-    ...(focusVisible && {
+      : { left: 0 },
+  ({ focusVisible, theme }) =>
+    focusVisible && {
       backgroundColor: theme.vars.palette.grey[500],
-    }),
-  })
+    }
 );
 
 const Switch = forwardRef<HTMLInputElement, Props<SwitchProps>>(
