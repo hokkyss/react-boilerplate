@@ -15,7 +15,7 @@ const Button = styled(m.button, {
   color: theme.vars.palette.text.primary,
   transitionProperty: "all",
   transitionTimingFunction: theme.vars.transitions.easing.sharp,
-  transitionDuration: `${theme.transitions.duration.short}ms`,
+  transitionDuration: `${theme.transitions.duration.standard}ms`,
 }));
 
 export default Button;

@@ -1,18 +1,19 @@
+import { between } from "polished";
 import { FunctionComponent } from "react";
 import ReactLogo from "~/assets/react.svg";
 import ViteLogo from "~/assets/vite.svg";
 import Box from "~/components/atoms/Box/Box.atom";
 import Button from "~/components/atoms/Button/Button.atom";
-import Text from "~/components/atoms/Text/Text.atom";
+import Heading1 from "~/components/atoms/Text/Heading1.atom";
 import Tooltip from "~/components/atoms/Tooltip/Tooltip.atom";
-import { Container, Link, Logo } from "./Home.component";
+import { Link, Logo } from "./Home.component";
 import useHomeViewModel from "./Home.viewModel";
 
 const HomeView: FunctionComponent = function HomeView() {
   const { colorScheme } = useHomeViewModel();
 
   return (
-    <Container>
+    <Box sx={{ fontSize: between("14px", "20px", "400px", "1000px") }}>
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         <Tooltip placement="left" content="Vite Logo">
           <Link href="https://vitejs.dev" target="_blank" rel="noreferrer">
@@ -25,7 +26,7 @@ const HomeView: FunctionComponent = function HomeView() {
           </Link>
         </Tooltip>
       </Box>
-      <Text.Heading1>Vite + React</Text.Heading1>
+      <Heading1>Vite + React</Heading1>
       <Button
         onClick={() =>
           colorScheme.setMode(colorScheme.mode === "light" ? "dark" : "light")
@@ -34,7 +35,7 @@ const HomeView: FunctionComponent = function HomeView() {
       >
         Toggle mode
       </Button>
-    </Container>
+    </Box>
   );
 };
 

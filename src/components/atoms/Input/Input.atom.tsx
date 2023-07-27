@@ -38,7 +38,7 @@ type InputProps = Except<
   containerStyle?: SxProps<ITheme>;
 } & HTMLMotionProps<"input">;
 
-const InputContainer = styled(m.div)`
+const InputContainer = styled(m.div, { label: "InputContainer" })`
   row-gap: ${({ theme }) => theme.spacing(1)};
   display: flex;
   flex-direction: column;
@@ -46,7 +46,6 @@ const InputContainer = styled(m.div)`
 `;
 
 const StyledInput = styled(m.input, {
-  name: "Input",
   label: "Input",
 })(({ theme }) => ({
   ...borderRadius("top", theme.vars.radius.md),
@@ -54,6 +53,9 @@ const StyledInput = styled(m.input, {
   ...padding(theme.spacing(2), theme.spacing(2)),
   ...theme.vars.typography.body1,
   color: theme.vars.palette.text.primary,
+  transitionProperty: "all",
+  transitionTimingFunction: theme.vars.transitions.easing.sharp,
+  transitionDuration: `${theme.transitions.duration.standard}ms`,
   backgroundColor: theme.vars.palette.background.default,
   borderWidth: 1,
   outlineWidth: 2,
@@ -68,12 +70,10 @@ const StyledInput = styled(m.input, {
 
 const StyledLabel = Text.withComponent("label");
 
-const ErrorText = styled(Text, { name: "ErrorText", label: "ErrorText" })(
-  ({ theme }) => ({
-    color: theme.vars.palette.error.main,
-    ...margin(0),
-  })
-);
+const ErrorText = styled(Text, { label: "ErrorText" })(({ theme }) => ({
+  color: theme.vars.palette.error.main,
+  ...margin(0),
+}));
 
 const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const {

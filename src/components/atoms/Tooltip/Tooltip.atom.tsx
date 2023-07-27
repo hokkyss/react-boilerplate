@@ -19,7 +19,6 @@ type TooltipProps = {
 
 const TooltipAnchor = styled("div", {
   label: "TooltipAnchor",
-  name: "TooltipAnchor",
 })(() => ({
   display: "inline-flex",
   ...size("fit-content", "fit-content"),
@@ -27,11 +26,13 @@ const TooltipAnchor = styled("div", {
 
 const TooltipContentContainer = styled(Popper, {
   label: "TooltipContentContainer",
-  name: "TooltipContentContainer",
 })<PopperProps>(({ theme }) => ({
   display: "flex",
   pointerEvents: "none",
   zIndex: theme.vars.zIndex.tooltip,
+  transitionProperty: "all",
+  transitionTimingFunction: theme.vars.transitions.easing.sharp,
+  transitionDuration: `${theme.transitions.duration.short}ms`,
   maxWidth: 360,
   '&[data-popper-placement*="left"], &[data-popper-placement*="right"]': {
     flexDirection: "row",
@@ -57,10 +58,7 @@ const TooltipContentContainer = styled(Popper, {
   },
 }));
 
-const TooltipArrow = styled("span", {
-  label: "TooltipArrow",
-  name: "TooltipArrow",
-})(() => ({
+const TooltipArrow = styled("span", { label: "TooltipArrow" })(() => ({
   display: "flex",
   position: "absolute",
   ...size("1em", "1em"),
@@ -70,20 +68,22 @@ const TooltipArrow = styled("span", {
   backgroundColor: "inherit",
 }));
 
-const TooltipContent = styled(m.div)(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  color: theme.vars.palette.common.white,
-  backgroundColor: theme.vars.colors.gray[500],
-  boxShadow: theme.vars.shadows[4],
-  borderRadius: theme.vars.radius.lg,
-  flexDirection: "inherit",
-  whiteSpace: "normal",
-  ...wordWrap("break-word"),
-  wordBreak: "break-word",
-  msWordBreak: "break-word",
-  ...padding(theme.spacing(1), theme.spacing(2)),
-}));
+const TooltipContent = styled(m.div, { label: "TooltipContent" })(
+  ({ theme }) => ({
+    display: "flex",
+    alignItems: "center",
+    color: theme.vars.palette.common.white,
+    backgroundColor: theme.vars.colors.gray[500],
+    boxShadow: theme.vars.shadows[4],
+    borderRadius: theme.vars.radius.lg,
+    flexDirection: "inherit",
+    whiteSpace: "normal",
+    ...wordWrap("break-word"),
+    wordBreak: "break-word",
+    msWordBreak: "break-word",
+    ...padding(theme.spacing(1), theme.spacing(2)),
+  })
+);
 
 const Tooltip = memo<Props<TooltipProps>>(
   ({ className, children, content, placement, sx }) => {

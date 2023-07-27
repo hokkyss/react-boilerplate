@@ -1,14 +1,7 @@
 import { keyframes } from "@emotion/react";
 import styled from "@mui/system/styled";
 import { isValidMotionProp, m } from "framer-motion";
-import { between, padding, size } from "polished";
-
-export const Container = styled(m.div, {
-  name: "Container",
-  label: "Container",
-})`
-  font-size: ${between("14px", "20px", "400px", "1000px")};
-`;
+import { padding, size } from "polished";
 
 export const Link = styled("a", { name: "Link", label: "Link" })``;
 

@@ -2,7 +2,7 @@ import React from "react";
 import Button from "~/components/atoms/Button/Button.atom";
 import Text from "~/components/atoms/Text/Text.atom";
 
-type ErrorBoundaryProps = React.PropsWithChildren<{ className?: string }>;
+type ErrorBoundaryProps = Props<React.PropsWithChildren>;
 type ErrorBoundaryState = { hasError: boolean; errorMessage: string };
 
 export default class ErrorBoundary extends React.Component<
@@ -24,13 +24,14 @@ export default class ErrorBoundary extends React.Component<
   }
 
   render(): React.ReactNode {
-    const { children, className } = this.props;
+    const { children, className, sx } = this.props;
     const { hasError, errorMessage } = this.state;
 
     if (hasError) {
       return (
         <Button
           className={className}
+          sx={sx}
           onClick={window.location.reload}
           type="button"
         >

@@ -14,8 +14,15 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement, {
     <Profiler
       id="app-profiler"
       // React Profiler is active only in development.
-      // eslint-disable-next-line no-console
-      onRender={(id, ...args) => console.debug(`[${id}]`, ...args)}
+      onRender={(id, phase, actualDuration, baseDuration, startTime, endTime) =>
+        // eslint-disable-next-line no-console
+        console.debug(`[${id}:${phase}]`, {
+          actualDuration,
+          baseDuration,
+          startTime,
+          endTime,
+        })
+      }
     >
       <AppContext>
         <Container>

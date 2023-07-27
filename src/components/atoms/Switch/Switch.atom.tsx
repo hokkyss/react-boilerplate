@@ -37,7 +37,6 @@ type SwitchProps = SwitchPropsValue & {
 
 const SwitchRoot = styled("span", {
   shouldForwardProp: () => true,
-  name: "SwitchRoot",
   label: "SwitchRoot",
 })<{ disabled?: boolean; checked?: boolean }>(
   ({ theme, disabled, checked }) => ({
@@ -57,7 +56,7 @@ const SwitchRoot = styled("span", {
   })
 );
 
-const SwitchInput = styled("input")(() => ({
+const SwitchInput = styled("input", { label: "Switch" })(() => ({
   ...size("100%", "100%"),
   ...margin(0),
   ...position("absolute", 0, 0),
@@ -67,9 +66,8 @@ const SwitchInput = styled("input")(() => ({
 }));
 
 const SwitchThumb = styled("span", {
-  name: "SwitchThumb",
-  label: "SwitchThumb",
   shouldForwardProp: () => true,
+  label: "Thumb",
 })<{ focusVisible?: boolean; checked: boolean }>(
   ({ theme, checked, focusVisible }) => ({
     display: "block",

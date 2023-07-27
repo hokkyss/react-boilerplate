@@ -6,10 +6,10 @@ exports[`Home View > should match snapshot 1`] = `
   "baseElement": <body>
     <div>
       <div
-        class="css-i3yy1r-Container"
+        class="css-wzat2l-Box"
       >
         <div
-          class="css-ltc8b7-Box"
+          class="css-biheva-Box"
         >
           <div
             aria-describedby=":r0:"
@@ -111,12 +111,12 @@ exports[`Home View > should match snapshot 1`] = `
           </div>
         </div>
         <h1
-          class="css-1scri8r-Heading1"
+          class="css-zlt1rs-Heading1"
         >
           Vite + React
         </h1>
         <button
-          class="css-10tiegb-Button"
+          class="css-ruuoll-Button"
           type="button"
         >
           Toggle mode
@@ -126,10 +126,10 @@ exports[`Home View > should match snapshot 1`] = `
   </body>,
   "container": <div>
     <div
-      class="css-i3yy1r-Container"
+      class="css-wzat2l-Box"
     >
       <div
-        class="css-ltc8b7-Box"
+        class="css-biheva-Box"
       >
         <div
           aria-describedby=":r0:"
@@ -231,12 +231,12 @@ exports[`Home View > should match snapshot 1`] = `
         </div>
       </div>
       <h1
-        class="css-1scri8r-Heading1"
+        class="css-zlt1rs-Heading1"
       >
         Vite + React
       </h1>
       <button
-        class="css-10tiegb-Button"
+        class="css-ruuoll-Button"
         type="button"
       >
         Toggle mode
