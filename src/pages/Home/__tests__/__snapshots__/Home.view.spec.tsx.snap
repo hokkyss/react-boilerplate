@@ -125,8 +125,23 @@ exports[`Home View > should match snapshot 1`] = `
           Vite + React
         </h1>
         <button
-          class="css-ruuoll-Button"
+          class="css-jw8g5o-Button"
           type="button"
+          variant="outlined"
+        >
+          Toggle mode
+        </button>
+        <button
+          class="css-1hvydna-Button"
+          type="button"
+          variant="text"
+        >
+          Toggle mode
+        </button>
+        <button
+          class="css-fh21nr-Button"
+          type="button"
+          variant="solid"
         >
           Toggle mode
         </button>
@@ -254,8 +269,23 @@ exports[`Home View > should match snapshot 1`] = `
         Vite + React
       </h1>
       <button
-        class="css-ruuoll-Button"
+        class="css-jw8g5o-Button"
         type="button"
+        variant="outlined"
+      >
+        Toggle mode
+      </button>
+      <button
+        class="css-1hvydna-Button"
+        type="button"
+        variant="text"
+      >
+        Toggle mode
+      </button>
+      <button
+        class="css-fh21nr-Button"
+        type="button"
+        variant="solid"
       >
         Toggle mode
       </button>

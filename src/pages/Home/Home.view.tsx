@@ -35,6 +35,25 @@ const HomeView: FunctionComponent = function HomeView() {
           colorScheme.setMode(colorScheme.mode === "light" ? "dark" : "light")
         }
         type="button"
+        variant="outlined"
+      >
+        Toggle mode
+      </Button>
+      <Button
+        onClick={() =>
+          colorScheme.setMode(colorScheme.mode === "light" ? "dark" : "light")
+        }
+        type="button"
+        variant="text"
+      >
+        Toggle mode
+      </Button>
+      <Button
+        onClick={() =>
+          colorScheme.setMode(colorScheme.mode === "light" ? "dark" : "light")
+        }
+        type="button"
+        variant="solid"
       >
         Toggle mode
       </Button>
