@@ -2,6 +2,7 @@ import { between } from "polished";
 import { FunctionComponent } from "react";
 import ReactLogo from "~/assets/react.svg";
 import ViteLogo from "~/assets/vite.svg";
+import Badge from "~/components/atoms/Badge/Badge.atom";
 import Box from "~/components/atoms/Box/Box.atom";
 import Button from "~/components/atoms/Button/Button.atom";
 import Heading1 from "~/components/atoms/Text/Heading1.atom";
@@ -16,9 +17,11 @@ const HomeView: FunctionComponent = function HomeView() {
     <Box sx={{ fontSize: between("14px", "20px", "400px", "1000px") }}>
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         <Tooltip placement="left" content="Vite Logo">
-          <Link href="https://vitejs.dev" target="_blank" rel="noreferrer">
-            <Logo as={ViteLogo} />
-          </Link>
+          <Badge content={500}>
+            <Link href="https://vitejs.dev" target="_blank" rel="noreferrer">
+              <Logo as={ViteLogo} />
+            </Link>
+          </Badge>
         </Tooltip>
         <Tooltip placement="right" content="halo saya disini">
           <Link href="https://reactjs.org" target="_blank" rel="noreferrer">

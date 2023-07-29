@@ -142,17 +142,15 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         id={inputId}
         ref={mergedInputRef}
         aria-valuetext={value ? value.toString() : undefined}
-        sx={
-          error
-            ? {
-                borderColor: theme.vars.palette.error.main,
-                outlineColor: theme.vars.palette.error.main,
-                ":hover": {
-                  borderColor: theme.vars.palette.error.main,
-                },
-              }
-            : {}
-        }
+        sx={[
+          !!error && {
+            borderColor: theme.vars.palette.error.main,
+            outlineColor: theme.vars.palette.error.main,
+            ":hover": {
+              borderColor: theme.vars.palette.error.main,
+            },
+          },
+        ]}
       />
       {error && (
         <ErrorText id={errorId} aria-details={error}>

@@ -3,7 +3,9 @@ import styled from "@mui/system/styled";
 import { isValidMotionProp, m } from "framer-motion";
 import { padding, size } from "polished";
 
-export const Link = styled("a", { name: "Link", label: "Link" })``;
+export const Link = styled("a", { label: "Link" })`
+  display: flex;
+`;
 
 const spinningLogoKeyframes = keyframes`
   0% {

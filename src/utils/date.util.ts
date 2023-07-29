@@ -1,3 +1,4 @@
+import { StaticArray } from "@hokkyss/composite-types";
 import chunk from "lodash/chunk";
 import { DAYS, DateValue, MONTHS, Month } from "~/constants/date.constant";
 
@@ -111,7 +112,9 @@ export const isSameDay = (date1: DateValue, date2: DateValue) =>
   date1.month === date2.month &&
   date1.year === date2.year;
 
-export default function calendar({ month, year } = TODAY()) {
+export default function calendar(
+  { month, year } = TODAY()
+): StaticArray<DateValue, 7>[] {
   const monthDays = getNumberOfDays(month, year);
   const thisMonthDates = new Array(monthDays)
     .fill(0)
@@ -139,5 +142,8 @@ export default function calendar({ month, year } = TODAY()) {
     .fill(0)
     .map((_, i) => getDay(i + 1, nextMonth.month, nextMonth.year));
 
-  return chunk(prevMonthDates.concat(thisMonthDates).concat(nextMonthDates), 7);
+  return chunk(
+    prevMonthDates.concat(thisMonthDates).concat(nextMonthDates),
+    7
+  ) as StaticArray<DateValue, 7>[];
 }
