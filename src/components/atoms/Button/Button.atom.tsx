@@ -1,5 +1,6 @@
 import styled from "@mui/system/styled";
-import { m, type HTMLMotionProps } from "framer-motion";
+import type { HTMLMotionProps } from "framer-motion";
+import { m } from "framer-motion";
 import { padding, rgba } from "polished";
 
 type ButtonVariant = "outlined" | "solid" | "text";

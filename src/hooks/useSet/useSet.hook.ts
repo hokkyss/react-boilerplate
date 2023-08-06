@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
-import useCallback, { type Callback } from "../useCallback/useCallback.hook";
+import type { Callback } from "../useCallback/useCallback.hook";
+import useCallback from "../useCallback/useCallback.hook";
 
 type Mutator<T> = {
   add: Callback<(item: T) => void>;

@@ -1,6 +1,6 @@
 import { atom, useAtomValue } from "jotai";
 import { atomFamily } from "jotai/utils";
-import { type Callback } from "../useCallback/useCallback.hook";
+import type { Callback } from "../useCallback/useCallback.hook";
 
 const moduleAtomFamily = atomFamily(
   (param: Callback<() => Promise<{ default: unknown }>>) => atom(param()),

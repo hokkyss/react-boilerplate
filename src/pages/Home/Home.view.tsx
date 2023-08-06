@@ -1,5 +1,5 @@
 import { between } from "polished";
-import { type FunctionComponent } from "react";
+import type { FunctionComponent } from "react";
 import ReactLogo from "~/assets/react.svg";
 import ViteLogo from "~/assets/vite.svg";
 import Badge from "~/components/atoms/Badge/Badge.atom";

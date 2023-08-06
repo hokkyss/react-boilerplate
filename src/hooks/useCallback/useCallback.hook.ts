@@ -1,8 +1,6 @@
-import {
-  useMemo,
-  useCallback as useReactCallback,
-  type DependencyList,
-} from "react";
+import assign from "lodash/assign";
+import type { DependencyList } from "react";
+import { useMemo, useCallback as useReactCallback } from "react";
 
 // Generalize all function types
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -11,7 +9,7 @@ type Func = (...args: any[]) => any;
 export type Callback<T extends Func> = T & { stable: true };
 
 export function stableCallback<T extends Func>(callback: T): Callback<T> {
-  return Object.assign(callback, { stable: true } as const);
+  return assign(callback, { stable: true } as const);
 }
 
 export default function useCallback<T extends Func>(
@@ -21,7 +19,7 @@ export default function useCallback<T extends Func>(
   const cachedCallback = useReactCallback(callback, deps);
 
   const memoedCallback = useMemo(
-    () => Object.assign(cachedCallback, { stable: true } as const),
+    () => assign(cachedCallback, { stable: true } as const),
     [cachedCallback]
   );
 

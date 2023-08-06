@@ -1,11 +1,12 @@
-import { type PropsWithChildren } from "react";
+import type { ErrorInfo, PropsWithChildren, ReactNode } from "react";
+import { Component } from "react";
 import Button from "~/components/atoms/Button/Button.atom";
 import Text from "~/components/atoms/Text/Text.atom";
 
 type ErrorBoundaryProps = Props<PropsWithChildren>;
 type ErrorBoundaryState = { errorMessage: string; hasError: boolean };
 
-export default class ErrorBoundary extends React.Component<
+export default class ErrorBoundary extends Component<
   ErrorBoundaryProps,
   ErrorBoundaryState
 > {
@@ -18,12 +19,12 @@ export default class ErrorBoundary extends React.Component<
     return { errorMessage: error.message, hasError: true };
   }
 
-  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     this.setState({ errorMessage: error.message, hasError: true });
     console.error("an error happened", error, errorInfo.componentStack);
   }
 
-  render(): React.ReactNode {
+  render(): ReactNode {
     const { children, className, sx } = this.props;
     const { errorMessage, hasError } = this.state;
 

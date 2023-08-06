@@ -1,11 +1,13 @@
-import { type Except } from "@hokkyss/composite-types";
+import type { Except } from "@hokkyss/composite-types";
 import useInput from "@mui/base/useInput";
-import { type SxProps } from "@mui/system";
+import type { SxProps } from "@mui/system";
 import styled from "@mui/system/styled";
 import useTheme from "@mui/system/useTheme";
-import { m, type HTMLMotionProps } from "framer-motion";
+import type { HTMLMotionProps } from "framer-motion";
+import { m } from "framer-motion";
 import { borderRadius, margin, padding } from "polished";
-import { forwardRef, useId, useMemo, type InputHTMLAttributes } from "react";
+import type { InputHTMLAttributes } from "react";
+import { forwardRef, useId, useMemo } from "react";
 import useMergeRef from "~/hooks/useMergeRef/useMergeRef.hook";
 import Text from "../Text/Text.atom";
 

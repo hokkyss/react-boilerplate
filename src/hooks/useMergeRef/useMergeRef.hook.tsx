@@ -1,3 +1,6 @@
+import every from "lodash/every";
+import forEach from "lodash/forEach";
+import isFunction from "lodash/isFunction";
 import { useMemo, type ForwardedRef, type RefCallback } from "react";
 import useCallback from "../useCallback/useCallback.hook";
 
@@ -7,7 +10,7 @@ export function resolveRef<T>(
 ) {
   if (!ref) return;
 
-  if (typeof ref === "function") {
+  if (isFunction(ref)) {
     ref(instance);
   } else {
     ref.current = instance;
@@ -19,23 +22,13 @@ export default function useMergeRef<T>(
 ) {
   const applyRef = useCallback<RefCallback<T>>(
     (instance: T | null) => {
-      refs.forEach((ref) => {
-        if (!ref) {
-          return;
-        }
-
-        if (typeof ref === "function") {
-          ref(instance);
-        } else {
-          ref.current = instance;
-        }
-      });
+      forEach(refs, (ref) => resolveRef(ref, instance));
     },
     [refs]
   );
 
   const forkedRef = useMemo(
-    () => (refs.every((ref) => !ref) ? null : applyRef),
+    () => (every(refs, (ref) => !ref) ? null : applyRef),
     [applyRef, refs]
   );
 

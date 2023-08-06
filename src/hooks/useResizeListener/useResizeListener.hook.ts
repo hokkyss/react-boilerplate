@@ -1,5 +1,6 @@
+import forEach from "lodash/forEach";
 import { useEffect } from "react";
-import { type Callback } from "../useCallback/useCallback.hook";
+import type { Callback } from "../useCallback/useCallback.hook";
 
 export default function useResizeListener(
   element: HTMLElement | null,
@@ -13,7 +14,7 @@ export default function useResizeListener(
      * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Resize_Observer_API}
      */
     const resizeObserver = new ResizeObserver((entries) => {
-      entries.forEach(callback);
+      forEach(entries, callback);
     });
 
     resizeObserver.observe(element, options);

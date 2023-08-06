@@ -1,4 +1,4 @@
-import { type CSSProperties } from "react";
+import type { CSSProperties } from "react";
 
 declare type Font = {
   fontFamily: NonNullable<CSSProperties["fontFamily"]>;

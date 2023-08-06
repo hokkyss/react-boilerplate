@@ -1,7 +1,7 @@
 import { makeEndpoint, parametersBuilder } from "@zodios/core";
 import { z } from "zod";
 import postSchema from "~/schema/Post.schema";
-import { type InferParams } from "~/types/endpoint";
+import type { InferParams } from "~/types/endpoint";
 
 // #region PARAMS AND QUERIES
 export const getPostByIdParams = {

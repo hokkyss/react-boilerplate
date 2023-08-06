@@ -1,29 +1,17 @@
 import useSwitch from "@mui/base/useSwitch";
 import styled from "@mui/system/styled";
+import constant from "lodash/constant";
 import { margin, padding, position, remToPx, size } from "polished";
-import {
-  forwardRef,
-  useMemo,
-  type ChangeEventHandler,
-  type FocusEventHandler,
-} from "react";
+import type { ChangeEventHandler, FocusEventHandler } from "react";
+import { forwardRef, useMemo } from "react";
 import { z } from "zod";
 import useMergeRef from "~/hooks/useMergeRef/useMergeRef.hook";
 
 const switchPropsScheme = z.object({
   checked: z.boolean(),
-  disabled: z
-    .boolean()
-    .optional()
-    .default(() => false),
-  readOnly: z
-    .boolean()
-    .optional()
-    .default(() => false),
-  required: z
-    .boolean()
-    .optional()
-    .default(() => false),
+  disabled: z.boolean().optional().default(false),
+  readOnly: z.boolean().optional().default(false),
+  required: z.boolean().optional().default(false),
 });
 
 type SwitchPropsValue = z.input<typeof switchPropsScheme>;
@@ -37,7 +25,7 @@ type SwitchProps = SwitchPropsValue & {
 
 const SwitchRoot = styled("span", {
   label: "SwitchRoot",
-  shouldForwardProp: () => true,
+  shouldForwardProp: constant(true),
 })<{ checked?: boolean; disabled?: boolean }>(
   ({ theme }) => ({
     ...padding(theme.spacing(0.5)),

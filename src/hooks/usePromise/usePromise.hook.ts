@@ -1,3 +1,5 @@
+import find from "lodash/find";
+import findIndex from "lodash/findIndex";
 import isEqual from "lodash/isEqual";
 import { useEffect, useMemo } from "react";
 
@@ -16,7 +18,7 @@ type PromiseCache = {
 const caches: PromiseCache[] = [];
 
 export const invalidatePromise = (key: string) => {
-  const index = caches.findIndex((cache) => cache.key === key);
+  const index = findIndex(caches, (entry) => entry.key === key);
 
   if (index === -1) return;
   caches.splice(index, 1);
@@ -28,7 +30,8 @@ const usePromise = <T, Args extends []>(
   ...args: Args
 ): T => {
   const cache = useMemo(() => {
-    const inCache = caches.find(
+    const inCache = find(
+      caches,
       (entry) => isEqual(entry.args, args) && isEqual(entry.key, key)
     );
 

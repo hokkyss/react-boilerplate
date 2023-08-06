@@ -1,4 +1,5 @@
-import { forwardRef, useEffect, type ReactNode } from "react";
+import type { ReactNode } from "react";
+import { forwardRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import useMergeRef from "~/hooks/useMergeRef/useMergeRef.hook";
 

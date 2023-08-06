@@ -1,5 +1,6 @@
+import isUndefined from "lodash/isUndefined";
 import { useEffect, useState } from "react";
-import { type Callback } from "../useCallback/useCallback.hook";
+import type { Callback } from "../useCallback/useCallback.hook";
 
 /**
  * Provides information about the connection a device is using to communicate with the network.
@@ -64,8 +65,9 @@ type NavigatorWithConnection = Navigator & {
   readonly connection?: NetworkInformation;
 };
 
-const nav: NavigatorWithConnection | undefined =
-  typeof navigator !== "undefined" ? navigator : undefined;
+const nav: NavigatorWithConnection | undefined = !isUndefined(navigator)
+  ? navigator
+  : undefined;
 
 export type Connection = { online: boolean } & (
   | { isSupported: false }

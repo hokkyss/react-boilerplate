@@ -1,5 +1,7 @@
+import isUndefined from "lodash/isUndefined";
+import noop from "lodash/noop";
 import { useEffect, useState } from "react";
-import { type Callback } from "../useCallback/useCallback.hook";
+import type { Callback } from "../useCallback/useCallback.hook";
 
 type BatteryState = {
   /**
@@ -32,8 +34,9 @@ type NavigatorWithGetBattery = Navigator & {
   getBattery?: Callback<() => Promise<BatteryManager>>;
 };
 
-const nav: NavigatorWithGetBattery | undefined =
-  typeof navigator !== "undefined" ? navigator : undefined;
+const nav: NavigatorWithGetBattery | undefined = !isUndefined(navigator)
+  ? navigator
+  : undefined;
 
 export type Battery =
   | { isFetched: false; isSupported: true }
@@ -64,7 +67,7 @@ function useBattery(): Battery {
   }, []);
 
   useEffect(() => {
-    if (!batteryManager) return () => {};
+    if (!batteryManager) return noop;
 
     const onBatteryManagerChange = () => {
       setBattery((prev) => ({

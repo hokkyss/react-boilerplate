@@ -1,16 +1,15 @@
 import { CacheProvider } from "@emotion/react";
-import { type Except } from "@hokkyss/composite-types";
+import type { Except } from "@hokkyss/composite-types";
 import { QueryClientProvider } from "@tanstack/react-query";
-import {
-  render,
-  renderHook,
-  type Queries,
-  type RenderHookOptions,
-  type RenderOptions,
-  type queries,
+import type {
+  Queries,
+  RenderHookOptions,
+  RenderOptions,
+  queries,
 } from "@testing-library/react";
+import { render, renderHook } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { type FC, type PropsWithChildren, type ReactElement } from "react";
+import type { FC, PropsWithChildren, ReactElement } from "react";
 import CssVarsProvider from "~/components/contexts/Theme/Theme.context";
 import emotionCache from "~/configs/emotion/emotion.config";
 import queryClient from "~/configs/react-query/react-query.config";

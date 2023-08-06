@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
+import type { NavigateFunction } from "react-router-dom";
 import {
   useNavigate as useDefaultNavigate,
   useLocation,
-  type NavigateFunction,
 } from "react-router-dom";
 
 export type Navigate = [NavigateFunction, boolean];

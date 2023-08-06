@@ -6,7 +6,7 @@ import {
 } from "@zodios/core";
 import { z } from "zod";
 import userSchema from "~/schema/User.schema";
-import { type InferParams } from "~/types/endpoint";
+import type { InferParams } from "~/types/endpoint";
 
 // #region GET USERS
 

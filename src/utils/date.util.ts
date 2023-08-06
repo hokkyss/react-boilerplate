@@ -1,6 +1,11 @@
-import { type StaticArray } from "@hokkyss/composite-types";
+import type { StaticArray } from "@hokkyss/composite-types";
 import chunk from "lodash/chunk";
-import { DAYS, MONTHS, Month, type DateValue } from "~/constants/date.constant";
+import fill from "lodash/fill";
+import map from "lodash/map";
+import padStart from "lodash/padStart";
+import reverse from "lodash/reverse";
+import type { DateValue } from "~/constants/date.constant";
+import { DAYS, MONTHS, Month } from "~/constants/date.constant";
 
 /**
  * Convert a date into internal `DateValue` representation
@@ -47,7 +52,9 @@ const getNumberOfDays = (month: Month, year: number) => {
  * Get the internal representation of a date, given `date`, `month`, and `year`.
  */
 const getDay = (date: number, month: Month, year: number) =>
-  convertDate(new Date(`${date.toString().padStart(2, "0")} ${month} ${year}`));
+  convertDate(
+    new Date(`${padStart(date.toString(), 2, "0")} ${month} ${year}`)
+  );
 
 /**
  * Formats the date as "Day, Date Month Year".
@@ -116,9 +123,9 @@ export default function calendar(
   { month, year } = TODAY()
 ): StaticArray<DateValue, 7>[] {
   const monthDays = getNumberOfDays(month, year);
-  const thisMonthDates = new Array(monthDays)
-    .fill(0)
-    .map((_, i) => getDay(i + 1, month, year));
+  const thisMonthDates = map(fill(new Array(monthDays), 0), (_, i) =>
+    getDay(i + 1, month, year)
+  );
   const firstDay = thisMonthDates[0];
   const lastDay = thisMonthDates[monthDays - 1];
 
@@ -128,19 +135,20 @@ export default function calendar(
   // if firstDay is monday (1), take 1 day from previous month
   // and so on...
   const prevMonthTakenDays = DAYS.indexOf(firstDay.day);
-  const prevMonthDates = new Array(prevMonthTakenDays)
-    .fill(0)
-    .map((_, i) => getDay(prevMonthDays - i, prevMonth.month, prevMonth.year))
-    .reverse();
+  const prevMonthDates = reverse(
+    map(fill(new Array(prevMonthTakenDays), 0), (_, i) =>
+      getDay(prevMonthDays - i, prevMonth.month, prevMonth.year)
+    )
+  );
 
   const nextMonth = getNextMonth(month, year);
   // if lastday is sunday (0), take 6 days from next month
   // if lastday in monday (1), take 5 days from next month
   // and so on...
   const nextMonthTakenDays = 6 - DAYS.indexOf(lastDay.day);
-  const nextMonthDates = new Array(nextMonthTakenDays)
-    .fill(0)
-    .map((_, i) => getDay(i + 1, nextMonth.month, nextMonth.year));
+  const nextMonthDates = map(fill(new Array(nextMonthTakenDays), 0), (_, i) =>
+    getDay(i + 1, nextMonth.month, nextMonth.year)
+  );
 
   return chunk(
     prevMonthDates.concat(thisMonthDates).concat(nextMonthDates),

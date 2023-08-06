@@ -1,12 +1,13 @@
 import { useMemo, useState } from "react";
-import { type DateValue } from "~/constants/date.constant";
+import type { DateValue } from "~/constants/date.constant";
 import calendar, {
   TODAY,
   getNextMonth,
   getPreviousMonth,
   isSameMonth,
 } from "~/utils/date.util";
-import useCallback, { type Callback } from "../useCallback/useCallback.hook";
+import type { Callback } from "../useCallback/useCallback.hook";
+import useCallback from "../useCallback/useCallback.hook";
 
 type UseDatePickerProps = {
   onChange: Callback<(date: DateValue) => void>;
