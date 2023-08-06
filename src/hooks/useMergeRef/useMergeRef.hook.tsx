@@ -1,7 +1,10 @@
+import type { ForwardedRef, RefCallback } from "react";
+
 import every from "lodash/every";
 import forEach from "lodash/forEach";
 import isFunction from "lodash/isFunction";
-import { useMemo, type ForwardedRef, type RefCallback } from "react";
+import { useMemo } from "react";
+
 import useCallback from "../useCallback/useCallback.hook";
 
 export function resolveRef<T>(

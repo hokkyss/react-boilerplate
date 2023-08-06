@@ -1,9 +1,12 @@
 import type { Except } from "@hokkyss/composite-types";
 import type { VirtualElement } from "@popperjs/core";
 import type { HTMLAttributes, ReactNode } from "react";
+
 import { forwardRef, useMemo, useState } from "react";
 import { usePopper } from "react-popper";
+
 import useMergeRef from "~/hooks/useMergeRef/useMergeRef.hook";
+
 import Portal from "../Portal/Portal.atom";
 
 type UsePopper = typeof usePopper;

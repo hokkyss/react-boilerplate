@@ -5,8 +5,10 @@ import {
   prefixApi,
 } from "@zodios/core";
 import { z } from "zod";
-import userSchema from "~/schema/User.schema";
+
 import type { InferParams } from "~/types/endpoint";
+
+import userSchema from "~/schema/User.schema";
 
 // #region GET USERS
 

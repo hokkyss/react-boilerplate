@@ -1,5 +1,7 @@
-import { between } from "polished";
 import type { FunctionComponent } from "react";
+
+import { between } from "polished";
+
 import ReactLogo from "~/assets/react.svg";
 import ViteLogo from "~/assets/vite.svg";
 import Badge from "~/components/atoms/Badge/Badge.atom";
@@ -7,6 +9,7 @@ import Box from "~/components/atoms/Box/Box.atom";
 import Button from "~/components/atoms/Button/Button.atom";
 import Heading1 from "~/components/atoms/Text/Heading1.atom";
 import Tooltip from "~/components/atoms/Tooltip/Tooltip.atom";
+
 import { Link, Logo } from "./Home.component";
 import useHomeViewModel from "./Home.viewModel";
 

@@ -1,5 +1,7 @@
 import type { ErrorInfo, PropsWithChildren, ReactNode } from "react";
+
 import { Component } from "react";
+
 import Button from "~/components/atoms/Button/Button.atom";
 import Text from "~/components/atoms/Text/Text.atom";
 

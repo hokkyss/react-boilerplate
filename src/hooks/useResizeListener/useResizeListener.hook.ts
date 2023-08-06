@@ -1,5 +1,6 @@
 import forEach from "lodash/forEach";
 import { useEffect } from "react";
+
 import type { Callback } from "../useCallback/useCallback.hook";
 
 export default function useResizeListener(

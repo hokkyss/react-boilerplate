@@ -133,14 +133,14 @@
       "lodash/prefer-matches": "off",
       "lodash/matches-shorthand": "off",
       "lodash/matches-prop-shorthand": "off",
-      "perfectionist/sort-named-imports": "off",
-      "perfectionist/sort-imports": "off",
       "react/jsx-props-no-spreading": "off",
       "react/prop-types": "off",
       "react/require-default-props": "off",
       "react/sort-prop-types": "off",
       "react/jsx-sort-props": "off",
-      "no-param-reassign": "off"
+      "no-param-reassign": "off",
+      "sort-imports": "off",
+      "sort-keys": "off"
     },
     "ignorePatterns": [
       "dist/**"

@@ -1,6 +1,8 @@
 import { makeApi, makeEndpoint, prefixApi } from "@zodios/core";
 import { z } from "zod";
+
 import postSchema from "~/schema/Post.schema";
+
 import getPostById from "./:id";
 
 // #region GET POSTS

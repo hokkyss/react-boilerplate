@@ -1,6 +1,7 @@
 import createCssVarsProvider from "@mui/system/cssVars/createCssVarsProvider";
 import prepareCssVars from "@mui/system/cssVars/prepareCssVars";
 import constant from "lodash/constant";
+
 import envConfig from "~/configs/env/env.config";
 import themeConfig, { commonTheme } from "~/configs/theme/theme.config";
 

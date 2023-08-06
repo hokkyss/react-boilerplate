@@ -1,6 +1,7 @@
 import { hexToRgb } from "@mui/system";
 import createTheme from "@mui/system/createTheme";
 import { opacify, remToPx } from "polished";
+
 import colors from "~/constants/color.constant";
 
 export const commonTheme = createTheme({

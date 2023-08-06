@@ -1,5 +1,6 @@
-import styled from "@mui/system/styled";
 import type { HTMLMotionProps } from "framer-motion";
+
+import styled from "@mui/system/styled";
 import { m } from "framer-motion";
 import { padding, rgba } from "polished";
 

@@ -1,6 +1,7 @@
 import isUndefined from "lodash/isUndefined";
 import noop from "lodash/noop";
 import { useEffect, useState } from "react";
+
 import type { Callback } from "../useCallback/useCallback.hook";
 
 type BatteryState = {

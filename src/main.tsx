@@ -1,6 +1,7 @@
 import React, { Profiler } from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
+
 import AppContext from "./components/templates/AppContext/AppContext.template";
 import Container from "./components/templates/Container/Container.template";
 import envConfig from "./configs/env/env.config";

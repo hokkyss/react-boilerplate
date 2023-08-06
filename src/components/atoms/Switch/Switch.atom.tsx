@@ -1,10 +1,12 @@
+import type { ChangeEventHandler, FocusEventHandler } from "react";
+
 import useSwitch from "@mui/base/useSwitch";
 import styled from "@mui/system/styled";
 import constant from "lodash/constant";
 import { margin, padding, position, remToPx, size } from "polished";
-import type { ChangeEventHandler, FocusEventHandler } from "react";
 import { forwardRef, useMemo } from "react";
 import { z } from "zod";
+
 import useMergeRef from "~/hooks/useMergeRef/useMergeRef.hook";
 
 const switchPropsScheme = z.object({

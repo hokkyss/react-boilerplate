@@ -1,4 +1,5 @@
 import { setupServer } from "msw/node";
+
 import mockJsonPlaceholder from "~/services/jsonplaceholder/__mocks__/jsonplaceholder.api.mock";
 
 const server = setupServer(...mockJsonPlaceholder);

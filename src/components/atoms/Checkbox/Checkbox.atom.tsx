@@ -1,17 +1,19 @@
 import type { Except } from "@hokkyss/composite-types";
+import type {
+  AriaAttributes,
+  ChangeEventHandler,
+  InputHTMLAttributes,
+} from "react";
+
 import CheckedIcon from "@material-design-icons/svg/filled/check.svg";
 import IndeterminateIcon from "@material-design-icons/svg/filled/horizontal_rule.svg";
 import styled from "@mui/system/styled";
 import { m } from "framer-motion";
 import isUndefined from "lodash/isUndefined";
 import { margin, padding, position, size } from "polished";
-import type {
-  AriaAttributes,
-  ChangeEventHandler,
-  InputHTMLAttributes,
-} from "react";
 import { forwardRef, useMemo } from "react";
 import { z } from "zod";
+
 import useCallback from "~/hooks/useCallback/useCallback.hook";
 import useMergeRef from "~/hooks/useMergeRef/useMergeRef.hook";
 

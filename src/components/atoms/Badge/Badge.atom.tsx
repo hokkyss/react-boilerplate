@@ -1,7 +1,8 @@
+import type { ReactNode } from "react";
+
 import styled from "@mui/system/styled";
 import { m } from "framer-motion";
 import { position } from "polished";
-import type { ReactNode } from "react";
 import { forwardRef } from "react";
 
 type BadgeProps = {

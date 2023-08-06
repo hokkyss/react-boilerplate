@@ -1,5 +1,6 @@
-import assign from "lodash/assign";
 import type { DependencyList } from "react";
+
+import assign from "lodash/assign";
 import { useMemo, useCallback as useReactCallback } from "react";
 
 // Generalize all function types
