@@ -923,6 +923,11 @@
     "@svgr/hast-util-to-babel-ast" "^7.0.0"
     svg-parser "^2.0.4"
 
+"@swc-jotai/debug-label@^0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@swc-jotai/debug-label/-/debug-label-0.0.10.tgz#649914f907e50068fa1e4777ea03d9c4e0c5c327"
+  integrity sha512-qif8x3nuCf8umB5Cl641p1yto1hoEV3YD8F5NnhttmTUXCmnZMlgA/ql0pjoKCBJtqCCYasm0E+zj+IED5frDg==
+
 "@swc/core-darwin-arm64@1.3.50":
   version "1.3.50"
   resolved "https://registry.yarnpkg.com/@swc/core-darwin-arm64/-/core-darwin-arm64-1.3.50.tgz#d665b79dc308dda2d250e44461edc7f7bb091f5e"

@@ -13,15 +13,15 @@ const viteConfig = defineConfig({
     svgr({
       exportAsDefault: true,
       svgrOptions: {
-        ref: true,
-        exportType: "default",
-        expandProps: true,
         dimensions: false,
+        expandProps: true,
+        exportType: "default",
+        ref: true,
         svgProps: {
-          role: "img",
           className: "{props.className ?? props.class ?? undefined}",
-          fill: "{props.fill ?? 'currentColor'}",
           color: "{props.color ?? 'currentColor'}",
+          fill: "{props.fill ?? 'currentColor'}",
+          role: "img",
         },
         svgo: true,
         svgoConfig: {
@@ -40,7 +40,9 @@ const viteConfig = defineConfig({
         },
       },
     }),
-    react(),
+    react({
+      plugins: [["@swc-jotai/debug-label", {}]],
+    }),
   ],
 });
 
