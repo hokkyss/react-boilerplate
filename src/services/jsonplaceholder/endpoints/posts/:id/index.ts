@@ -1,7 +1,7 @@
+import type { InferParams } from "~/types/endpoint";
+
 import { makeEndpoint, parametersBuilder } from "@zodios/core";
 import { z } from "zod";
-
-import type { InferParams } from "~/types/endpoint";
 
 import postSchema from "~/schema/Post.schema";
 

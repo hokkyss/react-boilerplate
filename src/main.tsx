@@ -1,3 +1,5 @@
+import "./index.css";
+
 import React, { Profiler } from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
@@ -6,7 +8,6 @@ import AppContext from "./components/templates/AppContext/AppContext.template";
 import Container from "./components/templates/Container/Container.template";
 import envConfig from "./configs/env/env.config";
 import routerConfig from "./configs/router/router.config";
-import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement, {
   identifierPrefix: envConfig.identifierPrefix,

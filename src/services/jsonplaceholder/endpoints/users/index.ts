@@ -1,3 +1,5 @@
+import type { InferParams } from "~/types/endpoint";
+
 import {
   makeApi,
   makeEndpoint,
@@ -5,8 +7,6 @@ import {
   prefixApi,
 } from "@zodios/core";
 import { z } from "zod";
-
-import type { InferParams } from "~/types/endpoint";
 
 import userSchema from "~/schema/User.schema";
 

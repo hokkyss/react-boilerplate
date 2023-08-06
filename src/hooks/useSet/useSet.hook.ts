@@ -1,6 +1,6 @@
-import { useMemo, useState } from "react";
-
 import type { Callback } from "../useCallback/useCallback.hook";
+
+import { useMemo, useState } from "react";
 
 import useCallback from "../useCallback/useCallback.hook";
 

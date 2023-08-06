@@ -1,7 +1,7 @@
+import type { Callback } from "../useCallback/useCallback.hook";
+
 import isUndefined from "lodash/isUndefined";
 import { useEffect, useState } from "react";
-
-import type { Callback } from "../useCallback/useCallback.hook";
 
 /**
  * Provides information about the connection a device is using to communicate with the network.

@@ -130,9 +130,34 @@
       ],
       "import/extensions": "off",
       "import/no-extraneous-dependencies": "off",
+      "import/order": "off",
       "lodash/prefer-matches": "off",
       "lodash/matches-shorthand": "off",
       "lodash/matches-prop-shorthand": "off",
+      "perfectionist/sort-imports": [
+        "error",
+        {
+          "groups": [
+            "side-effect",
+            [
+              "type",
+              "builtin-type",
+              "external-type"
+            ],
+            "internal-type",
+            "parent-type",
+            "sibling-type",
+            [
+              "builtin",
+              "external"
+            ],
+            "internal",
+            "parent",
+            "sibling",
+            "unknown"
+          ]
+        }
+      ],
       "react/jsx-props-no-spreading": "off",
       "react/prop-types": "off",
       "react/require-default-props": "off",

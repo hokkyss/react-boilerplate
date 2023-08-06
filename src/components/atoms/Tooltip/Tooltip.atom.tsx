@@ -1,6 +1,8 @@
 import type { Placement } from "@popperjs/core";
 import type { ReactElement, ReactNode } from "react";
 
+import type { PopperProps } from "../Popper/Popper.atom";
+
 import styled from "@mui/system/styled";
 import useTheme from "@mui/system/useTheme";
 import { m } from "framer-motion";
@@ -8,8 +10,6 @@ import { padding, size, wordWrap } from "polished";
 import { memo, useId, useState } from "react";
 
 import useToggle from "~/hooks/useToggle/useToggle.hook";
-
-import type { PopperProps } from "../Popper/Popper.atom";
 
 import Popper from "../Popper/Popper.atom";
 

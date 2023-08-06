@@ -1,6 +1,6 @@
-import { useEffect } from "react";
-
 import type { Callback } from "../useCallback/useCallback.hook";
+
+import { useEffect } from "react";
 
 export default function useInterval(
   callback: Callback<() => void>,
