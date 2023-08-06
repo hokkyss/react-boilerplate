@@ -6,10 +6,10 @@ exports[`Home View > should match snapshot 1`] = `
   "baseElement": <body>
     <div>
       <div
-        class="css-wzat2l-Box"
+        class="css-1340kk0-Box"
       >
         <div
-          class="css-biheva-Box"
+          class="css-1wzztpz-Box"
         >
           <div
             aria-describedby=":r0:"
@@ -84,7 +84,7 @@ exports[`Home View > should match snapshot 1`] = `
                 </svg>
               </a>
               <span
-                class="css-ujj9dp-BadgeContent"
+                class="css-q2dtop-BadgeContent"
               >
                 500
               </span>
@@ -120,26 +120,26 @@ exports[`Home View > should match snapshot 1`] = `
           </div>
         </div>
         <h1
-          class="css-zlt1rs-Heading1"
+          class="css-e9l98l-Heading1"
         >
           Vite + React
         </h1>
         <button
-          class="css-jw8g5o-Button"
+          class="css-vituu8-Button"
           type="button"
           variant="outlined"
         >
           Toggle mode
         </button>
         <button
-          class="css-1hvydna-Button"
+          class="css-wq0vla-Button"
           type="button"
           variant="text"
         >
           Toggle mode
         </button>
         <button
-          class="css-fh21nr-Button"
+          class="css-1r2538z-Button"
           type="button"
           variant="solid"
         >
@@ -150,10 +150,10 @@ exports[`Home View > should match snapshot 1`] = `
   </body>,
   "container": <div>
     <div
-      class="css-wzat2l-Box"
+      class="css-1340kk0-Box"
     >
       <div
-        class="css-biheva-Box"
+        class="css-1wzztpz-Box"
       >
         <div
           aria-describedby=":r0:"
@@ -228,7 +228,7 @@ exports[`Home View > should match snapshot 1`] = `
               </svg>
             </a>
             <span
-              class="css-ujj9dp-BadgeContent"
+              class="css-q2dtop-BadgeContent"
             >
               500
             </span>
@@ -264,26 +264,26 @@ exports[`Home View > should match snapshot 1`] = `
         </div>
       </div>
       <h1
-        class="css-zlt1rs-Heading1"
+        class="css-e9l98l-Heading1"
       >
         Vite + React
       </h1>
       <button
-        class="css-jw8g5o-Button"
+        class="css-vituu8-Button"
         type="button"
         variant="outlined"
       >
         Toggle mode
       </button>
       <button
-        class="css-1hvydna-Button"
+        class="css-wq0vla-Button"
         type="button"
         variant="text"
       >
         Toggle mode
       </button>
       <button
-        class="css-fh21nr-Button"
+        class="css-1r2538z-Button"
         type="button"
         variant="solid"
       >

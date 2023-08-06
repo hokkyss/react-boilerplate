@@ -1,14 +1,16 @@
-import { useEffect, useMemo } from "react";
 import isEqual from "lodash/isEqual";
+import { useEffect, useMemo } from "react";
 
 type PromiseCache = {
-  promise: Promise<void>;
-  key: string;
   /* eslint-disable @typescript-eslint/no-explicit-any */
-  resp?: any;
   args: any[];
   /* eslint-enable @typescript-eslint/no-explicit-any */
   err?: Error;
+  key: string;
+  promise: Promise<void>;
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  resp?: any;
+  /* eslint-enable @typescript-eslint/no-explicit-any */
 };
 
 const caches: PromiseCache[] = [];

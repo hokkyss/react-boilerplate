@@ -1,5 +1,5 @@
 import { between } from "polished";
-import { FunctionComponent } from "react";
+import { type FunctionComponent } from "react";
 import ReactLogo from "~/assets/react.svg";
 import ViteLogo from "~/assets/vite.svg";
 import Badge from "~/components/atoms/Badge/Badge.atom";
@@ -16,15 +16,15 @@ const HomeView: FunctionComponent = function HomeView() {
   return (
     <Box sx={{ fontSize: between("14px", "20px", "400px", "1000px") }}>
       <Box sx={{ display: "flex", justifyContent: "center" }}>
-        <Tooltip placement="left" content="Vite Logo">
+        <Tooltip content="Vite Logo" placement="left">
           <Badge content={500}>
-            <Link href="https://vitejs.dev" target="_blank" rel="noreferrer">
+            <Link href="https://vitejs.dev" rel="noreferrer" target="_blank">
               <Logo as={ViteLogo} />
             </Link>
           </Badge>
         </Tooltip>
-        <Tooltip placement="right" content="halo saya disini">
-          <Link href="https://reactjs.org" target="_blank" rel="noreferrer">
+        <Tooltip content="halo saya disini" placement="right">
+          <Link href="https://reactjs.org" rel="noreferrer" target="_blank">
             <Logo as={ReactLogo} spin />
           </Link>
         </Tooltip>

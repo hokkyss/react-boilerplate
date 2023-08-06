@@ -1,9 +1,9 @@
-import React from "react";
+import { type PropsWithChildren } from "react";
 import Button from "~/components/atoms/Button/Button.atom";
 import Text from "~/components/atoms/Text/Text.atom";
 
-type ErrorBoundaryProps = Props<React.PropsWithChildren>;
-type ErrorBoundaryState = { hasError: boolean; errorMessage: string };
+type ErrorBoundaryProps = Props<PropsWithChildren>;
+type ErrorBoundaryState = { errorMessage: string; hasError: boolean };
 
 export default class ErrorBoundary extends React.Component<
   ErrorBoundaryProps,
@@ -11,28 +11,28 @@ export default class ErrorBoundary extends React.Component<
 > {
   constructor(props: ErrorBoundaryProps) {
     super(props);
-    this.state = { hasError: false, errorMessage: "" };
+    this.state = { errorMessage: "", hasError: false };
   }
 
   static getDerivedStateFromError(error: Error): ErrorBoundaryState {
-    return { hasError: true, errorMessage: error.message };
+    return { errorMessage: error.message, hasError: true };
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    this.setState({ hasError: true, errorMessage: error.message });
+    this.setState({ errorMessage: error.message, hasError: true });
     console.error("an error happened", error, errorInfo.componentStack);
   }
 
   render(): React.ReactNode {
     const { children, className, sx } = this.props;
-    const { hasError, errorMessage } = this.state;
+    const { errorMessage, hasError } = this.state;
 
     if (hasError) {
       return (
         <Button
           className={className}
-          sx={sx}
           onClick={window.location.reload}
+          sx={sx}
           type="button"
         >
           <Text>{errorMessage}</Text>

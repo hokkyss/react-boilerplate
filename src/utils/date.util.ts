@@ -1,16 +1,16 @@
-import { StaticArray } from "@hokkyss/composite-types";
+import { type StaticArray } from "@hokkyss/composite-types";
 import chunk from "lodash/chunk";
-import { DAYS, DateValue, MONTHS, Month } from "~/constants/date.constant";
+import { DAYS, MONTHS, Month, type DateValue } from "~/constants/date.constant";
 
 /**
  * Convert a date into internal `DateValue` representation
  * @returns {DateValue}
  */
 const convertDate = (date: Date): DateValue => ({
-  year: date.getFullYear(),
-  month: MONTHS[date.getMonth()],
   date: date.getDate(),
   day: DAYS[date.getDay()],
+  month: MONTHS[date.getMonth()],
+  year: date.getFullYear(),
 });
 
 /**

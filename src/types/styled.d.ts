@@ -1,6 +1,9 @@
 declare module "@mui/system/styled" {
-  import { CreateMUIStyled } from "@mui/styled-engine";
-  import { MUIStyledCommonProps, MuiStyledOptions } from "@mui/system";
+  import { type CreateMUIStyled } from "@mui/styled-engine";
+  import {
+    type MUIStyledCommonProps,
+    type MuiStyledOptions,
+  } from "@mui/system";
 
   const styled: CreateMUIStyled<
     MUIStyledCommonProps<ITheme>,

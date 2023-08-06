@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Callback } from "../useCallback/useCallback.hook";
+import { type Callback } from "../useCallback/useCallback.hook";
 
 type BatteryState = {
   /**
@@ -36,14 +36,14 @@ const nav: NavigatorWithGetBattery | undefined =
   typeof navigator !== "undefined" ? navigator : undefined;
 
 export type Battery =
+  | { isFetched: false; isSupported: true }
   | { isSupported: false }
-  | { isSupported: true; isFetched: false }
-  | (BatteryState & { isSupported: true; isFetched: true });
+  | (BatteryState & { isFetched: true; isSupported: true });
 
 function useBattery(): Battery {
   const [battery, setBattery] = useState<Battery>({
-    isSupported: true,
     isFetched: false,
+    isSupported: true,
   });
   const [batteryManager, setBatteryManager] = useState<BatteryManager>();
 
@@ -72,9 +72,9 @@ function useBattery(): Battery {
         charging: batteryManager.charging,
         chargingTime: batteryManager.chargingTime,
         dischargingTime: batteryManager.dischargingTime,
-        level: batteryManager.level,
         isFetched: true,
         isSupported: true,
+        level: batteryManager.level,
       }));
     };
 

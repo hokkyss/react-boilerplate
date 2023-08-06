@@ -6,67 +6,67 @@ type Theme = import("@mui/system/createTheme").Theme;
 type ThemeOptions = import("@mui/system/createTheme").ThemeOptions;
 
 type ZIndexTypes =
-  | "mobileStepper"
-  | "fab"
-  | "speedDial"
   | "appBar"
   | "drawer"
+  | "fab"
+  | "mobileStepper"
   | "modal"
   | "snackbar"
+  | "speedDial"
   | "tooltip";
 
 declare interface CustomTheme extends Theme {
+  colors: Colors;
+  palette: Palette;
   radius: {
+    full: NonNullable<CSSProperties["borderRadius"]>;
+    lg: NonNullable<CSSProperties["borderRadius"]>;
+    md: NonNullable<CSSProperties["borderRadius"]>;
     none: NonNullable<CSSProperties["borderRadius"]>;
     sm: NonNullable<CSSProperties["borderRadius"]>;
-    md: NonNullable<CSSProperties["borderRadius"]>;
-    lg: NonNullable<CSSProperties["borderRadius"]>;
     xl: NonNullable<CSSProperties["borderRadius"]>;
-    full: NonNullable<CSSProperties["borderRadius"]>;
   };
-  palette: Palette;
-  colors: Colors;
   shadows: string[];
+  transitions: NonNullable<CustomThemeOptions["transitions"]>;
   typography: Typography;
   zIndex: Record<ZIndexTypes, number>;
-  transitions: NonNullable<CustomThemeOptions["transitions"]>;
 }
 
 declare interface CustomThemeOptions extends ThemeOptions {
+  colors: Colors;
+  palette?: Palette;
   radius: {
+    full: NonNullable<CSSProperties["borderRadius"]>;
+    lg: NonNullable<CSSProperties["borderRadius"]>;
+    md: NonNullable<CSSProperties["borderRadius"]>;
     none: NonNullable<CSSProperties["borderRadius"]>;
     sm: NonNullable<CSSProperties["borderRadius"]>;
-    md: NonNullable<CSSProperties["borderRadius"]>;
-    lg: NonNullable<CSSProperties["borderRadius"]>;
-    full: NonNullable<CSSProperties["borderRadius"]>;
   };
-  palette?: Palette;
-  colors: Colors;
   shadows?: string[];
-  typography?: Typography;
-  zIndex?: Record<ZIndexTypes, number>;
   transitions?: {
-    easing: {
-      easeInOut: string;
-      easeOut: string;
-      easeIn: string;
-      sharp: string;
-    };
     duration: {
-      shortest: number;
-      shorter: number;
-      short: number;
-      standard: number;
       complex: number;
       enteringScreen: number;
       leavingScreen: number;
+      short: number;
+      shorter: number;
+      shortest: number;
+      standard: number;
+    };
+    easing: {
+      easeIn: string;
+      easeInOut: string;
+      easeOut: string;
+      sharp: string;
     };
   };
+  typography?: Typography;
+  zIndex?: Record<ZIndexTypes, number>;
 }
 
 type ColorSchemes = {
-  light: CustomTheme;
   dark: CustomTheme;
+  light: CustomTheme;
 };
 
 type PrepareCSSVars<
@@ -76,15 +76,15 @@ type PrepareCSSVars<
 
 declare type ITheme = CustomTheme & {
   colorSchemes: ColorSchemes;
+  generateCssVars: ReturnType<
+    PrepareCSSVars<{ colorSchemes: ColorSchemes }, CustomTheme>
+  >["generateCssVars"];
   palette: {
     colorScheme: PaletteMode;
   } & Palette;
   vars: ReturnType<
     PrepareCSSVars<{ colorSchemes: ColorSchemes }, CustomTheme>
   >["vars"];
-  generateCssVars: ReturnType<
-    PrepareCSSVars<{ colorSchemes: ColorSchemes }, CustomTheme>
-  >["generateCssVars"];
 };
 
 declare module "@mui/system/useTheme" {

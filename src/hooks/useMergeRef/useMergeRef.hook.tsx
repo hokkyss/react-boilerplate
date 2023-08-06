@@ -1,4 +1,4 @@
-import { ForwardedRef, RefCallback, useMemo } from "react";
+import { useMemo, type ForwardedRef, type RefCallback } from "react";
 import useCallback from "../useCallback/useCallback.hook";
 
 export function resolveRef<T>(

@@ -1,11 +1,11 @@
-import { Except } from "@hokkyss/composite-types";
-import { VirtualElement } from "@popperjs/core";
+import { type Except } from "@hokkyss/composite-types";
+import { type VirtualElement } from "@popperjs/core";
 import {
-  HTMLAttributes,
-  ReactNode,
   forwardRef,
   useMemo,
   useState,
+  type HTMLAttributes,
+  type ReactNode,
 } from "react";
 import { usePopper } from "react-popper";
 import useMergeRef from "~/hooks/useMergeRef/useMergeRef.hook";
@@ -15,25 +15,25 @@ type UsePopper = typeof usePopper;
 type PopperOptions = Parameters<UsePopper>[2];
 
 export type PopperProps = PopperOptions & {
-  referenceElement?: Element | VirtualElement | null;
   children: ReactNode;
   open: boolean;
   portalContainer?: HTMLElement;
+  referenceElement?: Element | VirtualElement | null;
 } & Except<HTMLAttributes<HTMLDivElement>, "children">;
 
 const Popper = forwardRef<HTMLDivElement, Props<PopperProps>>(
   (props, forwardedRef) => {
     const {
-      className,
-      referenceElement,
       children,
-      open,
-      portalContainer = document.body,
-      placement,
-      strategy,
+      className,
       createPopper,
-      onFirstUpdate,
       modifiers,
+      onFirstUpdate,
+      open,
+      placement,
+      portalContainer = document.body,
+      referenceElement,
+      strategy,
       ...rest
     } = props;
 
@@ -44,10 +44,7 @@ const Popper = forwardRef<HTMLDivElement, Props<PopperProps>>(
 
     const resolvedPopperOptions = useMemo<PopperOptions>(
       () => ({
-        placement,
-        strategy,
         createPopper,
-        onFirstUpdate,
         modifiers: [
           {
             name: "preventOverflow",
@@ -63,6 +60,9 @@ const Popper = forwardRef<HTMLDivElement, Props<PopperProps>>(
           },
           ...(modifiers ?? []),
         ],
+        onFirstUpdate,
+        placement,
+        strategy,
       }),
       [createPopper, modifiers, onFirstUpdate, placement, strategy]
     );
@@ -80,8 +80,8 @@ const Popper = forwardRef<HTMLDivElement, Props<PopperProps>>(
     return (
       <Portal container={portalContainer}>
         <div
-          ref={popperElementRef}
           className={className}
+          ref={popperElementRef}
           {...popper.attributes.popper}
           style={popper.styles.popper}
           {...rest}

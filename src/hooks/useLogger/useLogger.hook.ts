@@ -6,7 +6,7 @@
 import noop from "lodash/noop";
 import { useMemo } from "react";
 
-type Logger = Pick<Console, "log" | "warn" | "debug" | "error" | "info">;
+type Logger = Pick<Console, "debug" | "error" | "info" | "log" | "warn">;
 
 export default function useLogger() {
   const log = useMemo(() => (import.meta.env.DEV ? console.log : noop), []);
@@ -20,7 +20,7 @@ export default function useLogger() {
   const info = useMemo(() => (import.meta.env.DEV ? console.info : noop), []);
 
   const logger = useMemo<Logger>(
-    () => ({ log, warn, debug, error, info }),
+    () => ({ debug, error, info, log, warn }),
     [debug, error, info, log, warn]
   );
 

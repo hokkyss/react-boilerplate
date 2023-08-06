@@ -2,10 +2,10 @@ import useSwitch from "@mui/base/useSwitch";
 import styled from "@mui/system/styled";
 import { margin, padding, position, remToPx, size } from "polished";
 import {
-  ChangeEventHandler,
-  FocusEventHandler,
   forwardRef,
   useMemo,
+  type ChangeEventHandler,
+  type FocusEventHandler,
 } from "react";
 import { z } from "zod";
 import useMergeRef from "~/hooks/useMergeRef/useMergeRef.hook";
@@ -36,26 +36,26 @@ type SwitchProps = SwitchPropsValue & {
 };
 
 const SwitchRoot = styled("span", {
-  shouldForwardProp: () => true,
   label: "SwitchRoot",
-})<{ disabled?: boolean; checked?: boolean }>(
+  shouldForwardProp: () => true,
+})<{ checked?: boolean; disabled?: boolean }>(
   ({ theme }) => ({
     ...padding(theme.spacing(0.5)),
     ...size(remToPx(1), remToPx(2.5)),
-    fontSize: 0,
-    position: "relative",
-    display: "inline-block",
-    cursor: "pointer",
-    borderRadius: theme.vars.radius.xl,
     backgroundColor:
       theme.palette.mode === "dark"
         ? theme.vars.colors.gray[600]
         : theme.vars.colors.gray[400],
+    borderRadius: theme.vars.radius.xl,
+    cursor: "pointer",
+    display: "inline-block",
+    fontSize: 0,
+    position: "relative",
   }),
   ({ disabled, theme }) =>
     disabled && {
-      opacity: theme.vars.palette.action.disabledOpacity,
       cursor: "not-allowed",
+      opacity: theme.vars.palette.action.disabledOpacity,
     },
   ({ checked, theme }) =>
     checked && { backgroundColor: theme.vars.palette.primary.main }
@@ -71,23 +71,23 @@ const SwitchInput = styled("input", { label: "Switch" })(() => ({
 }));
 
 const SwitchThumb = styled("span", {
-  shouldForwardProp: (name) => name !== "focusVisible",
   label: "SwitchThumb",
-})<{ focusVisible?: boolean; checked: boolean }>(
+  shouldForwardProp: (name) => name !== "focusVisible",
+})<{ checked: boolean; focusVisible?: boolean }>(
   ({ theme }) => ({
-    display: "block",
     aspectRatio: "1 / 1",
-    height: "100%",
     boxSizing: "border-box",
+    display: "block",
+    height: "100%",
     ...position("relative"),
-    transitionTimingFunction: theme.vars.transitions.easing.easeInOut,
-    transitionProperty: "all",
-    transitionDuration: `${theme.transitions.duration.shortest}ms`,
-    marginTop: "auto",
-    marginBottom: "auto",
-    borderRadius: theme.vars.radius.xl,
     backgroundColor: theme.vars.palette.common.white,
+    borderRadius: theme.vars.radius.xl,
     boxShadow: theme.vars.shadows[5],
+    marginBottom: "auto",
+    marginTop: "auto",
+    transitionDuration: `${theme.transitions.duration.shortest}ms`,
+    transitionProperty: "all",
+    transitionTimingFunction: theme.vars.transitions.easing.easeInOut,
   }),
   ({ checked }) =>
     checked
@@ -105,12 +105,12 @@ const SwitchThumb = styled("span", {
 const Switch = forwardRef<HTMLInputElement, Props<SwitchProps>>(
   (props, ref) => {
     const {
+      className,
       onBlur,
       onChange,
       onFocus,
       onFocusVisible,
       sx,
-      className,
       ...rest
     } = props;
 
@@ -134,23 +134,23 @@ const Switch = forwardRef<HTMLInputElement, Props<SwitchProps>>(
 
     return (
       <SwitchRoot
-        sx={sx}
-        className={className}
-        checked={switchLogic.checked}
-        disabled={switchLogic.disabled}
         aria-atomic
-        aria-current={switchLogic.checked}
         aria-checked={switchLogic.checked}
-        aria-pressed={switchLogic.checked}
-        aria-relevant="all"
+        aria-current={switchLogic.checked}
         aria-disabled={switchLogic.disabled}
-        aria-readonly={switchLogic.readOnly}
-        aria-required={parsedProps.data.required}
         aria-orientation="horizontal"
+        aria-pressed={switchLogic.checked}
+        aria-readonly={switchLogic.readOnly}
+        aria-relevant="all"
+        aria-required={parsedProps.data.required}
+        checked={switchLogic.checked}
+        className={className}
+        disabled={switchLogic.disabled}
+        sx={sx}
       >
         <SwitchThumb
-          focusVisible={switchLogic.focusVisible}
           checked={switchLogic.checked}
+          focusVisible={switchLogic.focusVisible}
         />
         <SwitchInput {...switchLogic.getInputProps()} ref={mergedRef} />
       </SwitchRoot>

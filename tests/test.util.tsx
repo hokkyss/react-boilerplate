@@ -1,16 +1,16 @@
 import { CacheProvider } from "@emotion/react";
-import { Except } from "@hokkyss/composite-types";
+import { type Except } from "@hokkyss/composite-types";
 import { QueryClientProvider } from "@tanstack/react-query";
 import {
-  Queries,
-  RenderHookOptions,
-  RenderOptions,
-  queries,
   render,
   renderHook,
+  type Queries,
+  type RenderHookOptions,
+  type RenderOptions,
+  type queries,
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { FC, PropsWithChildren, ReactElement } from "react";
+import { type FC, type PropsWithChildren, type ReactElement } from "react";
 import CssVarsProvider from "~/components/contexts/Theme/Theme.context";
 import emotionCache from "~/configs/emotion/emotion.config";
 import queryClient from "~/configs/react-query/react-query.config";
@@ -27,8 +27,8 @@ const Wrapper: FC<PropsWithChildren> = function Wrapper({ children }) {
 
 const customRender = <
   Q extends Queries = typeof queries,
-  Container extends Element | DocumentFragment = HTMLElement,
-  BaseElement extends Element | DocumentFragment = Container
+  Container extends DocumentFragment | Element = HTMLElement,
+  BaseElement extends DocumentFragment | Element = Container
 >(
   ui: ReactElement,
   options: Except<RenderOptions<Q, Container, BaseElement>, "wrapper"> = {}
@@ -44,8 +44,8 @@ const customRenderHook = <
   Result,
   Props,
   Q extends Queries = typeof queries,
-  Container extends Element | DocumentFragment = HTMLElement,
-  BaseElement extends Element | DocumentFragment = Container
+  Container extends DocumentFragment | Element = HTMLElement,
+  BaseElement extends DocumentFragment | Element = Container
 >(
   renderFunc: (initialProps: Props) => Result,
   options?: Except<

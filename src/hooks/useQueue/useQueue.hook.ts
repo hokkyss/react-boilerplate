@@ -1,10 +1,10 @@
 import { useMemo, useState } from "react";
-import useCallback, { Callback } from "../useCallback/useCallback.hook";
+import useCallback, { type Callback } from "../useCallback/useCallback.hook";
 
 export type Queue<T> = {
-  push: Callback<(item: T) => void>;
-  pop: Callback<() => void>;
   front: T;
+  pop: Callback<() => void>;
+  push: Callback<(item: T) => void>;
   size: number;
 };
 
@@ -21,5 +21,5 @@ export default function useQueue<T>(): Queue<T> {
   const front = useMemo(() => state[0], [state]);
   const size = useMemo(() => state.length, [state.length]);
 
-  return { push, pop, front, size };
+  return { front, pop, push, size };
 }

@@ -1,7 +1,7 @@
 import { makeEndpoint, parametersBuilder } from "@zodios/core";
 import { z } from "zod";
 import postSchema from "~/schema/Post.schema";
-import { InferParams } from "~/types/endpoint";
+import { type InferParams } from "~/types/endpoint";
 
 // #region PARAMS AND QUERIES
 export const getPostByIdParams = {
@@ -18,10 +18,10 @@ export type GetPostByIdResponse = z.infer<typeof getPostByIdResponse>;
 // #region ENDPOINT
 const getPostById = makeEndpoint({
   alias: "getPostById",
-  path: "/:id",
   method: "get",
-  response: getPostByIdResponse,
   parameters: parametersBuilder().addPaths(getPostByIdParams).build(),
+  path: "/:id",
+  response: getPostByIdResponse,
   status: 200,
 });
 // #endregion ENDPOINT

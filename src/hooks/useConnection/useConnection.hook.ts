@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Callback } from "../useCallback/useCallback.hook";
+import { type Callback } from "../useCallback/useCallback.hook";
 
 /**
  * Provides information about the connection a device is using to communicate with the network.
@@ -22,7 +22,7 @@ type NetworkInformationAttributes = {
    * This property is determined by using a combination of recently observeed, rount-trip time and downlink values.
    * @experimental
    */
-  effectiveType: "slow-2g" | "2g" | "3g" | "4g";
+  effectiveType: "2g" | "3g" | "4g" | "slow-2g";
 
   /**
    * Estimated effective round-trip time of the current connection, rounded to the nearest multiple of 25ms
@@ -46,10 +46,10 @@ type NetworkInformationAttributes = {
     | "cellular"
     | "ethernet"
     | "none"
-    | "wifi"
-    | "wimax"
     | "other"
-    | "unknown";
+    | "unknown"
+    | "wifi"
+    | "wimax";
 };
 
 type NetworkInformationEvents = {
@@ -74,8 +74,8 @@ export type Connection = { online: boolean } & (
 
 export default function useConnection(): Connection {
   const [connectionState, setConnectionState] = useState<Connection>({
-    online: !!nav?.onLine,
     isSupported: true,
+    online: !!nav?.onLine,
   });
 
   /* eslint-disable consistent-return */
@@ -98,10 +98,10 @@ export default function useConnection(): Connection {
     const stateHandler = () =>
       setConnectionState((prev) => ({
         ...prev,
-        isSupported: true,
         downlink: conn.downlink,
         downlinkMax: conn.downlinkMax,
         effectiveType: conn.effectiveType,
+        isSupported: true,
         rtt: conn.rtt,
         saveData: conn.saveData,
         type: conn.type,

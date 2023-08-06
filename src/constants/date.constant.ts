@@ -1,11 +1,11 @@
 export enum Day {
-  SUNDAY = "Sun",
+  FRIDAY = "Fri",
   MONDAY = "Mon",
+  SATURDAY = "Sat",
+  SUNDAY = "Sun",
+  THURSDAY = "Thu",
   TUESDAY = "Tue",
   WEDNESDAY = "Wed",
-  THURSDAY = "Thu",
-  FRIDAY = "Fri",
-  SATURDAY = "Sat",
 }
 
 export const DAYS = [
@@ -19,18 +19,18 @@ export const DAYS = [
 ];
 
 export enum Month {
-  JANUARY = "Jan",
-  FEBRUARY = "Feb",
-  MARCH = "Mar",
   APRIL = "Apr",
-  MAY = "May",
-  JUNE = "Jun",
-  JULY = "Jul",
   AUGUST = "Aug",
-  SEPTEMBER = "Sep",
-  OCTOBER = "Oct",
-  NOVEMBER = "Nov",
   DECEMBER = "Dec",
+  FEBRUARY = "Feb",
+  JANUARY = "Jan",
+  JULY = "Jul",
+  JUNE = "Jun",
+  MARCH = "Mar",
+  MAY = "May",
+  NOVEMBER = "Nov",
+  OCTOBER = "Oct",
+  SEPTEMBER = "Sep",
 }
 
 export const MONTHS = [
@@ -51,8 +51,8 @@ export const MONTHS = [
 export const CALENDAR_WEEKS_COUNT = 6;
 
 export type DateValue = {
-  year: number;
-  month: Month;
   date: number;
   day: Day;
+  month: Month;
+  year: number;
 };

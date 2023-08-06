@@ -1,4 +1,4 @@
-import { SnakeToCamelCase } from "@hokkyss/composite-types";
+import { type SnakeToCamelCase } from "@hokkyss/composite-types";
 
 type EnvConfig = {
   [Key in keyof ImportMetaEnv as Key extends `VITE_${infer EnvName}`

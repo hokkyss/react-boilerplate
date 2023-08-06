@@ -29,10 +29,10 @@ type LogoProps = {
   spin?: boolean;
 };
 export const Logo = styled(m.svg, {
-  shouldForwardProp: isValidMotionProp,
-  name: "Logo",
   label: "Logo",
-})<LogoProps>(({ theme, spin }) => ({
+  name: "Logo",
+  shouldForwardProp: isValidMotionProp,
+})<LogoProps>(({ spin, theme }) => ({
   ...padding(theme.spacing(1)),
   ...size(100, 100),
   animation: spin ? `${spinningLogoKeyframes} 2s linear infinite` : undefined,

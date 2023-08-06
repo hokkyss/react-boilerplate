@@ -1,11 +1,11 @@
-import { Except } from "@hokkyss/composite-types";
+import { type Except } from "@hokkyss/composite-types";
 import useInput from "@mui/base/useInput";
-import { SxProps } from "@mui/system";
+import { type SxProps } from "@mui/system";
 import styled from "@mui/system/styled";
 import useTheme from "@mui/system/useTheme";
-import { HTMLMotionProps, m } from "framer-motion";
+import { m, type HTMLMotionProps } from "framer-motion";
 import { borderRadius, margin, padding } from "polished";
-import { InputHTMLAttributes, forwardRef, useId, useMemo } from "react";
+import { forwardRef, useId, useMemo, type InputHTMLAttributes } from "react";
 import useMergeRef from "~/hooks/useMergeRef/useMergeRef.hook";
 import Text from "../Text/Text.atom";
 
@@ -29,13 +29,13 @@ import Text from "../Text/Text.atom";
 
 type InputProps = Except<
   InputHTMLAttributes<HTMLInputElement>,
-  "type" | "id" | "defaultValue" | "defaultChecked"
+  "defaultChecked" | "defaultValue" | "id" | "type"
 > & {
-  label?: string;
-  inputRef?: React.Ref<HTMLInputElement>;
-  placeholder: string;
-  error?: string;
   containerStyle?: SxProps<ITheme>;
+  error?: string;
+  inputRef?: React.Ref<HTMLInputElement>;
+  label?: string;
+  placeholder: string;
 } & HTMLMotionProps<"input">;
 
 const InputContainer = styled(m.div, { label: "InputContainer" })`
@@ -52,20 +52,20 @@ const StyledInput = styled(m.input, {
   ...borderRadius("bottom", theme.vars.radius.md),
   ...padding(theme.spacing(2), theme.spacing(2)),
   ...theme.vars.typography.body1,
-  color: theme.vars.palette.text.primary,
-  transitionProperty: "all",
-  transitionTimingFunction: theme.vars.transitions.easing.sharp,
-  transitionDuration: `${theme.transitions.duration.standard}ms`,
-  backgroundColor: theme.vars.palette.background.default,
-  borderWidth: 1,
-  outlineWidth: 2,
-  outlineColor: theme.vars.palette.primary.main,
-  ":hover": {
-    borderColor: theme.vars.palette.primary.main,
-  },
   ":active": {
     borderColor: theme.vars.palette.primary.main,
   },
+  ":hover": {
+    borderColor: theme.vars.palette.primary.main,
+  },
+  backgroundColor: theme.vars.palette.background.default,
+  borderWidth: 1,
+  color: theme.vars.palette.text.primary,
+  outlineColor: theme.vars.palette.primary.main,
+  outlineWidth: 2,
+  transitionDuration: `${theme.transitions.duration.standard}ms`,
+  transitionProperty: "all",
+  transitionTimingFunction: theme.vars.transitions.easing.sharp,
 }));
 
 const StyledLabel = Text.withComponent("label");
@@ -77,17 +77,17 @@ const ErrorText = styled(Text, { label: "ErrorText" })(({ theme }) => ({
 
 const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const {
+    containerStyle,
     disabled,
+    error,
     inputRef,
+    label,
     onBlur,
     onChange,
     onClick,
     onFocus,
     required,
     value,
-    label,
-    error,
-    containerStyle,
     ...rest
   } = props;
 
@@ -116,8 +116,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
       {label && (
         <StyledLabel
           aria-details={label}
-          id={labelId}
           htmlFor={inputId}
+          id={labelId}
           sx={error ? { color: theme.vars.palette.error.main } : {}}
         >
           {label}
@@ -126,34 +126,34 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
       <StyledInput
         {...rest}
         {...inputProps}
-        type="text"
-        aria-atomic
-        aria-invalid={!!error}
-        aria-orientation="horizontal"
-        aria-relevant="text"
-        aria-errormessage={error}
-        aria-placeholder={rest.placeholder}
-        aria-required={required}
-        aria-readonly={disabled}
-        aria-disabled={inputProps.disabled}
-        aria-label={label}
-        aria-describedby={errorId}
-        aria-labelledby={labelId}
-        id={inputId}
-        ref={mergedInputRef}
-        aria-valuetext={value ? value.toString() : undefined}
         sx={[
           !!error && {
-            borderColor: theme.vars.palette.error.main,
-            outlineColor: theme.vars.palette.error.main,
             ":hover": {
               borderColor: theme.vars.palette.error.main,
             },
+            borderColor: theme.vars.palette.error.main,
+            outlineColor: theme.vars.palette.error.main,
           },
         ]}
+        aria-atomic
+        aria-describedby={errorId}
+        aria-disabled={inputProps.disabled}
+        aria-errormessage={error}
+        aria-invalid={!!error}
+        aria-label={label}
+        aria-labelledby={labelId}
+        aria-orientation="horizontal"
+        aria-placeholder={rest.placeholder}
+        aria-readonly={disabled}
+        aria-relevant="text"
+        aria-required={required}
+        aria-valuetext={value ? value.toString() : undefined}
+        id={inputId}
+        ref={mergedInputRef}
+        type="text"
       />
       {error && (
-        <ErrorText id={errorId} aria-details={error}>
+        <ErrorText aria-details={error} id={errorId}>
           {error}
         </ErrorText>
       )}

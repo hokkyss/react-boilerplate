@@ -1,68 +1,68 @@
 type PaletteLevel = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
 
-type PaletteType = "main" | "light" | "dark" | "contrastText";
+type PaletteType = "contrastText" | "dark" | "light" | "main";
 
-type TextPalette = "primary" | "secondary" | "disabled" | "icon";
+type TextPalette = "disabled" | "icon" | "primary" | "secondary";
 
 type PaletteAccent = "A100" | "A200" | "A400" | "A700";
 
-type ColorObject<T extends string | number | symbol> = { [key in T]: string };
+type ColorObject<T extends number | string | symbol> = { [key in T]: string };
 
 type Colors = {
+  amber: ColorObject<PaletteAccent | PaletteLevel>;
   black: string;
-  white: string;
-  red: ColorObject<PaletteLevel | PaletteAccent>;
-  pink: ColorObject<PaletteLevel | PaletteAccent>;
-  purple: ColorObject<PaletteLevel | PaletteAccent>;
-  "deep-purple": ColorObject<PaletteLevel | PaletteAccent>;
-  indigo: ColorObject<PaletteLevel | PaletteAccent>;
-  blue: ColorObject<PaletteLevel | PaletteAccent>;
-  "light-blue": ColorObject<PaletteLevel | PaletteAccent>;
-  cyan: ColorObject<PaletteLevel | PaletteAccent>;
-  teal: ColorObject<PaletteLevel | PaletteAccent>;
-  green: ColorObject<PaletteLevel | PaletteAccent>;
-  "light-green": ColorObject<PaletteLevel | PaletteAccent>;
-  lime: ColorObject<PaletteLevel | PaletteAccent>;
-  yellow: ColorObject<PaletteLevel | PaletteAccent>;
-  amber: ColorObject<PaletteLevel | PaletteAccent>;
-  orange: ColorObject<PaletteLevel | PaletteAccent>;
-  "deep-orange": ColorObject<PaletteLevel | PaletteAccent>;
-  brown: ColorObject<PaletteLevel>;
-  gray: ColorObject<PaletteLevel>;
+  blue: ColorObject<PaletteAccent | PaletteLevel>;
   "blue-gray": ColorObject<PaletteLevel>;
+  brown: ColorObject<PaletteLevel>;
+  cyan: ColorObject<PaletteAccent | PaletteLevel>;
+  "deep-orange": ColorObject<PaletteAccent | PaletteLevel>;
+  "deep-purple": ColorObject<PaletteAccent | PaletteLevel>;
+  gray: ColorObject<PaletteLevel>;
+  green: ColorObject<PaletteAccent | PaletteLevel>;
+  indigo: ColorObject<PaletteAccent | PaletteLevel>;
+  "light-blue": ColorObject<PaletteAccent | PaletteLevel>;
+  "light-green": ColorObject<PaletteAccent | PaletteLevel>;
+  lime: ColorObject<PaletteAccent | PaletteLevel>;
+  orange: ColorObject<PaletteAccent | PaletteLevel>;
+  pink: ColorObject<PaletteAccent | PaletteLevel>;
+  purple: ColorObject<PaletteAccent | PaletteLevel>;
+  red: ColorObject<PaletteAccent | PaletteLevel>;
+  teal: ColorObject<PaletteAccent | PaletteLevel>;
+  white: string;
+  yellow: ColorObject<PaletteAccent | PaletteLevel>;
 };
 
 declare type Palette = {
-  mode: "dark" | "light";
-  common: {
-    black: string;
-    white: string;
-  };
-  background: {
-    paper: string;
-    default: string;
-  };
-  primary: { [key in PaletteType]: string };
-  secondary: { [key in PaletteType]: string };
-  error: { [key in PaletteType]: string };
-  warning: { [key in PaletteType]: string };
-  info: { [key in PaletteType]: string };
-  success: { [key in PaletteType]: string };
-  grey: { [key in PaletteLevel | PaletteAccent]: string };
-  contrastThreshold: number;
-  tonalOffset: number;
-  text: { [key in TextPalette]: string };
   action: {
+    activatedOpacity: number;
     active: string;
-    hover: string;
-    hoverOpacity: number;
-    selected: string;
-    selectedOpacity: number;
     disabled: string;
     disabledBackground: string;
     disabledOpacity: number;
     focus: string;
     focusOpacity: number;
-    activatedOpacity: number;
+    hover: string;
+    hoverOpacity: number;
+    selected: string;
+    selectedOpacity: number;
   };
+  background: {
+    default: string;
+    paper: string;
+  };
+  common: {
+    black: string;
+    white: string;
+  };
+  contrastThreshold: number;
+  error: { [key in PaletteType]: string };
+  grey: { [key in PaletteAccent | PaletteLevel]: string };
+  info: { [key in PaletteType]: string };
+  mode: "dark" | "light";
+  primary: { [key in PaletteType]: string };
+  secondary: { [key in PaletteType]: string };
+  success: { [key in PaletteType]: string };
+  text: { [key in TextPalette]: string };
+  tonalOffset: number;
+  warning: { [key in PaletteType]: string };
 };

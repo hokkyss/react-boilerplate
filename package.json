@@ -10,7 +10,8 @@
     "prepare": "husky install",
     "lint": "eslint .",
     "test": "vitest --ui --coverage",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "snapshot": "vitest run -u --no-ui"
   },
   "dependencies": {
     "@emotion/cache": "^11.11.0",
@@ -26,6 +27,7 @@
     "@zodios/react": "^10.4.5",
     "axios": "^1.4.0",
     "framer-motion": "^10.12.17",
+    "jotai": "^2.2.3",
     "lodash": "^4.17.21",
     "polished": "^4.2.2",
     "react": "^18.2.0",
@@ -60,6 +62,7 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-perfectionist": "^1.5.1",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
@@ -86,10 +89,12 @@
       "plugin:@typescript-eslint/recommended",
       "plugin:@tanstack/eslint-plugin-query/recommended",
       "plugin:react/jsx-runtime",
+      "plugin:perfectionist/recommended-natural",
       "prettier"
     ],
     "plugins": [
       "@tanstack/query",
+      "perfectionist",
       "prettier"
     ],
     "rules": {
@@ -104,6 +109,14 @@
         }
       ],
       "no-unused-vars": "off",
+      "@typescript-eslint/consistent-type-imports": [
+        "error",
+        {
+          "prefer": "type-imports",
+          "fixStyle": "separate-type-imports",
+          "disallowTypeAnnotations": false
+        }
+      ],
       "@typescript-eslint/no-unused-vars": [
         "error",
         {
@@ -114,9 +127,13 @@
       ],
       "import/extensions": "off",
       "import/no-extraneous-dependencies": "off",
+      "perfectionist/sort-named-imports": "off",
+      "perfectionist/sort-imports": "off",
       "react/jsx-props-no-spreading": "off",
       "react/prop-types": "off",
       "react/require-default-props": "off",
+      "react/sort-prop-types": "off",
+      "react/jsx-sort-props": "off",
       "no-param-reassign": "off"
     },
     "ignorePatterns": [
@@ -125,7 +142,7 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "eslint --fix",
+      "eslint",
       "vitest related --run --no-ui --coverage --passWithNoTests"
     ],
     "*.{ts,tsx,json,html,md,css}": [

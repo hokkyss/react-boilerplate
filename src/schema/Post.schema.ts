@@ -1,10 +1,10 @@
 import { z } from "zod";
 
 const postSchema = z.object({
-  userId: z.number(),
+  body: z.string(),
   id: z.number(),
   title: z.string(),
-  body: z.string(),
+  userId: z.number(),
 });
 
 export type Post = z.infer<typeof postSchema>;

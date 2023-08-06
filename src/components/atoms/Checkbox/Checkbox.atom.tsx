@@ -1,15 +1,15 @@
-import { Except } from "@hokkyss/composite-types";
+import { type Except } from "@hokkyss/composite-types";
 import CheckedIcon from "@material-design-icons/svg/filled/check.svg";
 import IndeterminateIcon from "@material-design-icons/svg/filled/horizontal_rule.svg";
 import styled from "@mui/system/styled";
 import { m } from "framer-motion";
 import { margin, padding, position, size } from "polished";
 import {
-  AriaAttributes,
-  ChangeEventHandler,
-  InputHTMLAttributes,
   forwardRef,
   useMemo,
+  type AriaAttributes,
+  type ChangeEventHandler,
+  type InputHTMLAttributes,
 } from "react";
 import { z } from "zod";
 import useCallback from "~/hooks/useCallback/useCallback.hook";
@@ -17,12 +17,12 @@ import useMergeRef from "~/hooks/useMergeRef/useMergeRef.hook";
 
 type CheckboxProps = Except<
   InputHTMLAttributes<HTMLInputElement>,
-  | "value"
-  | "type"
-  | "defaultValue"
   | "defaultChecked"
-  | keyof AriaAttributes
+  | "defaultValue"
   | "onChange"
+  | "type"
+  | "value"
+  | keyof AriaAttributes
 > & {
   indeterminate?: boolean;
   onChange?: (checked: boolean) => void;
@@ -41,20 +41,20 @@ const CheckboxRoot = styled(m.span, {
   label: "CheckboxRoot",
 })<Pick<CheckboxProps, "checked" | "disabled" | "indeterminate">>(
   ({ theme }) => ({
+    cursor: "pointer",
+    display: "inline-block",
     fontSize: 0,
     position: "relative",
-    display: "inline-block",
-    cursor: "pointer",
     ...size("1.5rem"),
-    willChange: ["background-color"],
-    borderRadius: theme.vars.radius.md,
-    transitionDuration: `${theme.transitions.duration.standard}ms`,
-    transitionProperty: "background-color",
-    transitionTimingFunction: theme.vars.transitions.easing.sharp,
     backgroundColor:
       theme.palette.mode === "dark"
         ? theme.vars.colors.gray[600]
         : theme.vars.colors.gray[400],
+    borderRadius: theme.vars.radius.md,
+    transitionDuration: `${theme.transitions.duration.standard}ms`,
+    transitionProperty: "background-color",
+    transitionTimingFunction: theme.vars.transitions.easing.sharp,
+    willChange: ["background-color"],
   }),
   ({ checked, theme }) =>
     checked && {
@@ -64,8 +64,8 @@ const CheckboxRoot = styled(m.span, {
     indeterminate && { backgroundColor: theme.vars.palette.primary.light },
   ({ disabled, theme }) =>
     disabled && {
-      opacity: theme.vars.palette.action.disabledOpacity,
       cursor: "not-allowed",
+      opacity: theme.vars.palette.action.disabledOpacity,
     }
 );
 
@@ -81,18 +81,18 @@ const CheckboxInput = styled("input", { label: "Checkbox" })(() => ({
   ...margin(0),
   ...padding(0),
   borderWidth: 0,
-  opacity: 0,
   cursor: "inherit",
+  opacity: 0,
   zIndex: 1,
 }));
 
 const Checkbox = forwardRef<HTMLInputElement, Props<CheckboxProps>>(
   (props, ref) => {
     const {
-      onChange,
       checked: checkedProps,
-      indeterminate: indeterminateProps,
       className,
+      indeterminate: indeterminateProps,
+      onChange,
       sx,
       ...rest
     } = props;
@@ -126,17 +126,17 @@ const Checkbox = forwardRef<HTMLInputElement, Props<CheckboxProps>>(
     return (
       <CheckboxRoot
         checked={checked}
-        indeterminate={indeterminate}
-        disabled={rest.disabled}
         className={className}
+        disabled={rest.disabled}
+        indeterminate={indeterminate}
         sx={sx}
       >
         {indeterminate && <CheckboxIcon as={IndeterminateIcon} />}
         {checked && <CheckboxIcon as={CheckedIcon} />}
         <CheckboxInput
-          type="checkbox"
           onChange={handleChange}
           ref={mergedRef}
+          type="checkbox"
           {...rest}
           checked={checked}
         />

@@ -6,7 +6,7 @@ import {
 } from "@zodios/core";
 import { z } from "zod";
 import userSchema from "~/schema/User.schema";
-import { InferParams } from "~/types/endpoint";
+import { type InferParams } from "~/types/endpoint";
 
 // #region GET USERS
 
@@ -26,9 +26,9 @@ export type GetUsersResponse = z.infer<typeof getUsersResponse>;
 const getUsers = makeEndpoint({
   alias: "getUsers",
   method: "get",
+  parameters: parametersBuilder().addQueries(getUsersQuery).build(),
   path: "/",
   response: getUsersResponse,
-  parameters: parametersBuilder().addQueries(getUsersQuery).build(),
   status: 200,
 });
 // #endregion ENDPOINT

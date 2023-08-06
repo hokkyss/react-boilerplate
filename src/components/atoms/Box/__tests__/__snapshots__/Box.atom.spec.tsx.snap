@@ -6,13 +6,13 @@ exports[`Box.atom.tsx > should match snapshor 1`] = `
   "baseElement": <body>
     <div>
       <div
-        class="css-1lj2u47-Box"
+        class="css-1rndyn0-Box"
       />
     </div>
   </body>,
   "container": <div>
     <div
-      class="css-1lj2u47-Box"
+      class="css-1rndyn0-Box"
     />
   </div>,
   "debug": [Function],

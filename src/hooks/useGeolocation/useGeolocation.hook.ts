@@ -4,34 +4,20 @@ import useCallback from "../useCallback/useCallback.hook";
 import usePermission from "../usePermission/usePermission.hook";
 
 type GeolocationState =
-  | { isFetched: false }
-  | { isFetched: true; isError: true }
   | {
-      isError: false;
-      isFetched: true;
-      /**
-       * Returns a `double` representing the position's latitude in decimal degrees.
-       */
-      latitude: number;
-      /**
-       * Returns a `double` representing the position's longitude in decimal degrees.
-       */
-      longitude: number;
       /**
        * Returns a `double` representing the accuracy of the `latitude` and `longitude` properties, expressed in meters.
        */
       accuracy: number;
-
       /**
        * Returns a `double` representing the position's altitude in meters, relative to sea level.
        * This value can be `null` if the implementation cannot provide the data.
        */
-      altitude: number | null;
+      altitude: null | number;
       /**
        * Returns a `double` representing the accuracy of the `altitude` expressed in meters. This value can be `null`.
        */
-      altitudeAccuracy: number | null;
-
+      altitudeAccuracy: null | number;
       /**
        * Returns a `double` representing the direction towards which the device is facing.
        * This value indicates how far off from heading true north the device is, specified in degrees.
@@ -39,12 +25,26 @@ type GeolocationState =
        * If `speed` is `0`, `heading` is `NaN`.
        * If the device is unable to provide `heading` information, this value is `null`.
        */
-      heading: number | null;
+      heading: null | number;
+      isError: false;
+
+      isFetched: true;
+      /**
+       * Returns a `double` representing the position's latitude in decimal degrees.
+       */
+      latitude: number;
+
+      /**
+       * Returns a `double` representing the position's longitude in decimal degrees.
+       */
+      longitude: number;
       /**
        * Returns a `double` representing the velocity of the device in meters per second. This value can be `null`.
        */
-      speed: number | null;
-    };
+      speed: null | number;
+    }
+  | { isError: true; isFetched: true }
+  | { isFetched: false };
 
 export type Geolocation = [GeolocationState, Date];
 
@@ -57,14 +57,14 @@ export default function useGeolocation(): Geolocation {
 
   const positionCallback = useCallback<PositionCallback>((position) => {
     setCoordinates({
-      isFetched: true,
-      isError: false,
       accuracy: position.coords.accuracy,
-      latitude: position.coords.latitude,
-      longitude: position.coords.longitude,
       altitude: position.coords.altitude,
       altitudeAccuracy: position.coords.altitudeAccuracy,
       heading: position.coords.heading,
+      isError: false,
+      isFetched: true,
+      latitude: position.coords.latitude,
+      longitude: position.coords.longitude,
       speed: position.coords.speed,
     });
     setLastRecorded(new Date(position.timestamp));
@@ -73,8 +73,8 @@ export default function useGeolocation(): Geolocation {
   const positionErrorCallback = useCallback<PositionErrorCallback>(() => {
     setLastRecorded(new Date());
     setCoordinates({
-      isFetched: true,
       isError: true,
+      isFetched: true,
     });
   }, []);
 

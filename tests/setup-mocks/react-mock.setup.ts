@@ -12,8 +12,8 @@ vi.mock("react", async () => {
 
   return {
     ...react,
-    useMemo: vi.fn((val) => val()),
     useCallback: vi.fn((val) => val),
+    useMemo: vi.fn((val) => val()),
   };
 });
 

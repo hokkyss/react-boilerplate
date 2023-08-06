@@ -12,17 +12,17 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement, {
 }).render(
   <React.StrictMode>
     <Profiler
-      id="app-profiler"
       // React Profiler is active only in development.
       onRender={(id, phase, actualDuration, baseDuration, startTime, endTime) =>
         // eslint-disable-next-line no-console
         console.debug(`[${id}:${phase}]`, {
           actualDuration,
           baseDuration,
-          startTime,
           endTime,
+          startTime,
         })
       }
+      id="app-profiler"
     >
       <AppContext>
         <Container>
