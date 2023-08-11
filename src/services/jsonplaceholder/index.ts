@@ -1,6 +1,8 @@
 import { Zodios } from "@zodios/core";
 import { ZodiosHooks } from "@zodios/react";
+
 import envConfig from "~/configs/env/env.config";
+
 import postsApi from "./endpoints/posts";
 import usersApi from "./endpoints/users";
 

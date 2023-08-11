@@ -2,6 +2,7 @@ import {
   useCallback as usePrimitiveCallback,
   useMemo as usePrimitiveMemo,
 } from "react";
+
 import { renderHook } from "../../../../tests/test.util";
 import useCallback from "../useCallback.hook";
 
