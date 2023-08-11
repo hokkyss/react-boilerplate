@@ -1,11 +1,13 @@
 import type { ErrorInfo, PropsWithChildren, ReactNode } from "react";
 
+import type { WithMui } from "~/types/types";
+
 import { Component } from "react";
 
 import Button from "~/components/atoms/Button/Button.atom";
 import Text from "~/components/atoms/Text/Text.atom";
 
-type ErrorBoundaryProps = Props<PropsWithChildren>;
+type ErrorBoundaryProps = WithMui<PropsWithChildren>;
 type ErrorBoundaryState = { errorMessage: string; hasError: boolean };
 
 export default class ErrorBoundary extends Component<

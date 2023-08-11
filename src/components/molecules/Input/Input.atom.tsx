@@ -1,7 +1,8 @@
 import type { Except } from "@hokkyss/composite-types";
-import type { SxProps } from "@mui/system";
 import type { HTMLMotionProps } from "framer-motion";
 import type { InputHTMLAttributes } from "react";
+
+import type { Sx } from "~/types/types";
 
 import useInput from "@mui/base/useInput";
 import styled from "@mui/system/styled";
@@ -36,7 +37,7 @@ type InputProps = Except<
   InputHTMLAttributes<HTMLInputElement>,
   "defaultChecked" | "defaultValue" | "id" | "type"
 > & {
-  containerStyle?: SxProps<ITheme>;
+  containerStyle?: Sx;
   error?: string;
   inputRef?: React.Ref<HTMLInputElement>;
   label?: string;

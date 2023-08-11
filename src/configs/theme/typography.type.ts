@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 
-declare type Font = {
+type Font = {
   fontFamily: NonNullable<CSSProperties["fontFamily"]>;
   fontSize: NonNullable<CSSProperties["fontSize"]>;
   fontWeight: NonNullable<CSSProperties["fontWeight"]>;
@@ -9,7 +9,7 @@ declare type Font = {
   textTransform?: NonNullable<CSSProperties["textTransform"]>;
 };
 
-type Typography = {
+export type Typography = {
   body1: Font;
   body2: Font;
   button: Required<Font>;

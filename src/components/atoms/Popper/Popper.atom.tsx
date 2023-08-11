@@ -2,6 +2,8 @@ import type { Except } from "@hokkyss/composite-types";
 import type { VirtualElement } from "@popperjs/core";
 import type { HTMLAttributes, ReactNode } from "react";
 
+import type { WithMui } from "~/types/types";
+
 import { forwardRef, useMemo, useState } from "react";
 import { usePopper } from "react-popper";
 
@@ -19,7 +21,7 @@ export type PopperProps = PopperOptions & {
   referenceElement?: Element | VirtualElement | null;
 } & Except<HTMLAttributes<HTMLDivElement>, "children">;
 
-const Popper = forwardRef<HTMLDivElement, Props<PopperProps>>(
+const Popper = forwardRef<HTMLDivElement, WithMui<PopperProps>>(
   (props, forwardedRef) => {
     const {
       children,

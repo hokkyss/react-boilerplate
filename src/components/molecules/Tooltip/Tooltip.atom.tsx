@@ -1,6 +1,8 @@
 import type { Placement } from "@popperjs/core";
 import type { ReactElement, ReactNode } from "react";
 
+import type { WithMui } from "~/types/types";
+
 import type { PopperProps } from "../../atoms/Popper/Popper.atom";
 
 import styled from "@mui/system/styled";
@@ -91,7 +93,7 @@ const TooltipContent = styled(m.div, { label: "TooltipContent" })(
   })
 );
 
-const Tooltip = memo<Props<TooltipProps>>(
+const Tooltip = memo<WithMui<TooltipProps>>(
   ({ children, className, content, placement, sx }) => {
     const theme = useTheme();
     const [hovered, hoverAction] = useToggle();

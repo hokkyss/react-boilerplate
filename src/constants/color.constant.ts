@@ -1,3 +1,5 @@
+import type { Colors } from "~/configs/theme/palette.type";
+
 /**
  * @see {@link https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors Material Design Palette}
  */

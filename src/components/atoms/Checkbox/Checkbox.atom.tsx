@@ -5,6 +5,8 @@ import type {
   InputHTMLAttributes,
 } from "react";
 
+import type { WithMui } from "~/types/types";
+
 import CheckedIcon from "@material-design-icons/svg/filled/check.svg";
 import IndeterminateIcon from "@material-design-icons/svg/filled/horizontal_rule.svg";
 import styled from "@mui/system/styled";
@@ -88,7 +90,7 @@ const CheckboxInput = styled("input", { label: "Checkbox" })(() => ({
   zIndex: 1,
 }));
 
-const Checkbox = forwardRef<HTMLInputElement, Props<CheckboxProps>>(
+const Checkbox = forwardRef<HTMLInputElement, WithMui<CheckboxProps>>(
   (props, ref) => {
     const {
       checked: checkedProps,

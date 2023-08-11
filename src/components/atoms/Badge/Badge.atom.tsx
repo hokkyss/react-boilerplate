@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 
+import type { WithMui } from "~/types/types";
+
 import styled from "@mui/system/styled";
 import { m } from "framer-motion";
 import { position } from "polished";
@@ -24,7 +26,7 @@ const BadgeContent = styled(m.span, { label: "BadgeContent" })(({ theme }) => ({
   zIndex: 1,
 }));
 
-const Badge = forwardRef<HTMLSpanElement, Props<BadgeProps>>((props, ref) => {
+const Badge = forwardRef<HTMLSpanElement, WithMui<BadgeProps>>((props, ref) => {
   const { children, className, content, sx } = props;
 
   return (

@@ -1,9 +1,10 @@
-type CSSProperties = import("react").CSSProperties;
-type DefaultCssVarsTheme =
-  import("@mui/system/cssVars/prepareCssVars").DefaultCssVarsTheme;
-type Typography = import("./font").Typography;
-type Theme = import("@mui/system/createTheme").Theme;
-type ThemeOptions = import("@mui/system/createTheme").ThemeOptions;
+import type { Theme, ThemeOptions } from "@mui/system/createTheme";
+import type prepareCssVars from "@mui/system/cssVars/prepareCssVars";
+import type { DefaultCssVarsTheme } from "@mui/system/cssVars/prepareCssVars";
+import type { CSSProperties } from "react";
+
+import type { Colors, Palette } from "./palette.type";
+import type { Typography } from "./typography.type";
 
 type ZIndexTypes =
   | "appBar"
@@ -15,7 +16,7 @@ type ZIndexTypes =
   | "speedDial"
   | "tooltip";
 
-declare interface CustomTheme extends Theme {
+interface CustomTheme extends Theme {
   colors: Colors;
   palette: Palette;
   radius: {
@@ -32,7 +33,7 @@ declare interface CustomTheme extends Theme {
   zIndex: Record<ZIndexTypes, number>;
 }
 
-declare interface CustomThemeOptions extends ThemeOptions {
+interface CustomThemeOptions extends ThemeOptions {
   colors: Colors;
   palette?: Palette;
   radius: {
@@ -69,12 +70,15 @@ type ColorSchemes = {
   light: CustomTheme;
 };
 
+type PaletteMode = keyof ColorSchemes;
+
 type PrepareCSSVars<
   T extends DefaultCssVarsTheme,
-  ThemeVars extends Record<string, unknown>
-> = typeof import("@mui/system/cssVars/prepareCssVars").default<T, ThemeVars>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ThemeVars extends Record<string, any>
+> = typeof prepareCssVars<T, ThemeVars>;
 
-declare type ITheme = CustomTheme & {
+export type ITheme = CustomTheme & {
   colorSchemes: ColorSchemes;
   generateCssVars: ReturnType<
     PrepareCSSVars<{ colorSchemes: ColorSchemes }, CustomTheme>
@@ -86,7 +90,3 @@ declare type ITheme = CustomTheme & {
     PrepareCSSVars<{ colorSchemes: ColorSchemes }, CustomTheme>
   >["vars"];
 };
-
-declare module "@mui/system/useTheme" {
-  export default function useTheme<T = ITheme>(defaultTheme?: T): T;
-}

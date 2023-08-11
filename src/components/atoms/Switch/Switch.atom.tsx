@@ -1,5 +1,7 @@
 import type { ChangeEventHandler, FocusEventHandler } from "react";
 
+import type { WithMui } from "~/types/types";
+
 import useSwitch from "@mui/base/useSwitch";
 import styled from "@mui/system/styled";
 import constant from "lodash/constant";
@@ -92,7 +94,7 @@ const SwitchThumb = styled("span", {
     }
 );
 
-const Switch = forwardRef<HTMLInputElement, Props<SwitchProps>>(
+const Switch = forwardRef<HTMLInputElement, WithMui<SwitchProps>>(
   (props, ref) => {
     const {
       className,

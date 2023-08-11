@@ -1,4 +1,4 @@
-import type { InferParams } from "~/types/endpoint";
+import type { InferParams } from "~/services/endpoint.type";
 
 import {
   makeApi,
