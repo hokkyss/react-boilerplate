@@ -9,7 +9,7 @@ import Box from "~/components/atoms/Box/Box.atom";
 import Button from "~/components/atoms/Button/Button.atom";
 import Heading1 from "~/components/atoms/Text/Heading1.atom";
 import Heading5 from "~/components/atoms/Text/Heading5.atom";
-import Tooltip from "~/components/atoms/Tooltip/Tooltip.atom";
+import Tooltip from "~/components/molecules/Tooltip/Tooltip.atom";
 
 import { Link, Logo } from "./Home.component";
 import useHomeViewModel from "./Home.viewModel";

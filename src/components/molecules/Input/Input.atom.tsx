@@ -12,7 +12,7 @@ import { forwardRef, useId, useMemo } from "react";
 
 import useMergeRef from "~/hooks/useMergeRef/useMergeRef.hook";
 
-import Text from "../Text/Text.atom";
+import Text from "../../atoms/Text/Text.atom";
 
 /* TODO: checkbox is on another element */
 // | "checkbox"

@@ -1,7 +1,7 @@
 import type { Placement } from "@popperjs/core";
 import type { ReactElement, ReactNode } from "react";
 
-import type { PopperProps } from "../Popper/Popper.atom";
+import type { PopperProps } from "../../atoms/Popper/Popper.atom";
 
 import styled from "@mui/system/styled";
 import useTheme from "@mui/system/useTheme";
@@ -11,7 +11,7 @@ import { memo, useId, useState } from "react";
 
 import useToggle from "~/hooks/useToggle/useToggle.hook";
 
-import Popper from "../Popper/Popper.atom";
+import Popper from "../../atoms/Popper/Popper.atom";
 
 export const tooltipClasses = {
   arrow: "arrow",
