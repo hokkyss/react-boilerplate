@@ -1,6 +1,5 @@
-import type { FunctionComponent } from "react";
-
 import { between } from "polished";
+import { memo } from "react";
 
 import ReactLogo from "~/assets/react.svg";
 import ViteLogo from "~/assets/vite.svg";
@@ -9,27 +8,31 @@ import Box from "~/components/atoms/Box/Box.atom";
 import Button from "~/components/atoms/Button/Button.atom";
 import Heading1 from "~/components/atoms/Text/Heading1.atom";
 import Heading5 from "~/components/atoms/Text/Heading5.atom";
+import { useColorScheme } from "~/components/contexts/Theme/Theme.context";
 import Tooltip from "~/components/molecules/Tooltip/Tooltip.atom";
 
-import { Link, Logo } from "./Home.component";
-import useHomeViewModel from "./Home.viewModel";
+import Link from "./components/Link.component";
+import Logo from "./components/Logo.component";
+import useCounter from "./hooks/useCounter/useCounter.hook";
 
-const HomeView: FunctionComponent = function HomeView() {
-  const { colorScheme, counter, decreaseCounter, increaseCounter } =
-    useHomeViewModel();
+const HomePage = memo(() => {
+  const colorScheme = useColorScheme();
+
+  const [counter, { decrease: decreaseCounter, increase: increaseCounter }] =
+    useCounter();
 
   return (
     <Box sx={{ fontSize: between("14px", "20px", "400px", "1000px") }}>
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         <Tooltip content="Vite Logo" placement="left">
           <Badge content={500}>
-            <Link href="https://vitejs.dev" rel="noreferrer" target="_blank">
+            <Link rel="noreferrer" target="_blank" to="https://vitejs.dev">
               <Logo as={ViteLogo} />
             </Link>
           </Badge>
         </Tooltip>
         <Tooltip content="halo saya disini" placement="right">
-          <Link href="https://reactjs.org" rel="noreferrer" target="_blank">
+          <Link rel="noreferrer" target="_blank" to="https://reactjs.org">
             <Logo as={ReactLogo} spin />
           </Link>
         </Tooltip>
@@ -53,6 +56,6 @@ const HomeView: FunctionComponent = function HomeView() {
       </Button>
     </Box>
   );
-};
+});
 
-export default HomeView;
+export default HomePage;

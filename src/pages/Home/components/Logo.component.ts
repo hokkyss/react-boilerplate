@@ -3,10 +3,6 @@ import styled from "@mui/system/styled";
 import { isValidMotionProp, m } from "framer-motion";
 import { padding, size } from "polished";
 
-export const Link = styled("a", { label: "Link" })`
-  display: flex;
-`;
-
 const spinningLogoKeyframes = keyframes`
   0% {
     transform: rotate(0deg);
@@ -28,7 +24,8 @@ const spinningLogoKeyframes = keyframes`
 type LogoProps = {
   spin?: boolean;
 };
-export const Logo = styled(m.svg, {
+
+const Logo = styled(m.svg, {
   label: "Logo",
   name: "Logo",
   shouldForwardProp: isValidMotionProp,
@@ -37,3 +34,5 @@ export const Logo = styled(m.svg, {
   ...size(100, 100),
   animation: spin ? `${spinningLogoKeyframes} 2s linear infinite` : undefined,
 }));
+
+export default Logo;

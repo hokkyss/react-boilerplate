@@ -1,3 +1,9 @@
+import type {
+  ColorSchemes,
+  CustomTheme,
+  ITheme,
+} from "~/configs/theme/theme.type";
+
 import createCssVarsProvider from "@mui/system/cssVars/createCssVarsProvider";
 import prepareCssVars from "@mui/system/cssVars/prepareCssVars";
 import constant from "lodash/constant";

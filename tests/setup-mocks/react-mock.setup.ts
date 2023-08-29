@@ -1,3 +1,7 @@
+import type { LinkProps } from "react-router-dom";
+
+import { createElement } from "react";
+
 vi.mock("react-dom", async (importOriginal) => {
   const ReactDOM = await importOriginal<object>();
 
@@ -7,13 +11,36 @@ vi.mock("react-dom", async (importOriginal) => {
   };
 });
 
-vi.mock("react", async () => {
-  const react = await vi.importActual<object>("react");
+vi.mock("react", async (importOriginal) => {
+  const react = await importOriginal<object>();
 
   return {
     ...react,
     useCallback: vi.fn((val) => val),
     useMemo: vi.fn((val) => val()),
+  };
+});
+
+vi.mock("react-router-dom", async (importOriginal) => {
+  const reactRouter = await importOriginal<object>();
+
+  return {
+    ...reactRouter,
+    Link: ({
+      className,
+      preventScrollReset: _preventScrollReset,
+      relative: _relative,
+      reloadDocument: _reloadDocument,
+      replace: _replace,
+      state: _state,
+      to,
+      ...props
+    }: LinkProps) =>
+      createElement("a", {
+        className: ["react-router-dom-link", className].join(" "),
+        href: to.toString(),
+        ...props,
+      }),
   };
 });
 

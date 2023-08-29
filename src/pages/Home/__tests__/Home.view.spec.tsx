@@ -1,13 +1,13 @@
 import { render } from "../../../../tests/test.util";
-import HomeView from "../Home.view";
+import HomePage from "../Home.page";
 
-describe("Home View", () => {
+describe("Home Page", () => {
   it("should be defined", () => {
-    expect(HomeView).toBeDefined();
+    expect(HomePage).toBeDefined();
   });
 
   it("should match snapshot", () => {
-    const snapshot = render(<HomeView />);
+    const snapshot = render(<HomePage />);
 
     expect(snapshot).toMatchSnapshot();
   });

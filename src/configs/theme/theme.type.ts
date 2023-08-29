@@ -16,7 +16,7 @@ type ZIndexTypes =
   | "speedDial"
   | "tooltip";
 
-interface CustomTheme extends Theme {
+export interface CustomTheme extends Theme {
   colors: Colors;
   palette: Palette;
   radius: {
@@ -65,7 +65,7 @@ interface CustomThemeOptions extends ThemeOptions {
   zIndex?: Record<ZIndexTypes, number>;
 }
 
-type ColorSchemes = {
+export type ColorSchemes = {
   dark: CustomTheme;
   light: CustomTheme;
 };

@@ -4,7 +4,7 @@ import { Suspense, lazy } from "react";
 
 import ErrorBoundary from "~/components/templates/ErrorBoundary/ErrorBoundary.template";
 
-const HomeView = lazy(() => import("./Home.view"));
+const HomeView = lazy(() => import("./Home.page"));
 
 const HomeRoute: RouteObject = {
   ErrorBoundary,

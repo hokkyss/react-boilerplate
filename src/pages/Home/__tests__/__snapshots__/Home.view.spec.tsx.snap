@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Home View > should match snapshot 1`] = `
+exports[`Home Page > should match snapshot 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
@@ -19,7 +19,7 @@ exports[`Home View > should match snapshot 1`] = `
               class="css-4wtjxf-BadgeRoot"
             >
               <a
-                class="css-1iolaj2-Link"
+                class="react-router-dom-link css-1iolaj2-Link"
                 href="https://vitejs.dev"
                 rel="noreferrer"
                 target="_blank"
@@ -95,7 +95,7 @@ exports[`Home View > should match snapshot 1`] = `
             class="css-muxk2w-TooltipAnchor"
           >
             <a
-              class="css-1iolaj2-Link"
+              class="react-router-dom-link css-1iolaj2-Link"
               href="https://reactjs.org"
               rel="noreferrer"
               target="_blank"
@@ -168,7 +168,7 @@ exports[`Home View > should match snapshot 1`] = `
             class="css-4wtjxf-BadgeRoot"
           >
             <a
-              class="css-1iolaj2-Link"
+              class="react-router-dom-link css-1iolaj2-Link"
               href="https://vitejs.dev"
               rel="noreferrer"
               target="_blank"
@@ -244,7 +244,7 @@ exports[`Home View > should match snapshot 1`] = `
           class="css-muxk2w-TooltipAnchor"
         >
           <a
-            class="css-1iolaj2-Link"
+            class="react-router-dom-link css-1iolaj2-Link"
             href="https://reactjs.org"
             rel="noreferrer"
             target="_blank"
