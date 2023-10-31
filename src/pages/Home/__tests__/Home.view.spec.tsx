@@ -1,5 +1,5 @@
 import { render } from "../../../../tests/test.util";
-import HomePage from "../Home.page";
+import HomePage from "../home.page";
 
 describe("Home Page", () => {
   it("should be defined", () => {

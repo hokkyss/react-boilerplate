@@ -12,5 +12,6 @@
   "vitest.include": [
     "**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}",
     "**/__tests__/**/*.[jt]s?(x)"
-  ]
+  ],
+  "tailwindCSS.experimental.classRegex": ["tw\\(([^)]*)\\)"]
 }

@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { forwardRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 
-import useMergeRef from "~/hooks/useMergeRef/useMergeRef.hook";
+import useMergeRef from "~/hooks/use-merge-ref/use-merge-ref.hook";
 
 type PortalProps = {
   children: ReactNode;

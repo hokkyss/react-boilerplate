@@ -2,9 +2,9 @@ import type { RouteObject } from "react-router-dom";
 
 import { Suspense, lazy } from "react";
 
-import ErrorBoundary from "~/components/templates/ErrorBoundary/ErrorBoundary.template";
+import ErrorBoundary from "~/components/templates/error-boundary/error-boundary.template";
 
-const HomeView = lazy(() => import("./Home.page"));
+const HomeView = lazy(() => import("./home.page"));
 
 const HomeRoute: RouteObject = {
   ErrorBoundary,

@@ -1,4 +1,4 @@
-import type { Callback } from "../useCallback/useCallback.hook";
+import type { Callback } from "../use-callback/use-callback.hook";
 
 import forEach from "lodash/forEach";
 import { useEffect } from "react";

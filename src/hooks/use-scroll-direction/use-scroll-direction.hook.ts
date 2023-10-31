@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import usePrevious from "../usePrevious/usePrevious.hook";
+import usePrevious from "../use-previous/use-previous.hook";
 
 export type ScrollDirection = "down" | "none" | "up";
 

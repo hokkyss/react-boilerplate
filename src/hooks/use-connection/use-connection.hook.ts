@@ -1,4 +1,4 @@
-import type { Callback } from "../useCallback/useCallback.hook";
+import type { Callback } from "../use-callback/use-callback.hook";
 
 import isUndefined from "lodash/isUndefined";
 import { useEffect, useState } from "react";

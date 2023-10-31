@@ -4,7 +4,7 @@ import {
 } from "react";
 
 import { renderHook } from "../../../../tests/test.util";
-import useCallback from "../useCallback.hook";
+import useCallback from "../use-callback.hook";
 
 describe("useCallback", () => {
   it("should be defined", () => {

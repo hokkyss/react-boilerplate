@@ -5,7 +5,7 @@ import forEach from "lodash/forEach";
 import isFunction from "lodash/isFunction";
 import { useMemo } from "react";
 
-import useCallback from "../useCallback/useCallback.hook";
+import useCallback from "../use-callback/use-callback.hook";
 
 export function resolveRef<T>(
   ref: ForwardedRef<T> | undefined,

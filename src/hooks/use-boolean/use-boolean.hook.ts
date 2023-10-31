@@ -1,8 +1,8 @@
-import type { Callback } from "../useCallback/useCallback.hook";
+import type { Callback } from "../use-callback/use-callback.hook";
 
 import { useMemo, useState } from "react";
 
-import useCallback from "../useCallback/useCallback.hook";
+import useCallback from "../use-callback/use-callback.hook";
 
 export type UseBooleanReturn = [
   boolean,

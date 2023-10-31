@@ -8,7 +8,7 @@ import {
 } from "@zodios/core";
 import { z } from "zod";
 
-import userSchema from "~/schema/User.schema";
+import userSchema from "~/schema/user.schema";
 
 // #region GET USERS
 

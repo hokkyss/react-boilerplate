@@ -4,7 +4,7 @@ import React, { Profiler } from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 
-import AppContext from "./components/templates/AppContext/AppContext.template";
+import AppContext from "./components/templates/app-context/app-context.template";
 import envConfig from "./configs/env/env.config";
 import routerConfig from "./configs/router/router.config";
 

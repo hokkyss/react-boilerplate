@@ -1,6 +1,6 @@
 import { memo } from "react";
 
-import useCounter from "./hooks/useCounter/useCounter.hook";
+import useCounter from "./hooks/use-counter/use-counter.hook";
 
 const HomePage = memo(() => {
   const [counter, { decrease: decreaseCounter, increase: increaseCounter }] =
