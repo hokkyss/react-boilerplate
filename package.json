@@ -14,14 +14,8 @@
     "snapshot": "vitest run -u --no-ui"
   },
   "dependencies": {
-    "@emotion/cache": "^11.11.0",
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
     "@hookform/resolvers": "^3.1.1",
     "@material-design-icons/svg": "^0.14.10",
-    "@mui/base": "^5.0.0-beta.8",
-    "@mui/system": "^5.14.1",
-    "@popperjs/core": "^2.11.8",
     "@tanstack/react-query": "^4.29.19",
     "@zodios/core": "^10.9.2",
     "@zodios/react": "^10.4.5",
@@ -29,11 +23,9 @@
     "framer-motion": "^10.12.17",
     "jotai": "^2.2.3",
     "lodash": "^4.17.21",
-    "polished": "^4.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.1",
-    "react-popper": "^2.3.0",
     "react-router-dom": "^6.10.0",
     "svgo": "^3.0.2",
     "vite-plugin-svgr": "^3.2.0",
@@ -42,8 +34,6 @@
   "devDependencies": {
     "@anatine/zod-mock": "^3.13.1",
     "@faker-js/faker": "^8.0.2",
-    "@hokkyss/composite-types": "^1.0.8",
-    "@styled/typescript-styled-plugin": "^1.0.0",
     "@swc-jotai/debug-label": "^0.0.10",
     "@tanstack/eslint-plugin-query": "^4.29.9",
     "@testing-library/react": "^14.0.0",
@@ -63,7 +53,6 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.7.1",
-    "eslint-plugin-lodash": "^7.4.0",
     "eslint-plugin-perfectionist": "^1.5.1",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
@@ -91,13 +80,11 @@
       "plugin:@typescript-eslint/recommended",
       "plugin:@tanstack/eslint-plugin-query/recommended",
       "plugin:react/jsx-runtime",
-      "plugin:lodash/recommended",
       "plugin:perfectionist/recommended-natural",
       "prettier"
     ],
     "plugins": [
       "@tanstack/query",
-      "lodash",
       "perfectionist",
       "prettier"
     ],
@@ -132,9 +119,6 @@
       "import/extensions": "off",
       "import/no-extraneous-dependencies": "off",
       "import/order": "off",
-      "lodash/prefer-matches": "off",
-      "lodash/matches-shorthand": "off",
-      "lodash/matches-prop-shorthand": "off",
       "perfectionist/sort-imports": [
         "error",
         {

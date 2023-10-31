@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 
 import useCallback from "../useCallback/useCallback.hook";
 
-export type Toggle = [
+export type UseBooleanReturn = [
   boolean,
   {
     close: Callback<() => void>;
@@ -13,7 +13,7 @@ export type Toggle = [
   }
 ];
 
-export default function useToggle(initialValue = false) {
+export default function useBoolean(initialValue = false) {
   const [isOpen, setIsOpen] = useState(initialValue);
 
   const toggle = useCallback(() => setIsOpen((prev) => !prev), []);
@@ -22,10 +22,8 @@ export default function useToggle(initialValue = false) {
 
   const close = useCallback(() => setIsOpen(false), []);
 
-  const returnValue = useMemo<Toggle>(
+  return useMemo<UseBooleanReturn>(
     () => [isOpen, { close, open, toggle }],
     [close, isOpen, open, toggle]
   );
-
-  return returnValue;
 }

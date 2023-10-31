@@ -1,13 +1,8 @@
 import type { ErrorInfo, PropsWithChildren, ReactNode } from "react";
 
-import type { WithMui } from "~/types/types";
-
 import { Component } from "react";
 
-import Button from "~/components/atoms/Button/Button.atom";
-import Text from "~/components/atoms/Text/Text.atom";
-
-type ErrorBoundaryProps = WithMui<PropsWithChildren>;
+type ErrorBoundaryProps = PropsWithChildren<{ className?: string }>;
 type ErrorBoundaryState = { errorMessage: string; hasError: boolean };
 
 export default class ErrorBoundary extends Component<
@@ -29,20 +24,19 @@ export default class ErrorBoundary extends Component<
   }
 
   render(): ReactNode {
-    const { children, className, sx } = this.props;
+    const { children, className } = this.props;
     const { errorMessage, hasError } = this.state;
 
     if (hasError) {
       return (
-        <Button
+        <button
           className={className}
           onClick={window.location.reload}
-          sx={sx}
           type="button"
         >
-          <Text>{errorMessage}</Text>
-          <Text>Reload Page</Text>
-        </Button>
+          <p>{errorMessage}</p>
+          <p>Reload Page</p>
+        </button>
       );
     }
 

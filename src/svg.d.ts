@@ -1,8 +1,8 @@
 declare module "*.svg" {
-  import type { FunctionComponent, SVGProps } from "react";
+  import type { ForwardRefExoticComponent, SVGProps } from "react";
 
   // React.FunctionComponent<React.ComponentProps<"svg"> & { title?: string; className?: string }>;
-  const Component: FunctionComponent<SVGProps<SVGElement>>;
+  const Component: ForwardRefExoticComponent<SVGProps<SVGSVGElement>>;
 
   export default Component;
 }

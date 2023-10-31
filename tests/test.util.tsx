@@ -1,4 +1,3 @@
-import type { Except } from "@hokkyss/composite-types";
 import type {
   Queries,
   RenderHookOptions,
@@ -7,22 +6,17 @@ import type {
 } from "@testing-library/react";
 import type { FC, PropsWithChildren, ReactElement } from "react";
 
-import { CacheProvider } from "@emotion/react";
+import type { Except } from "~/utils/types.util";
+
 import { QueryClientProvider } from "@tanstack/react-query";
 import { render, renderHook } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import CssVarsProvider from "~/components/contexts/Theme/Theme.context";
-import emotionCache from "~/configs/emotion/emotion.config";
 import queryClient from "~/configs/react-query/react-query.config";
 
 const Wrapper: FC<PropsWithChildren> = function Wrapper({ children }) {
   return (
-    <QueryClientProvider client={queryClient}>
-      <CacheProvider value={emotionCache}>
-        <CssVarsProvider>{children}</CssVarsProvider>
-      </CacheProvider>
-    </QueryClientProvider>
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   );
 };
 

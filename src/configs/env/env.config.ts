@@ -1,4 +1,4 @@
-import type { SnakeToCamelCase } from "@hokkyss/composite-types";
+import type { SnakeToCamelCase } from "~/utils/types.util";
 
 type EnvConfig = {
   [Key in keyof ImportMetaEnv as Key extends `VITE_${infer EnvName}`
@@ -9,9 +9,6 @@ type EnvConfig = {
 const envConfig: EnvConfig = {
   get apiUrl() {
     return import.meta.env.VITE_API_URL;
-  },
-  get cssPrefix() {
-    return import.meta.env.VITE_CSS_PREFIX;
   },
   get identifierPrefix() {
     return import.meta.env.VITE_IDENTIFIER_PREFIX;

@@ -1,4 +1,3 @@
-/* eslint-disable lodash/prefer-lodash-method */
 import fs from "fs";
 import path from "path";
 import { defineConfig, mergeConfig } from "vitest/config";
