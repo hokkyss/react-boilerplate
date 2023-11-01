@@ -57,7 +57,7 @@
     "happy-dom": "^9.20.3",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.1",
-    "msw": "^1.2.2",
+    "msw": "^2.0.1",
     "postcss": "^8.4.31",
     "prettier": "^2.8.7",
     "shadcn-ui": "^0.4.1",
@@ -65,7 +65,7 @@
     "typescript": "^5.1.6",
     "vite": "^4.4.6",
     "vite-tsconfig-paths": "^4.2.0",
-    "vitest": "^0.32.2"
+    "vitest": "^0.34.6"
   },
   "eslintConfig": {
     "overrides": [
