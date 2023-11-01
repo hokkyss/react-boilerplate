@@ -3,8 +3,9 @@ import {
   useMemo as usePrimitiveMemo,
 } from "react";
 
-import { renderHook } from "../../../../tests/test.util";
-import useCallback from "../use-callback.hook";
+import { renderHook } from "@tests/test.util";
+
+import useCallback from "./use-callback.hook";
 
 describe("useCallback", () => {
   it("should be defined", () => {

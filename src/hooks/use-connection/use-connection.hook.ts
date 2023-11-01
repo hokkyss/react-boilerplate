@@ -1,7 +1,7 @@
 import type { Callback } from "../use-callback/use-callback.hook";
 
 import isUndefined from "lodash/isUndefined";
-import { useEffect, useState } from "react";
+import { useMemo, useSyncExternalStore } from "react";
 
 /**
  * Provides information about the connection a device is using to communicate with the network.
@@ -75,49 +75,55 @@ export type Connection = { online: boolean } & (
   | ({ isSupported: true } & Partial<NetworkInformationAttributes>)
 );
 
-export default function useConnection(): Connection {
-  const [connectionState, setConnectionState] = useState<Connection>({
-    isSupported: true,
-    online: !!nav?.onLine,
-  });
+function subscribe(callback: () => void) {
+  window.addEventListener("offline", callback);
+  window.addEventListener("online", callback);
 
-  /* eslint-disable consistent-return */
-  useEffect(() => {
-    if (!nav) return;
+  if (nav?.connection) {
+    nav.connection.addEventListener("change", callback);
+  }
 
-    const onlineHandler = () =>
-      setConnectionState((prev) => ({ ...prev, online: nav.onLine }));
-    window.addEventListener("offline", onlineHandler);
-    window.addEventListener("online", onlineHandler);
+  return () => {
+    window.removeEventListener("offline", callback);
+    window.removeEventListener("online", callback);
 
-    if (!nav.connection) {
-      return () => {
-        window.removeEventListener("offline", onlineHandler);
-        window.removeEventListener("online", onlineHandler);
-      };
+    if (nav?.connection) {
+      nav.connection.removeEventListener("change", callback);
     }
+  };
+}
 
-    const conn = nav.connection;
-    const stateHandler = () =>
-      setConnectionState((prev) => ({
-        ...prev,
-        downlink: conn.downlink,
-        downlinkMax: conn.downlinkMax,
-        effectiveType: conn.effectiveType,
-        isSupported: true,
-        rtt: conn.rtt,
-        saveData: conn.saveData,
-        type: conn.type,
-      }));
-    conn.addEventListener("change", stateHandler);
+function getSnapshot() {
+  if (!nav) return [false, true, {}] as const;
 
-    return () => {
-      window.removeEventListener("offline", onlineHandler);
-      window.removeEventListener("online", onlineHandler);
-      conn.removeEventListener("change", stateHandler);
-    };
-  }, []);
-  /* eslint-enable consistent-return */
+  if (!nav.connection) {
+    return [true, nav.onLine, {}] as const;
+  }
 
-  return connectionState;
+  return [
+    true,
+    nav.onLine,
+    {
+      downlink: nav.connection.downlink,
+      downlinkMax: nav.connection.downlinkMax,
+      effectiveType: nav.connection.effectiveType,
+      isSupported: true,
+      rtt: nav.connection.rtt,
+      saveData: nav.connection.saveData,
+      type: nav.connection.type,
+    },
+  ] as const;
+}
+
+export default function useConnection(): Connection {
+  const [isSupported, online, connectionState] = useSyncExternalStore(
+    subscribe,
+    getSnapshot,
+    getSnapshot
+  );
+
+  return useMemo(
+    () => ({ isSupported, online, ...connectionState }),
+    [connectionState, isSupported, online]
+  );
 }

@@ -431,4 +431,4 @@ type Iterator<
  * type Bar = StaticArray<Foo, 3>; // type Bar = ["foo", "foo", "foo"];
  * ```
  */
-export type StaticArray<T, N extends number> = Iterator<T, N>;
+export type StaticArray<T, N extends number> = Readonly<Iterator<T, N>>;
