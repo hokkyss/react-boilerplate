@@ -8,8 +8,8 @@ import { RouterProvider } from "react-router-dom";
 import AppContext from "./components/templates/app-context/app-context.template";
 import envConfig from "./configs/env/env.config";
 import routerConfig from "./configs/router/router.config";
-import reportAccessibility from "./report-accessibility";
-import reportWebVitals from "./report-web-vitals";
+import reportAccessibility from "./reports/accessibility.report";
+import reportWebVitals from "./reports/web-vitals.report";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
