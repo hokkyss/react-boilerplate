@@ -1,21 +1,6 @@
 {
-  "name": "@hokkyss/vite-react-ts",
-  "private": true,
-  "version": "0.0.1",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "prepare": "husky install",
-    "lint": "eslint .",
-    "test": "vitest --ui --coverage",
-    "coverage": "vitest run --coverage",
-    "snapshot": "vitest run -u --no-ui",
-    "postinstall": "husky install",
-    "generate": "shadcn-ui add"
-  },
   "dependencies": {
+    "@floating-ui/react": "^0.26.1",
     "@hookform/resolvers": "^3.1.1",
     "@material-design-icons/svg": "^0.14.10",
     "@radix-ui/react-icons": "^1.3.0",
@@ -63,6 +48,7 @@
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsonc": "^2.10.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-perfectionist": "^1.5.1",
     "eslint-plugin-prettier": "^4.2.1",
@@ -82,102 +68,137 @@
     "vitest": "^0.32.2"
   },
   "eslintConfig": {
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-      "project": "./tsconfig.eslint.json"
-    },
-    "extends": [
-      "airbnb",
-      "airbnb/hooks",
-      "airbnb-typescript",
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:@tanstack/eslint-plugin-query/recommended",
-      "plugin:react/jsx-runtime",
-      "plugin:perfectionist/recommended-natural",
-      "prettier"
-    ],
-    "plugins": [
-      "@tanstack/query",
-      "perfectionist",
-      "prettier"
-    ],
-    "rules": {
-      "prettier/prettier": "error",
-      "no-console": [
-        "error",
-        {
-          "allow": [
-            "warn",
-            "error"
-          ]
+    "overrides": [
+      {
+        "extends": [
+          "plugin:jsonc/recommended-with-json"
+        ],
+        "files": [
+          "*.json"
+        ],
+        "rules": {
+          "jsonc/comma-style": "error",
+          "jsonc/sort-keys": "error"
         }
-      ],
-      "no-unused-vars": "off",
-      "@typescript-eslint/consistent-type-imports": [
-        "error",
-        {
-          "prefer": "type-imports",
-          "fixStyle": "separate-type-imports",
-          "disallowTypeAnnotations": false
-        }
-      ],
-      "@typescript-eslint/no-unused-vars": [
-        "error",
-        {
-          "argsIgnorePattern": "^_",
-          "varsIgnorePattern": "^_",
-          "destructuredArrayIgnorePattern": "^_"
-        }
-      ],
-      "import/extensions": "off",
-      "import/no-extraneous-dependencies": "off",
-      "import/order": "off",
-      "perfectionist/sort-imports": [
-        "error",
-        {
-          "groups": [
-            "side-effect",
-            [
-              "type",
-              "builtin-type",
-              "external-type"
-            ],
-            "internal-type",
-            "parent-type",
-            "sibling-type",
-            [
-              "builtin",
-              "external"
-            ],
-            "internal",
-            "parent",
-            "sibling",
-            "unknown"
+      },
+      {
+        "extends": [
+          "airbnb",
+          "airbnb/hooks",
+          "airbnb-typescript",
+          "eslint:recommended",
+          "plugin:@typescript-eslint/recommended",
+          "plugin:@tanstack/eslint-plugin-query/recommended",
+          "plugin:react/jsx-runtime",
+          "plugin:perfectionist/recommended-natural",
+          "prettier"
+        ],
+        "files": [
+          "*.ts",
+          "*.tsx",
+          "*.js",
+          "*.jsx"
+        ],
+        "parser": "@typescript-eslint/parser",
+        "parserOptions": {
+          "project": "./tsconfig.eslint.json"
+        },
+        "plugins": [
+          "@tanstack/query",
+          "perfectionist",
+          "prettier"
+        ],
+        "rules": {
+          "@typescript-eslint/consistent-type-imports": [
+            "error",
+            {
+              "disallowTypeAnnotations": false,
+              "fixStyle": "separate-type-imports",
+              "prefer": "type-imports"
+            }
           ],
-          "read-tsconfig": true
+          "@typescript-eslint/no-unused-vars": [
+            "error",
+            {
+              "argsIgnorePattern": "^_",
+              "destructuredArrayIgnorePattern": "^_",
+              "varsIgnorePattern": "^_"
+            }
+          ],
+          "import/extensions": "off",
+          "import/no-extraneous-dependencies": "off",
+          "import/order": "off",
+          "no-console": [
+            "error",
+            {
+              "allow": [
+                "warn",
+                "error"
+              ]
+            }
+          ],
+          "no-param-reassign": "off",
+          "no-unused-vars": "off",
+          "perfectionist/sort-imports": [
+            "error",
+            {
+              "groups": [
+                "side-effect",
+                [
+                  "type",
+                  "builtin-type",
+                  "external-type"
+                ],
+                "internal-type",
+                "parent-type",
+                "sibling-type",
+                [
+                  "builtin",
+                  "external"
+                ],
+                "internal",
+                "parent",
+                "sibling",
+                "unknown"
+              ],
+              "read-tsconfig": true
+            }
+          ],
+          "prettier/prettier": "error",
+          "react/jsx-props-no-spreading": "off",
+          "react/jsx-sort-props": "off",
+          "react/prop-types": "off",
+          "react/require-default-props": "off",
+          "react/sort-prop-types": "off",
+          "sort-imports": "off",
+          "sort-keys": "off"
         }
-      ],
-      "react/jsx-props-no-spreading": "off",
-      "react/prop-types": "off",
-      "react/require-default-props": "off",
-      "react/sort-prop-types": "off",
-      "react/jsx-sort-props": "off",
-      "no-param-reassign": "off",
-      "sort-imports": "off",
-      "sort-keys": "off"
-    },
-    "ignorePatterns": [
-      "dist/**"
+      }
     ]
   },
   "lint-staged": {
+    "*.{ts,tsx,json,html,md,css}": [
+      "prettier --write"
+    ],
     "*.{ts,tsx}": [
       "eslint",
       "vitest related --run --no-ui --coverage --passWithNoTests"
-    ],
-    "*.{ts,tsx,json,html,md,css}": [
-      "prettier --write"
     ]
-  }
+  },
+  "name": "@hokkyss/vite-react-ts",
+  "private": true,
+  "scripts": {
+    "build": "tsc && vite build",
+    "coverage": "vitest run --coverage",
+    "dev": "vite",
+    "generate": "shadcn-ui add",
+    "lint": "eslint .",
+    "postinstall": "husky install",
+    "prepare": "husky install",
+    "preview": "vite preview",
+    "snapshot": "vitest run -u --no-ui",
+    "test": "vitest --ui --coverage"
+  },
+  "type": "module",
+  "version": "0.0.1"
 }
