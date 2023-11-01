@@ -177,6 +177,9 @@
     ]
   },
   "lint-staged": {
+    "*.{json,js,jsx}": [
+      "eslint"
+    ],
     "*.{ts,tsx,json,html,md,css}": [
       "prettier --write"
     ],
