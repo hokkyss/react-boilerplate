@@ -8,13 +8,13 @@
 /**
  * Recursively set all properties of an object to be optional
  */
-export declare type Subset<T> = {
+export declare type DeepPartial<T> = {
   [P in keyof T]?: T[P] extends object
-    ? Subset<T[P]>
+    ? DeepPartial<T[P]>
     : T[P] extends null | object
-    ? Subset<T[P]> | null
+    ? DeepPartial<T[P]> | null
     : T[P] extends null | object | undefined
-    ? Subset<T[P]> | null
+    ? DeepPartial<T[P]> | null
     : T[P];
 };
 
@@ -23,7 +23,7 @@ export type Except<T, K extends keyof T> = Omit<T, K>;
 /**
  * Type for empty object.
  */
-export declare type EmptyObject = Record<never, never>;
+export declare type EmptyObject = Record<string, never>;
 
 /**
  * Self explanatory
@@ -230,15 +230,15 @@ export type RequireOne<T, Keys extends keyof T = keyof T> = {
  *   z: number;
  * };
  *
- * type RequiredFoo = Require<Foo, "x" | "y">; { x: number; y: number; z: number }
- * type RequiredFoo = Require<Foo, "x">; { x: number; y?: number; z: number }
+ * type RequiredFoo = SetRequired<Foo, "x" | "y">; { x: number; y: number; z: number }
+ * type RequiredFoo = SetRequired<Foo, "x">; { x: number; y?: number; z: number }
  * ```
  */
-export type Require<T, Keys extends keyof T> = Required<Pick<T, Keys>> &
+export type SetRequired<T, Keys extends keyof T> = Required<Pick<T, Keys>> &
   Except<T, Keys>;
 
 /**
- * Make all chosen properties to be required.
+ * Make all chosen properties to be optional.
  *
  * @example
  * ```ts
@@ -248,11 +248,11 @@ export type Require<T, Keys extends keyof T> = Required<Pick<T, Keys>> &
  *   z: number;
  * };
  *
- * type Bar = Optional<Foo, "x" | "y">; // { x?: number; y?: number; z: number }
- * type FooBar = Optional<Foo, "y">; // { x: number; y?: number; z: number }
+ * type Bar = SetOptional<Foo, "x" | "y">; // { x?: number; y?: number; z: number }
+ * type FooBar = SetOptional<Foo, "y">; // { x: number; y?: number; z: number }
  * ```
  */
-export type Optional<T, Keys extends keyof T = keyof T> = {
+export type SetOptional<T, Keys extends keyof T = keyof T> = {
   [Key in Keys]?: T[Key];
 } & Except<T, Keys>;
 
@@ -267,23 +267,23 @@ export type Optional<T, Keys extends keyof T = keyof T> = {
  *   z: number;
  * };
  *
- * const Bar: RequireAtomic<Foo, 'x' | 'y'> = {
+ * const Bar: RequireAllOrNone<Foo, 'x' | 'y'> = {
  *   x: 1;
  *   y: 2;
  *   z: 5;
  * }; // ok
  *
- * const Bar: RequireAtomic<Foo, 'x' | 'y'> = {
+ * const Bar: RequireAllOrNone<Foo, 'x' | 'y'> = {
  *   z: 5;
  * }; // ok
  *
- * const Bar: RequireAtomic<Foo, 'x' | 'y'> = {
+ * const Bar: RequireAllOrNone<Foo, 'x' | 'y'> = {
  *   x: 1;
  *   z: 5;
  * }; // error
  * ```
  */
-export type RequireAtomic<T, Keys extends keyof T = keyof T> = (
+export type RequireAllOrNone<T, Keys extends keyof T = keyof T> = (
   | Partial<Record<Keys, never>>
   | Required<Pick<T, Keys>>
 ) &
@@ -292,8 +292,27 @@ export type RequireAtomic<T, Keys extends keyof T = keyof T> = (
 /**
  * Make chosen properties NonNullable.
  */
-export type NonNullableSome<T, Keys extends keyof T = keyof T> = {
+export type SetNonNullable<T, Keys extends keyof T = keyof T> = {
   [Key in Keys]: NonNullable<T[Key]>;
+} & Except<T, Keys>;
+
+/**
+ * Make chosen properties unassignable.
+ *
+ * @example
+ * ```ts
+ * type Foo = {
+ *   x: number;
+ *   y: number;
+ *   z: number;
+ * };
+ *
+ * const bar: SetNever<Foo, "x"> = { x: 5, y: 1, z: 2 }; // error
+ * const bar: SetNever<Foo, "x"> = { y: 1, z: 2 }; // ok
+ * ```
+ */
+export type SetNever<T, Keys extends keyof T> = {
+  [Key in Keys]: never;
 } & Except<T, Keys>;
 
 /**
@@ -432,3 +451,33 @@ type Iterator<
  * ```
  */
 export type StaticArray<T, N extends number> = Readonly<Iterator<T, N>>;
+
+/**
+ * Flatten object keys
+ * @see https://stackoverflow.com/questions/58434389/typescript-deep-keyof-of-a-nested-object
+ *
+ * @example
+ * ```ts
+ * type Nested = {
+ *   a: number;
+ *   nested: {
+ *     nestedAgain: {
+ *       value: string;
+ *     };
+ *     value: number[];
+ *   };
+ * }
+ *
+ * // "a" | "nested.value" | "nested.nestedAgain.value"
+ * type NestedKeys = FlattenKeys<Nested>;
+ * ```
+ */
+export type FlattenKeys<T> = T extends object
+  ? {
+      [K in keyof T]: `${Exclude<K, symbol>}${FlattenKeys<T[K]> extends never
+        ? ""
+        : T[K] extends unknown[]
+        ? ""
+        : `.${FlattenKeys<T[K]>}`}`;
+    }[keyof T]
+  : never;
