@@ -2,12 +2,9 @@ import { atom, useAtomValue, useSetAtom } from "jotai";
 import { useMemo } from "react";
 
 const counterAtom = atom(0);
-const increaseCounterAtom = atom<null, [number?], void>(
-  null,
-  (get, set, payload = 1) => {
-    set(counterAtom, get(counterAtom) + payload);
-  }
-);
+const increaseCounterAtom = atom(null, (get, set) => {
+  set(counterAtom, get(counterAtom) + 1);
+});
 const decreaseCounterAtom = atom(null, (get, set) => {
   set(counterAtom, get(counterAtom) - 1);
 });
