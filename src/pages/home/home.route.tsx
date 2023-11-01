@@ -9,7 +9,7 @@ const HomeView = lazy(() => import("./home.page"));
 const HomeRoute: RouteObject = {
   ErrorBoundary,
   element: (
-    <Suspense fallback="Loading HomeView">
+    <Suspense fallback={<h1>Loading HomeView</h1>}>
       <HomeView />
     </Suspense>
   ),

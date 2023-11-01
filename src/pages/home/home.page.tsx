@@ -10,7 +10,7 @@ const HomePage = memo(() => {
     <div>
       <h1>Vite + React</h1>
       <button type="button">Toggle mode</button>
-      <h5>{counter}</h5>
+      <h2>{counter}</h2>
       <button onClick={decreaseCounter} type="button">
         Decrease Counter
       </button>

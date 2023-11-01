@@ -1,5 +1,6 @@
 import "./index.css";
 
+import noop from "lodash/noop";
 import React, { Profiler } from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
@@ -7,6 +8,8 @@ import { RouterProvider } from "react-router-dom";
 import AppContext from "./components/templates/app-context/app-context.template";
 import envConfig from "./configs/env/env.config";
 import routerConfig from "./configs/router/router.config";
+import reportAccessibility from "./report-accessibility";
+import reportWebVitals from "./report-web-vitals";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -15,12 +18,7 @@ const root = ReactDOM.createRoot(
   }
 );
 
-const deferRender = async () => {
-  if (import.meta.env.DEV) {
-    const axe = (await import("@axe-core/react")).default;
-    await axe(React, ReactDOM, 1000);
-  }
-};
+const deferRender = async () => {};
 
 deferRender().then(() =>
   root.render(
@@ -52,3 +50,8 @@ deferRender().then(() =>
     </React.StrictMode>
   )
 );
+
+reportAccessibility(React, ReactDOM);
+// NOTE: logging happens only on DEV
+// eslint-disable-next-line no-console
+reportWebVitals(import.meta.env.DEV ? console.debug : noop);
