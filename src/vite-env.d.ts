@@ -1,5 +1,4 @@
 /// <reference types="./svg" />
-/// <reference types="./mui" />
 /// <reference types="./globals" />
 /// <reference types="vite/client" />
 

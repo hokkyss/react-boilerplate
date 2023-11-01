@@ -6,7 +6,7 @@
     "vitest.config.ts",
     "tsconfig.json",
     "tests",
-    "tailwind.config.js",
+    "tailwind.config.ts",
     "postcss.config.js"
   ]
 }
