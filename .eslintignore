@@ -27,3 +27,5 @@ dist-ssr
 .yarnrc
 coverage
 html
+**/package.json
+!/package.json
