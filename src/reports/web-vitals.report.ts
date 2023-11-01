@@ -3,6 +3,7 @@ import type {
   FCPReportCallback,
   FIDReportCallback,
   LCPReportCallback,
+  MetricType,
   TTFBReportCallback,
 } from "web-vitals";
 
@@ -10,7 +11,7 @@ import isFunction from "lodash/isFunction";
 import { onCLS, onFCP, onFID, onLCP, onTTFB } from "web-vitals";
 
 type ReportCallback =
-  | (() => void)
+  | ((metric: MetricType) => void)
   | {
       onCLS: CLSReportCallback;
       onFCP: FCPReportCallback;

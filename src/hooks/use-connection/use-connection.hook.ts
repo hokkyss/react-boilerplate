@@ -70,60 +70,58 @@ const nav: NavigatorWithConnection | undefined = !isUndefined(navigator)
   ? navigator
   : undefined;
 
-export type Connection = { online: boolean } & (
-  | { isSupported: false }
-  | ({ isSupported: true } & Partial<NetworkInformationAttributes>)
-);
+export type Connection = {
+  online: boolean;
+} & Partial<NetworkInformationAttributes>;
 
-function subscribe(callback: () => void) {
-  window.addEventListener("offline", callback);
-  window.addEventListener("online", callback);
-
+function subscribeConnection(callback: () => void) {
   if (nav?.connection) {
     nav.connection.addEventListener("change", callback);
   }
 
   return () => {
-    window.removeEventListener("offline", callback);
-    window.removeEventListener("online", callback);
-
     if (nav?.connection) {
       nav.connection.removeEventListener("change", callback);
     }
   };
 }
 
-function getSnapshot() {
-  if (!nav) return [false, true, {}] as const;
+function subscribeOnline(callback: () => void) {
+  window.addEventListener("offline", callback);
+  window.addEventListener("online", callback);
 
-  if (!nav.connection) {
-    return [true, nav.onLine, {}] as const;
-  }
-
-  return [
-    true,
-    nav.onLine,
-    {
-      downlink: nav.connection.downlink,
-      downlinkMax: nav.connection.downlinkMax,
-      effectiveType: nav.connection.effectiveType,
-      isSupported: true,
-      rtt: nav.connection.rtt,
-      saveData: nav.connection.saveData,
-      type: nav.connection.type,
-    },
-  ] as const;
+  return () => {
+    window.removeEventListener("offline", callback);
+    window.removeEventListener("online", callback);
+  };
 }
 
 export default function useConnection(): Connection {
-  const [isSupported, online, connectionState] = useSyncExternalStore(
-    subscribe,
-    getSnapshot,
-    getSnapshot
+  const online = useSyncExternalStore(
+    subscribeOnline,
+    () => !!nav?.onLine,
+    () => true
+  );
+  const connectionState = useSyncExternalStore(
+    subscribeConnection,
+    () => nav?.connection,
+    () => undefined
   );
 
   return useMemo(
-    () => ({ isSupported, online, ...connectionState }),
-    [connectionState, isSupported, online]
+    () => ({
+      online,
+      ...(connectionState
+        ? {
+            downlink: connectionState.downlink,
+            downlinkMax: connectionState.downlinkMax,
+            effectiveType: connectionState.effectiveType,
+            rtt: connectionState.rtt,
+            saveData: connectionState.saveData,
+            type: connectionState.type,
+          }
+        : {}),
+    }),
+    [connectionState, online]
   );
 }
